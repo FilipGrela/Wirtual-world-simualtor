@@ -10,15 +10,10 @@ class Animal : public Organism {
 protected:
     const int initiative;
 
-    void action() override;
     void collision(Organism &other) override;
 public:
     Animal(Point point, char symbol, int strength, int initiative, World &world);
     int getInitiative() const;
-
-    void reproduce();
-
-
 
 };
 

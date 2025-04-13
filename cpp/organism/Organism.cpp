@@ -3,6 +3,7 @@
 //
 
 #include "Organism.h"
+#include "../world/World.h"
 
 Organism::Organism(Point point, char symbol, int strength, World &world)
         : position(point), symbol(symbol), strength(strength), age(0), world(world) {
@@ -51,4 +52,16 @@ void Organism::action() {
 
 void Organism::collision(Organism &other) {
     // Pusta definicja metody
+}
+
+void Organism::move(Point newPosition) {
+    // Jeśli pozycja jest wolna, zaktualizuj pozycję
+    position = newPosition;
+    // Sprawdź, czy nowa pozycja jest zajęta
+    for (auto &other : world.getOrganisms()) {
+        if (other.get() != this && other->getPosition() == newPosition) {
+            // Wywołaj kolizję
+            this->collision(*other);
+        }
+    }
 }

@@ -4,15 +4,16 @@
 
 #pragma once
 
+#include <vector>
 #include "../utilities/Point.h"
 
-class World;
+class World; // Forward declaration
 
 class Organism {
 public:
     virtual ~Organism();
 
-    // Metody abstrakcyjne
+    // Metody abstrakcyjne`
     virtual void action();
     virtual void collision(Organism &other);
 
@@ -23,11 +24,11 @@ public:
     virtual int getAge();
     virtual int setAge(int newAge);
     virtual int increaseAge();
+    virtual void reproduce() = 0;
 
 protected:
     Organism(Point point, char symbol, int strength, World &world);
 
-    void reproduce();
     void move(Point newPosition);
 
     Point position;

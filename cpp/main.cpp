@@ -1,6 +1,6 @@
 #include <windows.h>
 #include <iostream>
-#include "organism/animal/Animal.h"
+#include "organism/animal/species/Wolf.h"
 #include "world/World.h"
 
 using namespace std;
@@ -34,9 +34,20 @@ void initializeConsole() {
 int main() {
     initializeConsole();
 
-    cout << colored("Hello, World!", 0x0A) << endl; // Zielony tekst
+    World world(10, 10);
+
+    // Dodaj wilka do świata
+world.addOrganism(new Wolf(Point(0, 0), world));
 
 
-    system("pause");
+    // Pętla symulacji
+    world.draw();
+    while (true) {
+        system("pause");
+        world.executeTurn();
+        system("cls");
+        world.draw();
+    }
+
     return 0;
 }

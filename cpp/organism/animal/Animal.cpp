@@ -3,6 +3,7 @@
 //
 
 #include "Animal.h"
+#include "../../world/World.h"
 #include <random>
 
 Animal::Animal(Point point, char symbol,int strength, int initiative, World &world)
@@ -12,23 +13,12 @@ int Animal::getInitiative() const {
     return initiative;
 }
 
-void Animal::action() {
-
-}
-
 
 void Animal::collision(Organism &other) {
     if (this->getSymbol() == other.getSymbol()) {
-        // Ensure `this` is an `Animal` and call `reproduce`
-        if (Animal *animal = dynamic_cast<Animal *>(this)) {
-            animal->reproduce();
-        }
+        // Rozmnażanie, jeśli organizmy są tego samego gatunku
+        other.reproduce();
     } else {
-        // Zwierzęta są różnych gatunków - walka
+        // Logika walki, jeśli organizmy są różnych gatunków
     }
-}
-
-void Animal::reproduce() {
-
-    // Jeśli brak miejsca, rozmnażanie nie jest możliwe
 }

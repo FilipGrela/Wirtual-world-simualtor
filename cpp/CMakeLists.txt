@@ -14,8 +14,8 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         organism/animal/Animal.h
         organism/animal/species/Human.cpp
         organism/animal/species/Human.h
-#        organism/animal/species/Wolf.cpp
-#        organism/animal/species/Wolf.h
+        organism/animal/species/Wolf.cpp
+        organism/animal/species/Wolf.h
 #        organism/animal/species/Antelope.cpp
 #        organism/animal/species/Antelope.h
 #        organism/plant/Plant.cpp
