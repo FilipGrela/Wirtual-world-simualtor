@@ -3,30 +3,34 @@
 //
 
 #include <thread>
+#include <sstream>
 #include "World.h"
 
 World::World(int width, int height) : width(width), height(height) {}
 
 void World::draw() const {
-    for (int y = 0; y <= height-1; y++) {
-        for (int x = 0; x <= width-1; x++) {
+    std::ostringstream buffer; // Bufor do przechowywania całego wyniku
+
+    for (int y = 0; y <= height - 1; y++) {
+        for (int x = 0; x <= width - 1; x++) {
             Point position(x, y);
             bool found = false;
             for (const auto &organism : organisms) {
                 Point organismPos = organism->getPosition();
                 if (organismPos == position) {
-                    std::cout << organism->getSymbol();
+                    buffer << organism->getSymbol(); // Dodaj symbol organizmu do bufora
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                std::cout << ".";
+                buffer << "⚫"; // Dodaj pusty symbol do bufora
             }
-//            std::cout << "(" << x << "," << y << ") ";
         }
-        std::cout << std::endl;
+        buffer << '\n'; // Dodaj nową linię do bufora
     }
+
+    std::cout << buffer.str(); // Wypisz cały bufor na konsolę
 }
 bool World::isOccupied(Point position) const {
     for (const auto &organism : organisms) {

@@ -6,7 +6,7 @@
 #include "../../world/World.h"
 #include <random>
 
-Animal::Animal(Point point, char symbol,int strength, int initiative, World &world)
+Animal::Animal(Point point, std::string symbol,int strength, int initiative, World &world)
         : Organism(point, symbol, strength, world), initiative(initiative) {}
 
 int Animal::getInitiative() const {

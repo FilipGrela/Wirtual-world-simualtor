@@ -5,7 +5,7 @@
 #include "Organism.h"
 #include "../world/World.h"
 
-Organism::Organism(Point point, char symbol, int strength, World &world)
+Organism::Organism(Point point, std::string symbol, int strength, World &world)
         : position(point), symbol(symbol), strength(strength), age(0), world(world) {
 };
 
@@ -41,7 +41,7 @@ int Organism::increaseAge() {
     return age;
 }
 
-char Organism::getSymbol() {
+std::string Organism::getSymbol() {
     return symbol;
 }
 

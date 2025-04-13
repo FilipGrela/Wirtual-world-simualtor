@@ -19,7 +19,7 @@ public:
 
     virtual Point getPosition();
     virtual Point setPosition(Point newPosition);
-    virtual char getSymbol();
+    virtual std::string getSymbol();
     virtual int getStrength();
     virtual int getAge();
     virtual int setAge(int newAge);
@@ -27,12 +27,12 @@ public:
     virtual void reproduce() = 0;
 
 protected:
-    Organism(Point point, char symbol, int strength, World &world);
+    Organism(Point point, std::string symbol, int strength, World &world);
 
     void move(Point newPosition);
 
     Point position;
-    const char symbol;
+    const std::string symbol;
     const int strength;
     int age;
 

@@ -7,7 +7,7 @@
 #include <cstdlib>
 
 Wolf::Wolf(Point point, World &world)
-        : Animal(point, 'W', 9, 5, world) {}
+        : Animal(point, "🐺", 9, 5, world) {}
 
 void Wolf::action() {
 
