@@ -2,27 +2,38 @@
 // Created by Filip on 12/04/2025.
 //
 
-#ifndef PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_ORGANISM_H
-#define PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_ORGANISM_H
+#pragma once
 
 #include "../utilities/Point.h"
 
+class World;
+
 class Organism {
-    virtual ~Organism() = default;
-
-    // Metody czysto abstrakcyjne
-    virtual void action() = 0;
-    virtual void collision(Organism &other) = 0;
-    virtual char draw() const = 0;
 public:
-private:
+    virtual ~Organism();
+
+    // Metody abstrakcyjne
+    virtual void action();
+    virtual void collision(Organism &other);
+
+    virtual Point getPosition();
+    virtual Point setPosition(Point newPosition);
+    virtual char getSymbol();
+    virtual int getStrength();
+    virtual int getAge();
+    virtual int setAge(int newAge);
+    virtual int increaseAge();
+
+protected:
+    Organism(Point point, char symbol, int strength, World &world);
+
+    void reproduce();
+    void move(Point newPosition);
+
     Point position;
-    char symbol;
-    int energy;
+    const char symbol;
+    const int strength;
     int age;
-    int maxEnergy;
-    int maxAge;
+
+    World &world; // Referencja do świata, w którym znajduje się organizm
 };
-
-
-#endif //PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_ORGANISM_H

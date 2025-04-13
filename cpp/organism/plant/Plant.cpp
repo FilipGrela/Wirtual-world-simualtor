@@ -3,3 +3,8 @@
 //
 
 #include "Plant.h"
+
+Plant::Plant(Point point, char symbol, int strength, World &world)
+        : Organism(point, symbol, strength, world) {
+
+}

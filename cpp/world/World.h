@@ -2,30 +2,29 @@
 // Created by Filip on 12/04/2025.
 //
 
-#ifndef PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_WORLD_H
-#define PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_WORLD_H
+#pragma once
 
 #include <memory>
 #include <vector>
+#include "../utilities/Point.h"
 #include "../organism/Organism.h"
+
+class Animal; // Deklaracja wstępna
 
 class World {
 public:
     World(int width, int height);
     void draw();
     void update();
-    void addOrganism(int x, int y, char symbol);
-    void removeOrganism(int x, int y);
-    void moveOrganism(int oldX, int oldY, int newX, int newY);
+
+    int isOccupied(Point position) const;
+    bool isInBounds(Point position) const;
 
 private:
     int width;
     int height;
 
-    std::vector<std::vector<std::unique_ptr<Organism>>> organisms; // 2D vector to represent the organisms in the world
-    std::unique_ptr<std::unique_ptr<char[]>[]> grid; // 2D array to represent the world grid
-    // You can also use a vector of vectors or other data structures if needed
+    std::vector<std::unique_ptr<Organism>> organisms; // vector to represent the organisms in the world
 };
 
 
-#endif //PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_WORLD_H

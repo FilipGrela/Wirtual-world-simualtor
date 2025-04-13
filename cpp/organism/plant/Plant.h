@@ -11,9 +11,10 @@ class Plant : public Organism {
 private:
 
 public:
-    Plant(int x, int y, char symbol, int energy, int age, int maxEnergy, int maxAge);
-    ~Plant() override;
+    Plant(Point point, char symbol, int strength, World &world);
 
+    void action() override;
+    void collision(Organism &other) override;
 };
 
 

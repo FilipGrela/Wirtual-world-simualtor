@@ -1,5 +1,7 @@
 #include <windows.h>
 #include <iostream>
+#include "organism/animal/Animal.h"
+#include "world/World.h"
 
 using namespace std;
 
