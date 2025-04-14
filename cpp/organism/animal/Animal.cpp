@@ -24,8 +24,13 @@ void Animal::collision(Organism &other) {
 void Animal::fight(Organism &other) {
   // Pusta definicja metody
   if (this->getStrength() < other.getStrength()) {
+    world.getLogger().logEvent(
+        "Organizm " + this->getSymbol() + " został pokonany przez " +
+        other.getSymbol());
     die();
   } else {
+    world.getLogger().logEvent(
+        "Organizm " + this->getSymbol() + " pokonał " + other.getSymbol());
     other.die();
   }
 }

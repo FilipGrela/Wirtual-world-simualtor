@@ -2,110 +2,124 @@
 // Created by Filip on 12/04/2025.
 //
 
-#include <thread>
-#include <sstream>
-#include <algorithm>
 #include "World.h"
 #include "../Constants.h"
+#include <algorithm>
+#include <sstream>
+#include <thread>
 
 World::World(int width, int height) : width(width), height(height) {}
 
 void World::draw() const {
-    std::ostringstream buffer; // Bufor do przechowywania całego wyniku
+  std::ostringstream buffer; // Bufor do przechowywania całego wyniku
 
-    for (int y = 0; y <= height - 1; y++) {
-        for (int x = 0; x <= width - 1; x++) {
-            Point position(x, y);
-            bool found = false;
-            for (const auto &organism : organisms) {
-                Point organismPos = organism->getPosition();
-                if (organismPos == position) {
-                    buffer << organism->getSymbol(); // Dodaj symbol organizmu do bufora
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                buffer << Constants::World::EmptySymbol; // Dodaj pusty symbol do bufora
-            }
+  for (int y = 0; y <= height - 1; y++) {
+    for (int x = 0; x <= width - 1; x++) {
+      Point position(x, y);
+      bool found = false;
+      for (const auto &organism : organisms) {
+        Point organismPos = organism->getPosition();
+        if (organismPos == position) {
+          buffer << organism->getSymbol(); // Dodaj symbol organizmu do bufora
+          found = true;
+          break;
         }
-        buffer << '\n'; // Dodaj nową linię do bufora
+      }
+      if (!found) {
+        buffer << Constants::World::EmptySymbol; // Dodaj pusty symbol do bufora
+      }
     }
+    buffer << '\n'; // Dodaj nową linię do bufora
+  }
 
-    std::cout << buffer.str(); // Wypisz cały bufor na konsolę
+  std::cout << buffer.str(); // Wypisz cały bufor na konsolę
 }
 bool World::isOccupied(Point position) const {
-    for (const auto &organism : organisms) {
-        if (organism->getPosition() == position) {
-            return true;
-        }
+  for (const auto &organism : organisms) {
+    if (organism->getPosition() == position) {
+      return true;
     }
-    return false;
+  }
+  for (const auto &organism : organismsToAdd) {
+    if (organism->getPosition() == position) {
+      return true;
+    }
+  }
+  return false;
 }
 
 bool World::isInBounds(Point position) const {
-    return position.x >= 0 && position.x < width &&
-           position.y >= 0 && position.y < height;
+  return position.x >= 0 && position.x < width && position.y >= 0 &&
+         position.y < height;
 }
 
 void World::executeTurn() {
 
-    std::sort(organisms.begin(), organisms.end(), [](const std::unique_ptr<Organism> &a, const std::unique_ptr<Organism> &b) {
-        if (a->getInitiative() != b->getInitiative()) {
-            return a->getInitiative() > b->getInitiative(); // Wyższa inicjatywa ma pierwszeństwo
-        }
-        return a->getAge() > b->getAge(); // Starszy organizm ma pierwszeństwo
-    });
+  std::sort(organisms.begin(), organisms.end(),
+            [](const std::unique_ptr<Organism> &a,
+               const std::unique_ptr<Organism> &b) {
+              if (a->getInitiative() != b->getInitiative()) {
+                return a->getInitiative() >
+                       b->getInitiative(); // Wyższa inicjatywa ma pierwszeństwo
+              }
+              return a->getAge() >
+                     b->getAge(); // Starszy organizm ma pierwszeństwo
+            });
 
-    for (auto &organism : organisms) {
-        if (organism) {
-            organism->action();
-            organism->increaseAge();
-        }
+  for (auto &organism : organisms) {
+    if (organism) {
+      organism->action();
+      organism->increaseAge();
+      getLogger().displayAndClear();
     }
+  }
 
-    for (auto &newOrganism : organismsToAdd) {
-        addOrganism(newOrganism.release());
-    }
-    organismsToAdd.clear();
+  for (auto &newOrganism : organismsToAdd) {
+    addOrganism(newOrganism.release());
+  }
+  organismsToAdd.clear();
 }
 
 void World::addOrganism(Organism *organism) {
-    organisms.emplace_back(organism);
+  organisms.emplace_back(organism);
 }
 
 /**
- * This function finds the nearest free space for the new organism to be placed in the world.
+ * This function finds the nearest free space for the new organism to be placed
+ * in the world.
  */
 Point World::getFreeSpace(Point &newPosition) {
-    static const std::vector<Point> directions = {
-            Point(0, 1),  // Up
-            Point(1, 0),  // Right
-            Point(0, -1), // Down
-            Point(-1, 0)  // Left
-    };
+  static const std::vector<Point> directions = {
+      Point(0, 1),  // Up
+      Point(1, 0),  // Right
+      Point(0, -1), // Down
+      Point(-1, 0)  // Left
+  };
 
-    for (const auto &direction : directions) {
-        Point candidate = newPosition + direction;
-        if (isInBounds(candidate) && !isOccupied(candidate)) {
-            return candidate;
-        }
+  for (const auto &direction : directions) {
+    Point candidate = newPosition + direction;
+    if (isInBounds(candidate) && !isOccupied(candidate)) {
+      return candidate;
     }
-    return {-1, -1}; // No free space found
+  }
+  return {-1, -1}; // No free space found
 }
 
 const std::vector<std::unique_ptr<Organism>> &World::getOrganisms() const {
-    return organisms;
+  return organisms;
 }
 
 void World::queueOrganismAddition(Organism *organism) {
-    organismsToAdd.emplace_back(organism);
+  organismsToAdd.emplace_back(organism);
 }
 
 void World::removeOrganism(Organism *organism) {
-  organisms.erase(std::remove_if(organisms.begin(), organisms.end(),
-                                 [organism](const std::unique_ptr<Organism> &o) {
-                                   return o.get() == organism;
-                                 }),
-                  organisms.end());
+  organisms.erase(
+      std::remove_if(organisms.begin(), organisms.end(),
+                     [organism](const std::unique_ptr<Organism> &o) {
+                       return o.get() == organism;
+                     }),
+      organisms.end());
 }
+
+EventLogger &World::getLogger() { return eventLogger; }

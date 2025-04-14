@@ -51,7 +51,22 @@ std::string Organism::getSymbol() {
 
 
 void Organism::action() {
-    // Pusta definicja metody
+
+  Point directions[] = {Point(0, 1), Point(1, 0), Point(0, -1), Point(-1, 0)};
+  Point newPosition;
+
+  int maxAttempts = 25; // Maksymalna liczba prób
+  int attempts = 0;
+  do {
+    newPosition = position + directions[rand() % 4];
+    attempts++;
+  } while (!world.isInBounds(newPosition) && attempts < maxAttempts);
+
+  if (attempts >= maxAttempts) {
+    return; // Nie znaleziono wolnej przestrzeni
+  }
+
+  move(newPosition);
 }
 
 void Organism::collision(Organism &other) {
@@ -59,11 +74,21 @@ void Organism::collision(Organism &other) {
 }
 
 void Organism::move(Point newPosition) {
+  // Loguj próbę ruchu
+  world.getLogger().logEvent("Organizm " + this->getSymbol() + " próbuje się poruszyć z pozycji " +
+                             std::to_string(position.x) + "," + std::to_string(position.y) +
+                             " na pozycję " + std::to_string(newPosition.x) + "," + std::to_string(newPosition.y));
+
   // Jeśli pozycja jest wolna, zaktualizuj pozycję
   position = newPosition;
+
   // Sprawdź, czy nowa pozycja jest zajęta
   for (auto &other : world.getOrganisms()) {
-    if (other.get() != this && other->getPosition() == newPosition) {
+    if (other != nullptr && other.get() != this && other->getPosition() == newPosition) {
+      // Loguj kolizję
+      world.getLogger().logEvent("Kolizja: Organizm " + this->getSymbol() + " zderzył się z organizmem " +
+                                 other->getSymbol() + " na pozycji " +
+                                 std::to_string(newPosition.x) + "," + std::to_string(newPosition.y));
       // Wywołaj kolizję
       this->collision(*other);
     }

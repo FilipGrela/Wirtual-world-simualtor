@@ -12,7 +12,6 @@ class Wolf : public Animal {
 public:
     Wolf(Point point, World &world);
 
-    void action() override;
     void reproduce() override;
 };
 

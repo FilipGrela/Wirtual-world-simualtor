@@ -2,6 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include "organism/animal/species/Wolf.h"
+#include "organism/animal/species/Sheep.h"
 #include "world/World.h"
 
 using namespace std;
@@ -40,6 +41,10 @@ int main() {
     // Dodaj wilka do świata
     world.addOrganism(new Wolf(Point(4, 4), world));
     world.addOrganism(new Wolf(Point(4, 5), world));
+
+
+    world.addOrganism(new Sheep(Point(7, 5), world));
+    world.addOrganism(new Sheep(Point(8, 5), world));
 
 
     world.draw();

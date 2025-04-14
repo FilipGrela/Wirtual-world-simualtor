@@ -4,18 +4,18 @@
 
 #pragma once
 
+#include "../organism/Organism.h"
+#include "../utilities/Point.h"
+#include "../utilities/eventLogger/EventLogger.h"
 #include <memory>
 #include <vector>
-#include "../utilities/Point.h"
-#include "../organism/Organism.h"
 
-class Animal; // Deklaracja wstępna
+class Organism; // Deklaracja wstępna
 
 class World {
 public:
     World(int width, int height);
     void draw() const;
-    void update();
 
     bool isOccupied(Point position) const;
     bool isInBounds(Point position) const;
@@ -27,11 +27,14 @@ public:
     const std::vector<std::unique_ptr<Organism>> &getOrganisms() const;
 
     Point getFreeSpace(Point &newPosition);
+    EventLogger &getLogger();
 
     void queueOrganismAddition(Organism *organism);
 
 private:
     int width, height;
+
+    EventLogger eventLogger; // Logger do rejestrowania zdarzeń
 
     std::vector<std::unique_ptr<Organism>> organisms; // vector to represent the organisms in the world
     std::vector<std::unique_ptr<Organism>> organismsToAdd; // vector to represent the organisms to add to the world

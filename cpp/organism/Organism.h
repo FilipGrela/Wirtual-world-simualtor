@@ -7,6 +7,7 @@
 #include <vector>
 #include "../Constants.h"
 #include "../utilities/Point.h"
+#include "../world/World.h"
 
 class World; // Forward declaration
 
