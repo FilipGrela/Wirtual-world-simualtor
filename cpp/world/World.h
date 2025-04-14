@@ -30,7 +30,7 @@ public:
     EventLogger &getLogger();
 
     void queueOrganismAddition(Organism *organism);
-
+    bool isStrongerOrganismAt(Point position, int strength) const;
 private:
     int width, height;
 

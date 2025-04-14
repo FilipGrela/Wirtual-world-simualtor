@@ -21,6 +21,8 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         utilities/eventLogger/EventLogger.h
         organism/animal/species/Sheep.cpp
         organism/animal/species/Sheep.h
+        organism/animal/species/Fox.cpp
+        organism/animal/species/Fox.h
         #        organism/animal/species/Antelope.cpp
 #        organism/animal/species/Antelope.h
 #        organism/plant/Plant.cpp

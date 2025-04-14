@@ -17,3 +17,4 @@ void Sheep::reproduce() {
 
   world.queueOrganismAddition(new Sheep(newPosition, world));
 }
+

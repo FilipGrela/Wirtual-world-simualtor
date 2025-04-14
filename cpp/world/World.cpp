@@ -67,9 +67,8 @@ void World::executeTurn() {
             });
 
   for (auto &organism : organisms) {
-    if (organism) {
+    if (organism != nullptr) {
       organism->action();
-      organism->increaseAge();
       getLogger().displayAndClear();
     }
   }
@@ -123,3 +122,12 @@ void World::removeOrganism(Organism *organism) {
 }
 
 EventLogger &World::getLogger() { return eventLogger; }
+
+bool World::isStrongerOrganismAt(Point position, int strength) const {
+  for (const auto &organism : organisms) {
+    if (organism->getPosition() == position && organism->getStrength() > strength) {
+      return true;
+    }
+  }
+  return false;
+}

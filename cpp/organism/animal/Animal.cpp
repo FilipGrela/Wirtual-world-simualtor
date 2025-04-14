@@ -14,7 +14,7 @@ Animal::Animal(Point point, std::string symbol, int strength, int initiative,
 void Animal::collision(Organism &other) {
   if (this->getSymbol() == other.getSymbol()) {
     // Rozmnażanie, jeśli organizmy są tego samego gatunku
-    other.reproduce();
+    reproduce();
   } else {
     // Logika walki, jeśli organizmy są różnych gatunków
     fight(other);

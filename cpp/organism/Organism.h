@@ -37,6 +37,9 @@ protected:
 
     void move(Point newPosition);
 
+    Point getRandomNewPosition(const std::vector<Point> &directions) const;
+    virtual Point getNewPosition();
+
     Point position;
     const std::string symbol;
     const int strength;

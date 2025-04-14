@@ -1,9 +1,10 @@
-#include <windows.h>
-#include <iostream>
-#include <conio.h>
-#include "organism/animal/species/Wolf.h"
+#include "organism/animal/species/Fox.h"
 #include "organism/animal/species/Sheep.h"
+#include "organism/animal/species/Wolf.h"
 #include "world/World.h"
+#include <conio.h>
+#include <iostream>
+#include <windows.h>
 
 using namespace std;
 
@@ -46,6 +47,9 @@ int main() {
     world.addOrganism(new Sheep(Point(7, 5), world));
     world.addOrganism(new Sheep(Point(8, 5), world));
 
+    world.addOrganism(new Fox(Point(3, 1), world));
+    world.addOrganism(new Fox(Point(4, 1), world));
+
 
     world.draw();
     bool running = true;
@@ -79,6 +83,7 @@ int main() {
         world.executeTurn();
         system("cls");
         world.draw();
+        cout << "dlugosc getOrganisms" << world.getOrganisms().size() << endl;
     }
 
     return 0;
