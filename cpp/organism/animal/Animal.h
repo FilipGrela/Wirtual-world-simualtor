@@ -8,11 +8,9 @@
 
 class Animal : public Organism {
 protected:
-    const int initiative;
     void collision(Organism &other) override;
 public:
     Animal(Point point, std::string symbol, int strength, int initiative, World &world);
-    int getInitiative() const;
 
 };
 

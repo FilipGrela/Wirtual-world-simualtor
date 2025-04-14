@@ -4,6 +4,7 @@
 
 #include <thread>
 #include <sstream>
+#include <algorithm>
 #include "World.h"
 
 World::World(int width, int height) : width(width), height(height) {}
@@ -47,6 +48,13 @@ bool World::isInBounds(Point position) const {
 }
 
 void World::executeTurn() {
+
+    std::sort(organisms.begin(), organisms.end(), [](const std::unique_ptr<Organism> &a, const std::unique_ptr<Organism> &b) {
+        if (a->getInitiative() != b->getInitiative()) {
+            return a->getInitiative() > b->getInitiative(); // Wyższa inicjatywa ma pierwszeństwo
+        }
+        return a->getAge() > b->getAge(); // Starszy organizm ma pierwszeństwo
+    });
 
     for (auto &organism : organisms) {
         if (organism) {

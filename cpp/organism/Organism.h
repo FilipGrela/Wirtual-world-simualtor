@@ -20,20 +20,23 @@ public:
     virtual Point getPosition();
     virtual Point setPosition(Point newPosition);
     virtual std::string getSymbol();
-    virtual int getStrength();
     virtual int getAge();
     virtual int setAge(int newAge);
     virtual int increaseAge();
     virtual void reproduce() = 0;
 
+    int getStrength() const;
+    int getInitiative() const;
+
 protected:
-    Organism(Point point, std::string symbol, int strength, World &world);
+    Organism(Point point, std::string symbol, int strength, int initiative, World &world);
 
     void move(Point newPosition);
 
     Point position;
     const std::string symbol;
     const int strength;
+    const int initiative;
     int age;
 
     World &world; // Referencja do świata, w którym znajduje się organizm

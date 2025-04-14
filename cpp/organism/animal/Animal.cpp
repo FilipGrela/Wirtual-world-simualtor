@@ -5,13 +5,10 @@
 #include "Animal.h"
 #include "../../world/World.h"
 #include <random>
+#include <utility>
 
 Animal::Animal(Point point, std::string symbol,int strength, int initiative, World &world)
-        : Organism(point, symbol, strength, world), initiative(initiative) {}
-
-int Animal::getInitiative() const {
-    return initiative;
-}
+        : Organism(point, std::move(symbol), strength, initiative, world){}
 
 
 void Animal::collision(Organism &other) {

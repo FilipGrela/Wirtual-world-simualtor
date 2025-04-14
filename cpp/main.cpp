@@ -39,6 +39,7 @@ int main() {
 
     // Dodaj wilka do świata
     world.addOrganism(new Wolf(Point(4, 4), world));
+    world.addOrganism(new Wolf(Point(4, 5), world));
 
 
     world.draw();
@@ -46,17 +47,26 @@ int main() {
     while (running) {
 
         switch (_getch()) {
-            case 'q' or 27: // q lub ESC
+            case 'q': // q
+            case 27:  // ESC
                 running = false;
                 break;
-            case 72: // Strzałka w górę
+            case 0:   // Klawisze specjalne (np. strzałki)
+            case 224: {
+                switch (_getch()) {
+                    case 72: // Strzałka w górę
+                        break;
+                    case 80: // Strzałka w dół
+                        break;
+                    case 75: // Strzałka w lewo
+                        break;
+                    case 77: // Strzałka w prawo
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case 80: // Strzałka w dół
-                break;
-            case 75: // Strzałka w lewo
-                break;
-            case 77: // Strzałka w prawo
-                break;
+            }
             default:
                 break;
         }
