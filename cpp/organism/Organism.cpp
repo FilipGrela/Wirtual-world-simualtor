@@ -59,13 +59,18 @@ void Organism::collision(Organism &other) {
 }
 
 void Organism::move(Point newPosition) {
-    // Jeśli pozycja jest wolna, zaktualizuj pozycję
-    position = newPosition;
-    // Sprawdź, czy nowa pozycja jest zajęta
-    for (auto &other : world.getOrganisms()) {
-        if (other.get() != this && other->getPosition() == newPosition) {
-            // Wywołaj kolizję
-            this->collision(*other);
-        }
+  // Jeśli pozycja jest wolna, zaktualizuj pozycję
+  position = newPosition;
+  // Sprawdź, czy nowa pozycja jest zajęta
+  for (auto &other : world.getOrganisms()) {
+    if (other.get() != this && other->getPosition() == newPosition) {
+      // Wywołaj kolizję
+      this->collision(*other);
     }
+  }
+}
+
+void Organism::die() {
+    // Pusta definicja metody
+    world.removeOrganism(this);
 }

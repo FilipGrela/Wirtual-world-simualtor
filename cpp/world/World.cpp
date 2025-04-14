@@ -60,6 +60,7 @@ void World::executeTurn() {
     for (auto &organism : organisms) {
         if (organism) {
             organism->action();
+            organism->increaseAge();
         }
     }
 
@@ -99,4 +100,12 @@ const std::vector<std::unique_ptr<Organism>> &World::getOrganisms() const {
 
 void World::queueOrganismAddition(Organism *organism) {
     organismsToAdd.emplace_back(organism);
+}
+
+void World::removeOrganism(Organism *organism) {
+  organisms.erase(std::remove_if(organisms.begin(), organisms.end(),
+                                 [organism](const std::unique_ptr<Organism> &o) {
+                                   return o.get() == organism;
+                                 }),
+                  organisms.end());
 }

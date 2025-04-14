@@ -23,7 +23,7 @@ public:
     void executeTurn();
 
     void addOrganism(Organism *organism);
-
+    void removeOrganism(Organism *organism);
     const std::vector<std::unique_ptr<Organism>> &getOrganisms() const;
 
     Point getFreeSpace(Point &newPosition);

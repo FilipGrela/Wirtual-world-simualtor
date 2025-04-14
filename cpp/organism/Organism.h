@@ -26,6 +26,8 @@ public:
     virtual int increaseAge();
     virtual void reproduce() = 0;
 
+
+    void die();
     int getStrength() const;
     int getInitiative() const;
 
