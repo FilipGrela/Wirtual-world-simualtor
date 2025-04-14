@@ -6,6 +6,7 @@
 #include <sstream>
 #include <algorithm>
 #include "World.h"
+#include "../Constants.h"
 
 World::World(int width, int height) : width(width), height(height) {}
 
@@ -25,7 +26,7 @@ void World::draw() const {
                 }
             }
             if (!found) {
-                buffer << "⚫"; // Dodaj pusty symbol do bufora
+                buffer << Constants::World::EmptySymbol; // Dodaj pusty symbol do bufora
             }
         }
         buffer << '\n'; // Dodaj nową linię do bufora

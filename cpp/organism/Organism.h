@@ -5,6 +5,7 @@
 #pragma once
 
 #include <vector>
+#include "../Constants.h"
 #include "../utilities/Point.h"
 
 class World; // Forward declaration
