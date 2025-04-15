@@ -17,7 +17,7 @@ public:
 
     // Metody abstrakcyjne`
     virtual void action();
-    virtual void collision(Organism &other);
+    virtual bool collision(Organism &other) = 0;
 
     virtual Point getPosition();
     virtual Point setPosition(Point newPosition);
@@ -26,21 +26,23 @@ public:
     virtual int setAge(int newAge);
     virtual int increaseAge();
     virtual void reproduce() = 0;
+    void move(Point newPosition);
 
 
     void die();
     int getStrength() const;
     int getInitiative() const;
+    Point getPreviousPosition() const;
 
 protected:
     Organism(Point point, std::string symbol, int strength, int initiative, World &world);
 
-    void move(Point newPosition);
-
-    Point getRandomNewPosition(const std::vector<Point> &directions) const;
+  Point getRandomNewPosition(const std::vector<Point> &directions) const;
     virtual Point getNewPosition();
 
     Point position;
+    Point previousPosition;
+
     const std::string symbol;
     const int strength;
     const int initiative;

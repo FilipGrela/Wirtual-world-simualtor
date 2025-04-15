@@ -4,52 +4,45 @@
 
 #include "Organism.h"
 #include "../world/World.h"
+#include <algorithm>
 
-Organism::Organism(Point point, std::string symbol, int strength, int initiative, World &world)
-        : position(point), symbol(symbol), strength(strength), initiative(initiative), age(0), world(world) {
-};
+Organism::Organism(Point point, std::string symbol, int strength,
+                   int initiative, World &world)
+    : position(point), symbol(symbol), strength(strength),
+      initiative(initiative), age(0), world(world) {};
 
 Organism::~Organism() {
-    // Pusta definicja destruktora
+  // Pusta definicja destruktora
 }
 
-Point Organism::getPosition() {
-    return position;
-}
+Point Organism::getPosition() { return position; }
 
 Point Organism::setPosition(Point newPosition) {
-    position = newPosition;
+  position = newPosition;
 
-    return position;
+  return position;
 }
 
-int Organism::getStrength() const {
-    return strength;
-}
+int Organism::getStrength() const { return strength; }
 
-int Organism::getInitiative() const {
-    return initiative;
-}
+int Organism::getInitiative() const { return initiative; }
 
-int Organism::getAge() {
-    return age;
-}
+int Organism::getAge() { return age; }
 
 int Organism::setAge(int newAge) {
-    age = newAge;
-    return age;
+  age = newAge;
+  return age;
 }
 
 int Organism::increaseAge() {
-    age++;
-    return age;
+  age++;
+  return age;
 }
 
-std::string Organism::getSymbol() {
-    return symbol;
-}
+std::string Organism::getSymbol() { return symbol; }
 
-Point Organism::getRandomNewPosition(const std::vector<Point> &directions) const {
+Point Organism::getRandomNewPosition(
+    const std::vector<Point> &directions) const {
   std::vector<Point> availableDirections = directions;
   Point newPosition;
 
@@ -71,7 +64,8 @@ Point Organism::getRandomNewPosition(const std::vector<Point> &directions) const
 }
 
 Point Organism::getNewPosition() {
-  std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1), Point(-1, 0)};
+  std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1),
+                                   Point(-1, 0)};
   Point newPosition;
 
   int maxAttempts = directions.size(); // Maksymalna liczba prób
@@ -94,44 +88,31 @@ Point Organism::getNewPosition() {
 
 void Organism::action() {
 
+  increaseAge();
   Point newPosition = getNewPosition();
   if (world.isInBounds(newPosition)) {
     move(newPosition);
   }
-  increaseAge();
-}
-
-void Organism::collision(Organism &other) {
-    // Pusta definicja metody
 }
 
 void Organism::move(Point newPosition) {
+  previousPosition = position;
+  position = newPosition;
 
-
-//  // DOODATKOWA LOGIKA NIE WYMAGANA MOZNA SUNĄĆ MAX 2 ZWIERZETA NA POZYCJI
-//        int organismCount = 0;
-//        for (auto &other : world.getOrganisms()) {
-//          if (other != nullptr && other->getPosition() == newPosition) {
-//            organismCount++;
-//          }
-//        }
-//        if (organismCount >= 2) {
-//          // Jeśli są już dwa organizmy, nie wykonuj ruchu
-//          return;
-//        }
-
-        // Jeśli pozycja jest wolna, zaktualizuj pozycję
-        position = newPosition;
-
-        // Sprawdź, czy nowa pozycja jest zajęta i wywołaj kolizję
-        for (auto &other : world.getOrganisms()) {
-          if (other != nullptr && other.get() != this && other->getPosition() == newPosition) {
-            this->collision(*other);
-          }
-        }
+  // Sprawdź, czy nowa pozycja jest zajęta i wywołaj kolizję
+  for (auto &other : world.getOrganisms()) {
+    if (other != nullptr && other.get() != this &&
+        other->getPosition() == newPosition) {
+      if (!other->collision(*this)) {
+        break;
       }
+    }
+  }
+}
 
 void Organism::die() {
-    // Pusta definicja metody
-    world.removeOrganism(this);
+  // Pusta definicja metody
+  world.removeOrganism(this);
 }
+
+Point Organism::getPreviousPosition() const { return previousPosition; }

@@ -8,8 +8,8 @@
 
 class Animal : public Organism {
 protected:
-    void collision(Organism &other) override;
-    void fight(Organism &other);
+    bool collision(Organism &other) override;
+    bool fight(Organism &other);
 public:
     Animal(Point point, std::string symbol, int strength, int initiative, World &world);
 

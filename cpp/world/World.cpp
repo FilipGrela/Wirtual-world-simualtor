@@ -69,7 +69,6 @@ void World::executeTurn() {
   for (auto &organism : organisms) {
     if (organism != nullptr) {
       organism->action();
-      getLogger().displayAndClear();
     }
   }
 
@@ -125,9 +124,14 @@ EventLogger &World::getLogger() { return eventLogger; }
 
 bool World::isStrongerOrganismAt(Point position, int strength) const {
   for (const auto &organism : organisms) {
-    if (organism->getPosition() == position && organism->getStrength() > strength) {
+    if (organism->getPosition() == position &&
+        organism->getStrength() > strength) {
       return true;
     }
   }
   return false;
 }
+
+int World::incrementTurnCounter() { return ++turnCounter; }
+
+int World::getTurnCounter() const { return turnCounter; }
