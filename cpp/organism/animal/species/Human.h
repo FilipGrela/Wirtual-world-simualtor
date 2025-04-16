@@ -9,7 +9,10 @@
 #include "../Animal.h"
 
 class Human : public Animal {
-
+public:
+  Human(Point point, World &world);
+  void reproduce() override;
+  Point getNewPosition() override;
 };
 
 

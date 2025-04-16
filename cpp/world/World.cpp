@@ -135,3 +135,12 @@ bool World::isStrongerOrganismAt(Point position, int strength) const {
 int World::incrementTurnCounter() { return ++turnCounter; }
 
 int World::getTurnCounter() const { return turnCounter; }
+
+void World::setHumanDirection(enum Constants::Direction direction) {
+  this->humanDirection = direction;
+}
+
+Constants::Direction World::getHumanDirection() const { return this->humanDirection; };
+
+int World::getWidth() const { return width; }
+int World::getHeight() const { return height; }

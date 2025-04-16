@@ -8,12 +8,21 @@
 #include "../utilities/Point.h"
 #include "../utilities/eventLogger/EventLogger.h"
 #include <memory>
+#include <unordered_map>
 #include <vector>
 
 class Organism; // Deklaracja wstępna
 
 class World {
 public:
+  std::unordered_map<Constants::Direction, Point> directionToPoint = {
+      {Constants::Direction::UP, Point(0, -1)},
+      {Constants::Direction::DOWN, Point(0, 1)},
+      {Constants::Direction::LEFT, Point(-1, 0)},
+      {Constants::Direction::RIGHT, Point(1, 0)},
+      {Constants::Direction::NONE, Point(0, 0)}
+  };
+
   World(int width, int height);
   void draw() const;
 
@@ -33,12 +42,17 @@ public:
   bool isStrongerOrganismAt(Point position, int strength) const;
 
   int incrementTurnCounter();
-
   int getTurnCounter() const;
 
+  void setHumanDirection(enum Constants::Direction);
+  enum Constants::Direction getHumanDirection() const;
+
+  int getWidth() const;
+  int getHeight() const;
 private:
-  int width, height;
+  const int width, height;
   int turnCounter = 0; // Licznik tur
+  enum Constants::Direction humanDirection = Constants::Direction::NONE;
 
   EventLogger eventLogger; // Logger do rejestrowania zdarzeń
 

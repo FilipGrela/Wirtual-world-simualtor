@@ -1,5 +1,6 @@
 #include "organism/animal/species/Antelope.h"
 #include "organism/animal/species/Fox.h"
+#include "organism/animal/species/Human.h"
 #include "organism/animal/species/Sheep.h"
 #include "organism/animal/species/Turtle.h"
 #include "organism/animal/species/Wolf.h"
@@ -41,6 +42,8 @@ int main() {
 
   World world(9, 9);
 
+  world.addOrganism(new Human(Point(world.getWidth()/2, world.getHeight()/2), world));
+
   world.addOrganism(new Antelope(Point(7, 5), world));
   world.addOrganism(new Antelope(Point(6, 5), world));
 
@@ -50,7 +53,7 @@ int main() {
   world.draw();
   bool running = true;
   while (running) {
-
+    world.setHumanDirection(Constants::Direction::NONE);
     switch (_getch()) {
     case 'q': // q
     case 27:  // ESC
@@ -60,12 +63,16 @@ int main() {
     case 224: {
       switch (_getch()) {
       case 72: // Strzałka w górę
+        world.setHumanDirection(Constants::Direction::UP);
         break;
       case 80: // Strzałka w dół
+        world.setHumanDirection(Constants::Direction::DOWN);
         break;
       case 75: // Strzałka w lewo
+        world.setHumanDirection(Constants::Direction::LEFT);
         break;
       case 77: // Strzałka w prawo
+        world.setHumanDirection(Constants::Direction::RIGHT);
         break;
       default:
         break;
