@@ -14,8 +14,15 @@ public:
   void reproduce() override;
   Point getNewPosition() override;
   bool isHuman() const override;
+  void action() override;
 
   void die() override;
+
+  bool isAbilityActive = false;
+  int abilityCooldown = 0;
+  int abilityDuration = 0;
+
+  void activateAbility();
 };
 
 

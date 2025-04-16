@@ -35,6 +35,8 @@ public:
     int getInitiative() const;
     Point getPreviousPosition() const;
 
+    void changeSymbol(const std::string& newSymbol);
+
 protected:
     Organism(Point point, std::string symbol, int strength, int initiative, World &world);
 
@@ -44,7 +46,7 @@ protected:
     Point position;
     Point previousPosition;
 
-    const std::string symbol;
+    std::string symbol;
     const int strength;
     const int initiative;
     int age;

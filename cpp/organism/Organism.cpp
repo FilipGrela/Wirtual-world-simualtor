@@ -115,3 +115,7 @@ void Organism::die() {
 }
 
 Point Organism::getPreviousPosition() const { return previousPosition; }
+
+void Organism::changeSymbol(const std::string& newSymbol) {
+  symbol = newSymbol;
+}

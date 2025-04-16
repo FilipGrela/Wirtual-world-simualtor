@@ -4,6 +4,7 @@
 
 #include "World.h"
 #include "../Constants.h"
+#include "../organism/animal/species/Human.h"
 #include <algorithm>
 #include <sstream>
 #include <thread>
@@ -152,4 +153,16 @@ int World::getHeight() const { return height; }
 bool World::getHumanAlive() const {return humanAlive;}
 void World::setHumanAlive(bool alive) {
   humanAlive = alive;
+}
+
+void World::activateHumanAbility() {
+  for (const auto &organism : organisms) {
+    if (organism->isHuman()) {
+      Human *human = dynamic_cast<Human *>(organism.get());
+      if (human) {
+        human->activateAbility();
+      }
+      break;
+    }
+  }
 }

@@ -36,3 +36,34 @@ void Human::die() {
   world.setHumanAlive(false);
   Organism::die();
 }
+
+void Human::activateAbility() {
+  if (abilityCooldown == 0 && !isAbilityActive) {
+    changeSymbol(Constants::Animal::Human::SymbolActiveAbility);
+    isAbilityActive = true;  // Aktywuj umiejętność
+    abilityDuration = 5;     // Ustaw czas trwania na 5 tur
+    std::cout << "Specjalna umiejętność została aktywowana!" << std::endl;
+  } else if (abilityCooldown > 0) {
+    std::cout << "Umiejętność jest na cooldownie przez " << abilityCooldown
+              << " tur." << std::endl;
+  } else {
+    std::cout << "Umiejętność jest już aktywna!" << std::endl;
+  }
+}
+void Human::action() {
+  if (isAbilityActive) {
+    // Umiejętność aktywna
+    abilityDuration--;
+    if (abilityDuration == 0) {
+      changeSymbol(Constants::Animal::Human::Symbol);
+      isAbilityActive = false; // Dezaktywuj umiejętność
+      abilityCooldown = 5;     // Ustaw cooldown na 5 tur
+      std::cout << "Specjalna umiejętność została dezaktywowana!" << std::endl;
+    }
+  } else if (abilityCooldown > 0) {
+    // Odliczanie cooldownu
+    abilityCooldown--;
+  }
+
+  Animal::action();
+}

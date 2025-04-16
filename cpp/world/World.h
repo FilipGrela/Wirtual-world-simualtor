@@ -51,11 +51,14 @@ public:
   int getHeight() const;
   bool getHumanAlive() const;
   void setHumanAlive(bool alive);
+  void activateHumanAbility();
+
 private:
   const int width, height;
   int turnCounter = 0; // Licznik tur
   enum Constants::Direction humanDirection = Constants::Direction::NONE;
   bool humanAlive;
+  bool humanAbilityActive = false;
 
   EventLogger eventLogger; // Logger do rejestrowania zdarzeń
 

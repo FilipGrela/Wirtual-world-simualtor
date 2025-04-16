@@ -61,11 +61,10 @@ int main() {
   world.addOrganism(new Antelope(Point(6, 5), world));
 
   world.addOrganism(new Wolf(Point(6, 1), world));
-  world.addOrganism(new Wolf(Point(6, 1), world));
-  world.addOrganism(new Wolf(Point(6, 1), world));
-  world.addOrganism(new Wolf(Point(6, 1), world));
-  world.addOrganism(new Wolf(Point(6, 1), world));
-  world.addOrganism(new Turtle(Point(6, 1), world));
+  world.addOrganism(new Wolf(Point(7, 1), world));
+
+  world.addOrganism(new Turtle(Point(9, 1), world));
+  world.addOrganism(new Turtle(Point(6, 5), world));
 
   world.draw();
   bool running = true;
@@ -79,6 +78,10 @@ int main() {
     case 'q': // q
     case 27:  // ESC
       running = false;
+      break;
+
+    case ' ': // spacja
+      world.activateHumanAbility();
       break;
     case 0: // Klawisze specjalne (np. strzałki)
     case 224: {
