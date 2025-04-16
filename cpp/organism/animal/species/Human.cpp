@@ -27,3 +27,12 @@ Point Human::getNewPosition() {
   }
   return position;
 }
+
+
+bool Human::isHuman() const { return true; }
+
+void Human::die() {
+  // Pusta definicja metody
+  world.setHumanAlive(false);
+  Organism::die();
+}

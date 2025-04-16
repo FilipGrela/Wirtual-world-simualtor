@@ -33,7 +33,8 @@ void Turtle::action() {
 bool Turtle::collision(Organism &attacker) {
   if (attacker.getStrength() < 5 && attacker.getSymbol() != Constants::Animal::Turtle::Symbol) {
     world.getLogger().logEvent("Żółw odpiera atak organizmu " + attacker.getSymbol());
-    attacker.move(attacker.getPreviousPosition()); // Napastnik wraca na poprzednie pole
+    Point old = attacker.getPreviousPosition();
+    attacker.move(old); // Napastnik wraca na poprzednie pole
   } else {
     return  Animal::collision(attacker); // Domyślna logika kolizji
   }

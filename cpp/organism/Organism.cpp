@@ -94,7 +94,7 @@ void Organism::action() {
 }
 
 void Organism::move(Point newPosition) {
-  previousPosition = position;
+  Point tempOldPosition = position;
   position = newPosition;
 
   // Sprawdź, czy nowa pozycja jest zajęta i wywołaj kolizję
@@ -102,6 +102,7 @@ void Organism::move(Point newPosition) {
     if (other != nullptr && other.get() != this &&
         other->getPosition() == newPosition) {
       if (!other->collision(*this)) {
+        previousPosition = tempOldPosition;
         break;
       }
     }

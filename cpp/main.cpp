@@ -37,23 +37,44 @@ void initializeConsole() {
   SetConsoleOutputCP(CP_UTF8);
 }
 
+void endGame(World &world) {
+  system("cls");
+  cout << "==============================" << endl;
+  cout << "       KONIEC GRY!           " << endl;
+  cout << "==============================" << endl;
+  cout << "Liczba tur: " << world.getTurnCounter() << endl;
+  cout << "Liczba organizmów: " << world.getOrganisms().size() << endl;
+  cout << "Dziękujemy za grę!" << endl;
+  cout << "==============================" << endl;
+  system("pause");
+}
+
 int main() {
   initializeConsole();
 
   World world(9, 9);
 
-  world.addOrganism(new Human(Point(world.getWidth()/2, world.getHeight()/2), world));
+  world.addOrganism(
+      new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
   world.addOrganism(new Antelope(Point(7, 5), world));
   world.addOrganism(new Antelope(Point(6, 5), world));
 
-  world.addOrganism(new Turtle(Point(6, 1), world));
+  world.addOrganism(new Wolf(Point(6, 1), world));
+  world.addOrganism(new Wolf(Point(6, 1), world));
+  world.addOrganism(new Wolf(Point(6, 1), world));
+  world.addOrganism(new Wolf(Point(6, 1), world));
+  world.addOrganism(new Wolf(Point(6, 1), world));
   world.addOrganism(new Turtle(Point(6, 1), world));
 
   world.draw();
   bool running = true;
   while (running) {
     world.setHumanDirection(Constants::Direction::NONE);
+    if (!world.getHumanAlive()) {
+      running = false;
+      endGame(world);
+    }
     switch (_getch()) {
     case 'q': // q
     case 27:  // ESC

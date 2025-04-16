@@ -26,10 +26,11 @@ public:
     virtual int setAge(int newAge);
     virtual int increaseAge();
     virtual void reproduce() = 0;
+    virtual bool isHuman() const { return false; }
     void move(Point newPosition);
 
 
-    void die();
+    virtual void die();
     int getStrength() const;
     int getInitiative() const;
     Point getPreviousPosition() const;

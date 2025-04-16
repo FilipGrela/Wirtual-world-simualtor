@@ -17,7 +17,7 @@ class World {
 public:
   std::unordered_map<Constants::Direction, Point> directionToPoint = {
       {Constants::Direction::UP, Point(0, -1)},
-      {Constants::Direction::DOWN, Point(0, 1)},
+      {Constants::Direction::DOWN, Point(0,   1)},
       {Constants::Direction::LEFT, Point(-1, 0)},
       {Constants::Direction::RIGHT, Point(1, 0)},
       {Constants::Direction::NONE, Point(0, 0)}
@@ -49,10 +49,13 @@ public:
 
   int getWidth() const;
   int getHeight() const;
+  bool getHumanAlive() const;
+  void setHumanAlive(bool alive);
 private:
   const int width, height;
   int turnCounter = 0; // Licznik tur
   enum Constants::Direction humanDirection = Constants::Direction::NONE;
+  bool humanAlive;
 
   EventLogger eventLogger; // Logger do rejestrowania zdarzeń
 

@@ -76,10 +76,15 @@ void World::executeTurn() {
     addOrganism(newOrganism.release());
   }
   organismsToAdd.clear();
+
+  incrementTurnCounter();
 }
 
 void World::addOrganism(Organism *organism) {
   organisms.emplace_back(organism);
+  if (organism->isHuman()) {
+    humanAlive = true;
+  }
 }
 
 /**
@@ -144,3 +149,7 @@ Constants::Direction World::getHumanDirection() const { return this->humanDirect
 
 int World::getWidth() const { return width; }
 int World::getHeight() const { return height; }
+bool World::getHumanAlive() const {return humanAlive;}
+void World::setHumanAlive(bool alive) {
+  humanAlive = alive;
+}

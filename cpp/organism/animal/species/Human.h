@@ -13,6 +13,9 @@ public:
   Human(Point point, World &world);
   void reproduce() override;
   Point getNewPosition() override;
+  bool isHuman() const override;
+
+  void die() override;
 };
 
 
