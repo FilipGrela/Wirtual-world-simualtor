@@ -9,7 +9,12 @@
 #include "../Animal.h"
 
 class Antelope : public Animal {
+public:
+  Antelope(Point point, World &world);
+  void reproduce() override;
+  Point getNewPosition() override;
 
+  bool collision(Organism &other) override;
 };
 
 

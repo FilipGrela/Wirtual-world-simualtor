@@ -90,9 +90,7 @@ void Organism::action() {
 
   increaseAge();
   Point newPosition = getNewPosition();
-  if (world.isInBounds(newPosition)) {
-    move(newPosition);
-  }
+  move(newPosition);
 }
 
 void Organism::move(Point newPosition) {

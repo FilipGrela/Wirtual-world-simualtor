@@ -1,3 +1,4 @@
+#include "organism/animal/species/Antelope.h"
 #include "organism/animal/species/Fox.h"
 #include "organism/animal/species/Sheep.h"
 #include "organism/animal/species/Turtle.h"
@@ -40,8 +41,8 @@ int main() {
 
   World world(9, 9);
 
-  world.addOrganism(new Sheep(Point(7, 5), world));
-  world.addOrganism(new Sheep(Point(6, 5), world));
+  world.addOrganism(new Antelope(Point(7, 5), world));
+  world.addOrganism(new Antelope(Point(6, 5), world));
 
   world.addOrganism(new Turtle(Point(6, 1), world));
   world.addOrganism(new Turtle(Point(6, 1), world));
