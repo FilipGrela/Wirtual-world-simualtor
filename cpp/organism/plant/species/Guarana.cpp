@@ -16,3 +16,11 @@ void Guarana::reproduce() {
 double Guarana::getSpreadProbability() const {
   return spreadProbability;
 }
+
+bool Guarana::collision(Organism &other) {
+  other.setStrength(other.getStrength() + 3);
+  world.getLogger().logEvent("Guarana has increased the strength of " +
+                              other.getSymbol() + " by 3.");
+  die();
+  return false;
+}

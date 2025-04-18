@@ -2,16 +2,16 @@
 // Created by fgrel on 18.04.2025.
 //
 
-#ifndef GUARANA_H
-#define GUARANA_H
+#ifndef Belladonna_H
+#define Belladonna_H
 
 #include "../Plant.h"
 
-class Guarana : public Plant {
+class Belladonna : public Plant {
 public:
-  Guarana(Point point, World &world)
-          : Plant(point, Constants::Plant::Guarana::Symbol,
-                  Constants::Plant::Guarana::Strength,
+  Belladonna(Point point, World &world)
+          : Plant(point, Constants::Plant::Belladonna::Symbol,
+                  Constants::Plant::Belladonna::Strength,
                   Constants::Plant::Initiative, world) {}
 
   void reproduce() override;
@@ -20,9 +20,9 @@ public:
 
 private:
   static constexpr double spreadProbability =
-      Constants::Plant::Guarana::SpreadProbability;
+      Constants::Plant::Belladonna::SpreadProbability;
 };
 
 
 
-#endif //GUARANA_H
+#endif //Belladonna_H

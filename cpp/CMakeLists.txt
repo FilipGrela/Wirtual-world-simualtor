@@ -35,5 +35,7 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         organism/plant/species/Dandelion.h
         organism/plant/species/Guarana.cpp
         organism/plant/species/Guarana.h
+        organism/plant/species/Belladonna.cpp
+        organism/plant/species/Belladonna.h
 
 )

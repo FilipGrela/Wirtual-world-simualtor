@@ -25,6 +25,8 @@ Point Organism::setPosition(Point newPosition) {
 
 int Organism::getStrength() const { return strength; }
 
+void Organism::setStrength(int strength) { this->strength = strength; }
+
 int Organism::getInitiative() const { return initiative; }
 
 int Organism::getAge() { return age; }
@@ -78,7 +80,7 @@ void Organism::move(Point newPosition) {
   // Sprawdź, czy nowa pozycja jest zajęta i wywołaj kolizję
   for (auto &other : world.getOrganisms()) {
     if (other != nullptr && other.get() != this &&
-        other->getPosition() == newPosition) {
+    other->getPosition() == newPosition) {
       if (!other->collision(*this)) {
         previousPosition = tempOldPosition;
         break;

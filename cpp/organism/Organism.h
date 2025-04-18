@@ -17,6 +17,13 @@ public:
 
   // Metody abstrakcyjne`
   virtual void action();
+
+/**
+   * Handles the collision between this organism and another organism.
+   *
+   * @param other A reference to the other organism involved in the collision.
+   * @return true if no organism is deleted as a result of the collision.
+   */
   virtual bool collision(Organism &other) = 0;
 
   virtual Point getPosition();
@@ -31,6 +38,7 @@ public:
 
   virtual void die();
   int getStrength() const;
+  void setStrength(int strength);
   int getInitiative() const;
   Point getPreviousPosition() const;
 
@@ -47,7 +55,7 @@ protected:
   Point previousPosition;
 
   std::string symbol;
-  const int strength;
+  int strength;
   const int initiative;
   int age;
 

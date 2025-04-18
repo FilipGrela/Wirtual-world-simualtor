@@ -4,6 +4,7 @@
 #include "organism/animal/species/Sheep.h"
 #include "organism/animal/species/Turtle.h"
 #include "organism/animal/species/Wolf.h"
+#include "organism/plant/species/Belladonna.h"
 #include "organism/plant/species/Dandelion.h"
 #include "organism/plant/species/Grass.h"
 #include "organism/plant/species/Guarana.h"
@@ -55,19 +56,23 @@ void endGame(World &world) {
 int main() {
   initializeConsole();
 
-  World world(9, 9);
+  World world(7, 25);
 
   world.addOrganism(
       new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
-  world.addOrganism(new Grass(Point(5, 4), world));
-  world.addOrganism(new Dandelion(Point(8, 8), world));
-//
-  world.addOrganism(new Guarana(Point(6, 1), world));
-//  world.addOrganism(new Sheep(Point(7, 1), world));
-//
-//  world.addOrganism(new Fox(Point(9, 1), world));
-//  world.addOrganism(new Fox(Point(6, 5), world));
+// Dodaj po 2 organizmy każdego typu w losowych miejscach
+  for (int i = 0; i < 2; ++i) {
+    world.addOrganism(new Antelope(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Fox(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Sheep(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Turtle(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Wolf(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Dandelion(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Grass(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Guarana(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+    // world.addOrganism(new Belladonna(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  }
 
   world.draw();
   bool running = true;
@@ -115,7 +120,7 @@ int main() {
     world.draw();
     cout << "Długość getOrganisms " << world.getOrganisms().size() << endl;
 
-//    world.getLogger().displayAndClear();
+    world.getLogger().displayAndClear();
   }
 
   return 0;
