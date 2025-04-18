@@ -18,7 +18,6 @@ public:
   void die() override;
 
   void activateAbility();
-  bool collision(Organism &other) override;
 
 private:
   bool isAbilityActive = false;

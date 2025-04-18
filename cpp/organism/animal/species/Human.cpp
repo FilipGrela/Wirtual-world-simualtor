@@ -33,7 +33,13 @@ Point Human::getNewPosition() {
 bool Human::isHuman() const { return true; }
 
 void Human::die() {
-  // Pusta definicja metody
+  if (isAbilityActive) {
+    escapeToRandomPosition();
+    std::cout << "Człowiek unika śmierci dzięki specjalnej umiejętności!" << std::endl;
+    return; // Uniknięcie śmierci
+  }
+
+  // Standardowe zachowanie w przypadku śmierci
   world.setHumanAlive(false);
   Organism::die();
 }
@@ -99,15 +105,4 @@ void Human::escapeToRandomPosition() {
   } else {
     std::cout << "Człowiek nie ma gdzie uciec, pozostaje na miejscu!" << std::endl;
   }
-}
-
-
-bool Human::collision(Organism &other) {
-  if (isAbilityActive) {
-    escapeToRandomPosition();
-    return false; // Uniknięcie kolizji
-  }
-
-  // Standardowe zachowanie
-  return Animal::collision(other);
 }

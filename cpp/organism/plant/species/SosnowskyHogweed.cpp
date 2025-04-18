@@ -32,7 +32,7 @@ void SosnowskyHogweed::killNearbyAnimals() {
         world.getOrganismsAt(neighbor);
     for (const auto &organism : organisms) {
       if (organism && dynamic_cast<Animal *>(organism)) { // Sprawdź, czy to zwierzę
-        world.getLogger().logEvent("SosnowskyHogweed zabił " + organism->getSymbol() + " na pozycji (" +
+        world.getLogger().logEvent("Sosnowsky Hogweed zabił " + organism->getSymbol() + " na pozycji (" +
                                    std::to_string(neighbor.x) + ", " + std::to_string(neighbor.y) + ").");
         organism->die();
       }
