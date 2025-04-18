@@ -8,6 +8,7 @@
 #include "organism/plant/species/Dandelion.h"
 #include "organism/plant/species/Grass.h"
 #include "organism/plant/species/Guarana.h"
+#include "organism/plant/species/SosnowskyHogweed.h"
 #include "world/World.h"
 #include <conio.h>
 #include <iostream>
@@ -56,23 +57,23 @@ void endGame(World &world) {
 int main() {
   initializeConsole();
 
-  World world(7, 25);
+  World world(51, 51);
 
   world.addOrganism(
       new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
 // Dodaj po 2 organizmy każdego typu w losowych miejscach
-  for (int i = 0; i < 2; ++i) {
-    world.addOrganism(new Antelope(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Fox(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Sheep(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Turtle(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Wolf(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Dandelion(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Grass(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Guarana(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-    // world.addOrganism(new Belladonna(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-  }
+for (int i = 0; i < 2; ++i) {
+  world.addOrganism(new SosnowskyHogweed(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Fox(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Sheep(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Turtle(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Wolf(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Dandelion(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Grass(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Guarana(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+  world.addOrganism(new Belladonna(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+}
 
   world.draw();
   bool running = true;

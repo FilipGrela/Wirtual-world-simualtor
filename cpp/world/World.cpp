@@ -5,11 +5,13 @@
 #include "World.h"
 #include "../Constants.h"
 #include "../organism/animal/species/Human.h"
+#include "../organism/plant/species/SosnowskyHogweed.h"
 #include <algorithm>
 #include <sstream>
 #include <thread>
 
 #include "../organism/plant/Plant.h"
+
 World::World(int width, int height) : width(width), height(height) {}
 
 void World::draw() const {
@@ -70,6 +72,11 @@ void World::executeTurn() {
 
   for (auto &organism : organisms) {
     if (organism != nullptr) {
+      if (organism->isSosnowskyHogweed()) {
+        auto *sosnowskyHogweed =
+            dynamic_cast<SosnowskyHogweed *>(organism.get());
+        sosnowskyHogweed->killNearbyAnimals();
+      }
       organism->action();
     }
   }
@@ -108,6 +115,16 @@ Point World::getFreeSpace(Point &newPosition) {
     }
   }
   return {-1, -1}; // No free space found
+}
+
+std::vector<Organism *> World::getOrganismsAt(Point position) {
+  std::vector<Organism *> organismsAtPosition;
+  for (const auto &organism : organisms) {
+    if (organism->getPosition() == position) {
+      organismsAtPosition.push_back(organism.get());
+    }
+  }
+  return organismsAtPosition;
 }
 
 const std::vector<std::unique_ptr<Organism>> &World::getOrganisms() const {
@@ -150,14 +167,14 @@ void World::setHumanDirection(enum Constants::Direction direction) {
   this->humanDirection = direction;
 }
 
-Constants::Direction World::getHumanDirection() const { return this->humanDirection; };
+Constants::Direction World::getHumanDirection() const {
+  return this->humanDirection;
+};
 
 int World::getWidth() const { return width; }
 int World::getHeight() const { return height; }
-bool World::getHumanAlive() const {return humanAlive;}
-void World::setHumanAlive(bool alive) {
-  humanAlive = alive;
-}
+bool World::getHumanAlive() const { return humanAlive; }
+void World::setHumanAlive(bool alive) { humanAlive = alive; }
 
 void World::activateHumanAbility() {
   for (const auto &organism : organisms) {
@@ -175,9 +192,12 @@ void World::killPlantsOnPosition(Point position) {
   std::vector<Organism *> plantsToRemove;
 
   for (auto &organism : organisms) {
-    if (!organism) continue;
-    if (!organism->isPlant()) continue;
-    if (organism->getPosition() != position) continue;
+    if (!organism)
+      continue;
+    if (!organism->isPlant())
+      continue;
+    if (organism->getPosition() != position)
+      continue;
 
     plantsToRemove.push_back(organism.get());
   }
@@ -185,4 +205,15 @@ void World::killPlantsOnPosition(Point position) {
   for (auto *plant : plantsToRemove) {
     removeOrganism(plant);
   }
+}
+
+std::vector<Point> World::getNeighboringPositions(Point position) {
+  std::vector<Point> neighbors;
+  for (const auto &direction : directionToPoint) {
+    Point neighbor = position + direction.second;
+    if (isInBounds(neighbor)) {
+      neighbors.push_back(neighbor);
+    }
+  }
+  return neighbors;
 }

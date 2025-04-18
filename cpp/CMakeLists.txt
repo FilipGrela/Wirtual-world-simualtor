@@ -37,5 +37,7 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         organism/plant/species/Guarana.h
         organism/plant/species/Belladonna.cpp
         organism/plant/species/Belladonna.h
+        organism/plant/species/SosnowskyHogweed.cpp
+        organism/plant/species/SosnowskyHogweed.h
 
 )

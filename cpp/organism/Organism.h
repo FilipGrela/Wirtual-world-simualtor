@@ -34,6 +34,7 @@ public:
   virtual int increaseAge();
   virtual void reproduce() = 0;
   virtual bool isHuman() const { return false; }
+  virtual bool isSosnowskyHogweed() const { return false; }
   void move(Point newPosition);
 
   virtual void die();

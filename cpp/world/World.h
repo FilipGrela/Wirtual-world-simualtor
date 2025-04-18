@@ -33,6 +33,7 @@ public:
   void addOrganism(Organism *organism);
   void removeOrganism(Organism *organism);
   const std::vector<std::unique_ptr<Organism>> &getOrganisms() const;
+  std::vector<Organism *> getOrganismsAt(Point position);
   const std::vector<std::unique_ptr<Organism>> &getOrganismsToAdd() const;
 
   Point getFreeSpace(Point &newPosition);
@@ -53,6 +54,8 @@ public:
   void setHumanAlive(bool alive);
   void activateHumanAbility();
   void killPlantsOnPosition(Point position);
+
+  std::vector<Point> getNeighboringPositions(Point position);
 
 private:
   const int width, height;
