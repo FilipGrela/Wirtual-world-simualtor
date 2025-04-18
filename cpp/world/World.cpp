@@ -9,6 +9,7 @@
 #include <sstream>
 #include <thread>
 
+#include "../organism/plant/Plant.h"
 World::World(int width, int height) : width(width), height(height) {}
 
 void World::draw() const {
@@ -112,6 +113,9 @@ Point World::getFreeSpace(Point &newPosition) {
 const std::vector<std::unique_ptr<Organism>> &World::getOrganisms() const {
   return organisms;
 }
+const std::vector<std::unique_ptr<Organism>> &World::getOrganismsToAdd() const {
+  return organismsToAdd;
+}
 
 void World::queueOrganismAddition(Organism *organism) {
   organismsToAdd.emplace_back(organism);
@@ -164,5 +168,15 @@ void World::activateHumanAbility() {
       }
       break;
     }
+  }
+}
+
+void World::killPlantOnPosition(Point position) {
+  for (auto &organism : organisms) {
+    if (!organism) continue;
+    if (!organism->isPlant()) continue;
+    if (organism->getPosition() != position) continue;
+
+    removeOrganism(organism.get());
   }
 }

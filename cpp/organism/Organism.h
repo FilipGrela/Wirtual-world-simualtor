@@ -36,6 +36,8 @@ public:
 
   void changeSymbol(const std::string &newSymbol);
 
+  virtual bool isPlant() const { return false; }
+
 protected:
   Organism(Point point, std::string symbol, int strength, int initiative,
            World &world);

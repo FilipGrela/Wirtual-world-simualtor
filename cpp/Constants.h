@@ -56,7 +56,7 @@ struct Plant {
   struct Dandelion {
     static constexpr int Strength = 0;
     static constexpr const char *Symbol = "🌼";
-    static constexpr double SpreadProbability = 0.08;
+    static constexpr double SpreadProbability = 0.01;
     static constexpr int NumberOfTriesToSpread = 3;
   };
 

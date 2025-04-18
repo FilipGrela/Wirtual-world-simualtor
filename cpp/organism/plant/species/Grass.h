@@ -16,6 +16,10 @@ public:
                         Constants::Plant::Initiative, world) {}
 
   void reproduce() override;
+  double getSpreadProbability() const override;
+private:
+  static constexpr double spreadProbability =
+      Constants::Plant::Grass::SpreadProbability;
 };
 
 

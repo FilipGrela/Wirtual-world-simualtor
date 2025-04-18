@@ -59,8 +59,8 @@ int main() {
   world.addOrganism(
       new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
-  world.addOrganism(new Grass(Point(7, 5), world));
-  world.addOrganism(new Dandelion(Point(6, 5), world));
+  world.addOrganism(new Grass(Point(5, 4), world));
+  world.addOrganism(new Dandelion(Point(8, 8), world));
 //
 //  world.addOrganism(new Sheep(Point(6, 1), world));
 //  world.addOrganism(new Sheep(Point(7, 1), world));

@@ -9,7 +9,8 @@ void Dandelion::reproduce() {
   if (newPosition == position)
     return; // Ensure a new position is valid
 
-  world.addOrganism(new Dandelion(newPosition, world));
+  world.killPlantOnPosition(newPosition);
+  world.queueOrganismAddition(new Dandelion(newPosition, world));
 }
 
 void Dandelion::action() {
@@ -20,4 +21,8 @@ void Dandelion::action() {
       continue;
     reproduce();
   }
+}
+
+double Dandelion::getSpreadProbability() const {
+  return spreadProbability;
 }

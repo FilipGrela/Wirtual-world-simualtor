@@ -6,6 +6,7 @@
 #define PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_DANDELION_H
 
 #include "../Plant.h"
+#include "Dandelion.h"
 class Dandelion : public Plant {
 public:
   Dandelion(Point point, World &world)
@@ -15,6 +16,12 @@ public:
 
   void reproduce() override;
   void action() override;
+
+  double getSpreadProbability() const override;
+
+private:
+  static constexpr double spreadProbability =
+      Constants::Plant::Dandelion::SpreadProbability;
 };
 
 #endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_DANDELION_H

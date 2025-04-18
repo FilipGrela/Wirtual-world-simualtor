@@ -17,11 +17,10 @@ class World {
 public:
   std::unordered_map<Constants::Direction, Point> directionToPoint = {
       {Constants::Direction::UP, Point(0, -1)},
-      {Constants::Direction::DOWN, Point(0,   1)},
+      {Constants::Direction::DOWN, Point(0, 1)},
       {Constants::Direction::LEFT, Point(-1, 0)},
       {Constants::Direction::RIGHT, Point(1, 0)},
-      {Constants::Direction::NONE, Point(0, 0)}
-  };
+      {Constants::Direction::NONE, Point(0, 0)}};
 
   World(int width, int height);
   void draw() const;
@@ -34,6 +33,7 @@ public:
   void addOrganism(Organism *organism);
   void removeOrganism(Organism *organism);
   const std::vector<std::unique_ptr<Organism>> &getOrganisms() const;
+  const std::vector<std::unique_ptr<Organism>> &getOrganismsToAdd() const;
 
   Point getFreeSpace(Point &newPosition);
   EventLogger &getLogger();
@@ -52,6 +52,7 @@ public:
   bool getHumanAlive() const;
   void setHumanAlive(bool alive);
   void activateHumanAbility();
+  void killPlantOnPosition(Point position);
 
 private:
   const int width, height;
@@ -63,7 +64,5 @@ private:
   EventLogger eventLogger; // Logger do rejestrowania zdarzeń
 
   std::vector<std::unique_ptr<Organism>>
-      organisms; // vector to represent the organisms in the world
-  std::vector<std::unique_ptr<Organism>>
-      organismsToAdd; // vector to represent the organisms to add to the world
+      organisms, organismsToAdd; // vector to represent the organisms in the world, vector to represent the organisms to add to the world
 };

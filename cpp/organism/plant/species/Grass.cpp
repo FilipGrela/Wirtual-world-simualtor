@@ -9,5 +9,10 @@ void Grass::reproduce() {
   if (newPosition == position)
     return; // Ensure a new position is valid
 
-  world.addOrganism(new Grass(newPosition, world));
+  world.killPlantOnPosition(newPosition);
+  world.queueOrganismAddition(new Grass(newPosition, world));
+}
+
+double Grass::getSpreadProbability() const {
+  return spreadProbability;
 }
