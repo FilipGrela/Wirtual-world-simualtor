@@ -48,33 +48,34 @@ struct Animal {
 struct Plant {
   static constexpr int Initiative = 0;
   struct Grass {
-      static constexpr int Strength = 0;
-      static constexpr const char *Symbol = "🌱";
-      static constexpr double SpreadProbability = 0.3;
-    };
-    
-    struct Dandelion {
-      static constexpr int Strength = 0;
-      static constexpr const char *Symbol = "🌼";
-      static constexpr double SpreadProbability = 0.6;
-    };
-    
-    struct Guarana {
-      static constexpr int Strength = 0;
-      static constexpr const char *Symbol = "🍒";
-      static constexpr double SpreadProbability = 0.4;
-    };
-    
-    struct Belladonna {
-      static constexpr int Strength = 99;
-      static constexpr const char *Symbol = "☠️";
-      static constexpr double SpreadProbability = 0.1;
-    };
-    
-    struct SosnowskyHogweed {
-      static constexpr int Strength = 10;
-      static constexpr const char *Symbol = "🌿";
-      static constexpr double SpreadProbability = 0.2;
-    };
+    static constexpr int Strength = 0;
+    static constexpr const char *Symbol = "🌱";
+    static constexpr double SpreadProbability = 0.3;
+  };
+
+  struct Dandelion {
+    static constexpr int Strength = 0;
+    static constexpr const char *Symbol = "🌼";
+    static constexpr double SpreadProbability = 0.08;
+    static constexpr int NumberOfTriesToSpread = 3;
+  };
+
+  struct Guarana {
+    static constexpr int Strength = 0;
+    static constexpr const char *Symbol = "🍒";
+    static constexpr double SpreadProbability = 0.4;
+  };
+
+  struct Belladonna {
+    static constexpr int Strength = 99;
+    static constexpr const char *Symbol = "☠️";
+    static constexpr double SpreadProbability = 0.1;
+  };
+
+  struct SosnowskyHogweed {
+    static constexpr int Strength = 10;
+    static constexpr const char *Symbol = "🌿";
+    static constexpr double SpreadProbability = 0.2;
+  };
 };
 } // namespace Constants

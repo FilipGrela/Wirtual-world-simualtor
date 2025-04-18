@@ -40,4 +40,7 @@ bool Plant::isOccupiedBySameType(const Point &newPosition) const {
   return false;
 }
 
-bool Plant::collision(Organism &other) { return false; }
+bool Plant::collision(Organism &other) {
+  die();
+  return false;
+}

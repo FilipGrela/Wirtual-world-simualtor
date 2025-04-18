@@ -31,5 +31,7 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         organism/plant/Plant.h
         organism/plant/species/Grass.cpp
         organism/plant/species/Grass.h
+        organism/plant/species/Dandelion.cpp
+        organism/plant/species/Dandelion.h
 
 )
