@@ -9,7 +9,7 @@ void Dandelion::reproduce() {
   if (newPosition == position)
     return; // Ensure a new position is valid
 
-  world.killPlantOnPosition(newPosition);
+  world.killPlantsOnPosition(newPosition);
   world.queueOrganismAddition(new Dandelion(newPosition, world));
 }
 

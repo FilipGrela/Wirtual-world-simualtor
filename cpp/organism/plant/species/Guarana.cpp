@@ -1,18 +1,18 @@
 //
-// Created by Filip on 12/04/2025.
+// Created by fgrel on 18.04.2025.
 //
 
-#include "Grass.h"
+#include "Guarana.h"
 
-void Grass::reproduce() {
+void Guarana::reproduce() {
   Point newPosition = getNewPosition();
   if (newPosition == position)
     return; // Ensure a new position is valid
 
   world.killPlantsOnPosition(newPosition);
-  world.queueOrganismAddition(new Grass(newPosition, world));
+  world.queueOrganismAddition(new Guarana(newPosition, world));
 }
 
-double Grass::getSpreadProbability() const {
+double Guarana::getSpreadProbability() const {
   return spreadProbability;
 }

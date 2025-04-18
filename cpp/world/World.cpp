@@ -171,12 +171,18 @@ void World::activateHumanAbility() {
   }
 }
 
-void World::killPlantOnPosition(Point position) {
+void World::killPlantsOnPosition(Point position) {
+  std::vector<Organism *> plantsToRemove;
+
   for (auto &organism : organisms) {
     if (!organism) continue;
     if (!organism->isPlant()) continue;
     if (organism->getPosition() != position) continue;
 
-    removeOrganism(organism.get());
+    plantsToRemove.push_back(organism.get());
+  }
+
+  for (auto *plant : plantsToRemove) {
+    removeOrganism(plant);
   }
 }

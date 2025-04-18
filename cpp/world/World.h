@@ -52,7 +52,7 @@ public:
   bool getHumanAlive() const;
   void setHumanAlive(bool alive);
   void activateHumanAbility();
-  void killPlantOnPosition(Point position);
+  void killPlantsOnPosition(Point position);
 
 private:
   const int width, height;

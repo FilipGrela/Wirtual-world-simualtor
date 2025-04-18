@@ -6,6 +6,7 @@
 #include "organism/animal/species/Wolf.h"
 #include "organism/plant/species/Dandelion.h"
 #include "organism/plant/species/Grass.h"
+#include "organism/plant/species/Guarana.h"
 #include "world/World.h"
 #include <conio.h>
 #include <iostream>
@@ -62,7 +63,7 @@ int main() {
   world.addOrganism(new Grass(Point(5, 4), world));
   world.addOrganism(new Dandelion(Point(8, 8), world));
 //
-//  world.addOrganism(new Sheep(Point(6, 1), world));
+  world.addOrganism(new Guarana(Point(6, 1), world));
 //  world.addOrganism(new Sheep(Point(7, 1), world));
 //
 //  world.addOrganism(new Fox(Point(9, 1), world));

@@ -50,7 +50,7 @@ struct Plant {
   struct Grass {
     static constexpr int Strength = 0;
     static constexpr const char *Symbol = "🌱";
-    static constexpr double SpreadProbability = 0.3;
+    static constexpr double SpreadProbability = 0.05;
   };
 
   struct Dandelion {
@@ -63,19 +63,19 @@ struct Plant {
   struct Guarana {
     static constexpr int Strength = 0;
     static constexpr const char *Symbol = "🍒";
-    static constexpr double SpreadProbability = 0.4;
+    static constexpr double SpreadProbability = 0.04;
   };
 
   struct Belladonna {
     static constexpr int Strength = 99;
     static constexpr const char *Symbol = "☠️";
-    static constexpr double SpreadProbability = 0.1;
+    static constexpr double SpreadProbability = 0.02;
   };
 
   struct SosnowskyHogweed {
     static constexpr int Strength = 10;
     static constexpr const char *Symbol = "🌿";
-    static constexpr double SpreadProbability = 0.2;
+    static constexpr double SpreadProbability = 0.01;
   };
 };
 } // namespace Constants
