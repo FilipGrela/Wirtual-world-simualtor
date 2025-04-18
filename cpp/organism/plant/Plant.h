@@ -9,13 +9,15 @@
 
 class Plant : public Organism {
 private:
-
 public:
-    Plant(Point point, char symbol, int strength, World &world);
+  Plant(Point point, std::string symbol, int strength, int initiative,
+        World &world);
 
-    void action() override;
-    void collision(Organism &other) override;
+  void action() override;
+  bool collision(Organism &other) override;
+
+  Point getNewPosition() override;
+  bool isOccupiedBySameType(const Point &newPosition) const;
 };
 
-
-#endif //PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_PLANT_H
+#endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_PLANT_H

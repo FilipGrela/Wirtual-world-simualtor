@@ -39,29 +39,7 @@ int Organism::increaseAge() {
   return age;
 }
 
-std::string Organism::getSymbol() { return symbol; }
-
-Point Organism::getRandomNewPosition(
-    const std::vector<Point> &directions) const {
-  std::vector<Point> availableDirections = directions;
-  Point newPosition;
-
-  int maxAttempts = availableDirections.size();
-  int attempts = 0;
-
-  while (!availableDirections.empty() && attempts < maxAttempts) {
-    int index = rand() % availableDirections.size();
-    newPosition = position + availableDirections[index];
-    availableDirections.erase(availableDirections.begin() + index);
-    attempts++;
-
-    if (world.isInBounds(newPosition)) {
-      return newPosition;
-    }
-  }
-
-  return position; // Jeśli nie znaleziono odpowiedniej pozycji
-}
+std::string Organism::getSymbol() const { return symbol; }
 
 Point Organism::getNewPosition() {
   std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1),

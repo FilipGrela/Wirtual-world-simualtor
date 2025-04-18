@@ -4,6 +4,7 @@
 #include "organism/animal/species/Sheep.h"
 #include "organism/animal/species/Turtle.h"
 #include "organism/animal/species/Wolf.h"
+#include "organism/plant/species/Grass.h"
 #include "world/World.h"
 #include <conio.h>
 #include <iostream>
@@ -57,14 +58,14 @@ int main() {
   world.addOrganism(
       new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
-  world.addOrganism(new Antelope(Point(7, 5), world));
-  world.addOrganism(new Antelope(Point(6, 5), world));
-
-  world.addOrganism(new Wolf(Point(6, 1), world));
-  world.addOrganism(new Wolf(Point(7, 1), world));
-
-  world.addOrganism(new Turtle(Point(9, 1), world));
-  world.addOrganism(new Turtle(Point(6, 5), world));
+  world.addOrganism(new Grass(Point(7, 5), world));
+//  world.addOrganism(new Wolf(Point(6, 5), world));
+//
+//  world.addOrganism(new Sheep(Point(6, 1), world));
+//  world.addOrganism(new Sheep(Point(7, 1), world));
+//
+//  world.addOrganism(new Fox(Point(9, 1), world));
+//  world.addOrganism(new Fox(Point(6, 5), world));
 
   world.draw();
   bool running = true;
@@ -112,7 +113,7 @@ int main() {
     world.draw();
     cout << "Długość getOrganisms " << world.getOrganisms().size() << endl;
 
-    world.getLogger().displayAndClear();
+//    world.getLogger().displayAndClear();
   }
 
   return 0;

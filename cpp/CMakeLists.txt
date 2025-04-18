@@ -27,15 +27,9 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         organism/animal/species/Turtle.h
         organism/animal/species/Antelope.cpp
         organism/animal/species/Antelope.h
-#        organism/plant/Plant.cpp
-#        organism/plant/Plant.h
-#        organism/plant/species/Grass.cpp
-#        organism/plant/species/Grass.h
-#        organism/plant/species/Guarana.cpp
-#        organism/plant/species/Guarana.h
-#        organism/plant/species/NightshadeBerries.cpp
-#        organism/plant/species/NightshadeBerries.h
-#        organism/plant/species/HogweedOfPine.cpp
-#        organism/plant/species/HogweedOfPine.h
+        organism/plant/Plant.cpp
+        organism/plant/Plant.h
+        organism/plant/species/Grass.cpp
+        organism/plant/species/Grass.h
 
 )

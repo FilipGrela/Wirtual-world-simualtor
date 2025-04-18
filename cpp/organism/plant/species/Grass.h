@@ -9,7 +9,13 @@
 #include "../Plant.h"
 
 class Grass : public Plant {
+public:
+        Grass(Point point, World &world)
+                : Plant(point, Constants::Plant::Grass::Symbol,
+                        Constants::Plant::Grass::Strength,
+                        Constants::Plant::Initiative, world) {}
 
+  void reproduce() override;
 };
 
 

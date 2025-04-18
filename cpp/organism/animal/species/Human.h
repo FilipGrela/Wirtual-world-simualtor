@@ -5,7 +5,6 @@
 #ifndef PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_HUMAN_H
 #define PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_HUMAN_H
 
-
 #include "../Animal.h"
 
 class Human : public Animal {
@@ -18,12 +17,15 @@ public:
 
   void die() override;
 
+  void activateAbility();
+  bool collision(Organism &other) override;
+
+private:
   bool isAbilityActive = false;
   int abilityCooldown = 0;
   int abilityDuration = 0;
 
-  void activateAbility();
+  void escapeToRandomPosition();
 };
 
-
-#endif //PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_HUMAN_H
+#endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_HUMAN_H

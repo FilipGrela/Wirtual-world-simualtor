@@ -3,6 +3,7 @@
 //
 
 #include "Human.h"
+#include <random>
 
 Human::Human(Point point, World &world)
     : Animal(point, Constants::Animal::Human::Symbol,
@@ -50,13 +51,15 @@ void Human::activateAbility() {
     std::cout << "Umiejętność jest już aktywna!" << std::endl;
   }
 }
+
 void Human::action() {
   if (isAbilityActive) {
     // Umiejętność aktywna
     abilityDuration--;
     if (abilityDuration == 0) {
-      changeSymbol(Constants::Animal::Human::Symbol);
-      isAbilityActive = false; // Dezaktywuj umiejętność
+      // TODO odkomentować to
+//      changeSymbol(Constants::Animal::Human::Symbol);
+//      isAbilityActive = false; // Dezaktywuj umiejętność
       abilityCooldown = 5;     // Ustaw cooldown na 5 tur
       std::cout << "Specjalna umiejętność została dezaktywowana!" << std::endl;
     }
@@ -66,4 +69,45 @@ void Human::action() {
   }
 
   Animal::action();
+}
+
+void Human::escapeToRandomPosition() {
+  static const std::vector<Point> directions = {
+      Point(0, 1),  // Góra
+      Point(1, 0),  // Prawo
+      Point(0, -1), // Dół
+      Point(-1, 0)  // Lewo
+  };
+
+  std::vector<Point> possiblePositions;
+  for (const auto &direction : directions) {
+    Point candidate = position + direction;
+    if (world.isInBounds(candidate) && !world.isOccupied(candidate)) {
+      possiblePositions.push_back(candidate);
+    }
+  }
+
+  if (!possiblePositions.empty()) {
+    // Losowe wybieranie nowej pozycji
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, possiblePositions.size() - 1);
+    Point newPosition = possiblePositions[dis(gen)];
+
+    move(newPosition);
+    std::cout << "Człowiek unika śmierci i ucieka na nowe pole!" << std::endl;
+  } else {
+    std::cout << "Człowiek nie ma gdzie uciec, pozostaje na miejscu!" << std::endl;
+  }
+}
+
+
+bool Human::collision(Organism &other) {
+  if (isAbilityActive) {
+    escapeToRandomPosition();
+    return false; // Uniknięcie kolizji
+  }
+
+  // Standardowe zachowanie
+  return Animal::collision(other);
 }
