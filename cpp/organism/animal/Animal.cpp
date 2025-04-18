@@ -30,10 +30,11 @@ bool Animal::fight(Organism &other) {
         other.getSymbol());
     die();
     return false;
-  } else {
-    world.getLogger().logEvent(
-        "Organizm " + this->getSymbol() + " pokonał " + other.getSymbol());
-    other.die();
-    return true;
   }
+
+  world.getLogger().logEvent(
+      "Organizm " + this->getSymbol() + " pokonał " + other.getSymbol());
+  other.die();
+  return true;
+
 }

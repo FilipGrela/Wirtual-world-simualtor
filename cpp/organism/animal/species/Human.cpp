@@ -35,7 +35,7 @@ bool Human::isHuman() const { return true; }
 void Human::die() {
   if (isAbilityActive) {
     escapeToRandomPosition();
-    std::cout << "Człowiek unika śmierci dzięki specjalnej umiejętności!" << std::endl;
+    world.getLogger().logEvent("Człowiek unika śmierci dzięki specjalnej umiejętności!");
     return; // Uniknięcie śmierci
   }
 
@@ -49,12 +49,12 @@ void Human::activateAbility() {
     changeSymbol(Constants::Animal::Human::SymbolActiveAbility);
     isAbilityActive = true;  // Aktywuj umiejętność
     abilityDuration = 5;     // Ustaw czas trwania na 5 tur
-    std::cout << "Specjalna umiejętność została aktywowana!" << std::endl;
+    world.getLogger().logEvent("Specjalna umiejętność została aktywowana!");
   } else if (abilityCooldown > 0) {
-    std::cout << "Umiejętność jest na cooldownie przez " << abilityCooldown
-              << " tur." << std::endl;
+
+    world.getLogger().logEvent("Umiejętność jest na cooldownie przez " + std::to_string(abilityCooldown) + " tur.");
   } else {
-    std::cout << "Umiejętność jest już aktywna!" << std::endl;
+    world.getLogger().logEvent("Umiejętność jest już aktywna!");
   }
 }
 
@@ -63,11 +63,10 @@ void Human::action() {
     // Umiejętność aktywna
     abilityDuration--;
     if (abilityDuration == 0) {
-      // TODO odkomentować to
-//      changeSymbol(Constants::Animal::Human::Symbol);
-//      isAbilityActive = false; // Dezaktywuj umiejętność
+      changeSymbol(Constants::Animal::Human::Symbol);
+      isAbilityActive = false; // Dezaktywuj umiejętność
       abilityCooldown = 5;     // Ustaw cooldown na 5 tur
-      std::cout << "Specjalna umiejętność została dezaktywowana!" << std::endl;
+      world.getLogger().logEvent("Specjalna umiejętność została dezaktywowana!");
     }
   } else if (abilityCooldown > 0) {
     // Odliczanie cooldownu
@@ -101,8 +100,8 @@ void Human::escapeToRandomPosition() {
     Point newPosition = possiblePositions[dis(gen)];
 
     move(newPosition);
-    std::cout << "Człowiek unika śmierci i ucieka na nowe pole!" << std::endl;
+    world.getLogger().logEvent("Człowiek unika śmierci i ucieka na nowe pole!");
   } else {
-    std::cout << "Człowiek nie ma gdzie uciec, pozostaje na miejscu!" << std::endl;
+      world.getLogger().logEvent("Człowiek nie ma gdzie uciec, pozostaje na miejscu!");
   }
 }

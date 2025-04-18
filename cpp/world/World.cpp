@@ -94,6 +94,13 @@ void World::addOrganism(Organism *organism) {
   if (organism->isHuman()) {
     humanAlive = true;
   }
+
+  getLogger().logEvent("Organism " + organism->getSymbol() +
+                       " added to the world at position (" +
+                       std::to_string(organism->getPosition().x) + ", " +
+                       std::to_string(organism->getPosition().y) +
+                       ") with strength " + std::to_string(organism->getStrength()) +
+                       " and initiative " + std::to_string(organism->getInitiative()) + ".");
 }
 
 /**

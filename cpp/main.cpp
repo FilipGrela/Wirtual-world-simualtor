@@ -57,7 +57,7 @@ void endGame(World &world) {
 int main() {
   initializeConsole();
 
-  World world(51, 51);
+  World world(49, 49);
 
   world.addOrganism(
       new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
