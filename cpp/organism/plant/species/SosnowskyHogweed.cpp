@@ -5,6 +5,10 @@
 #include "SosnowskyHogweed.h"
 #include "../../animal/Animal.h"
 
+Organism* SosnowskyHogweed::clone() const {
+  return new SosnowskyHogweed(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}
+
 void SosnowskyHogweed::reproduce() {
   Point newPosition = getNewPosition();
   if (newPosition == position)

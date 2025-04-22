@@ -9,19 +9,20 @@
 #include "Dandelion.h"
 class Dandelion : public Plant {
 public:
-  Dandelion(Point point, World &world)
-      : Plant(point, Constants::Plant::Dandelion::Symbol,
-              Constants::Plant::Dandelion::Strength,
-              Constants::Plant::Initiative, world) {}
+    Dandelion(Point point, World &world)
+        : Plant(point, Constants::Plant::Dandelion::Symbol,
+                Constants::Plant::Dandelion::Strength,
+                Constants::Plant::Initiative, world) {}
 
-  void reproduce() override;
-  void action() override;
+    void reproduce() override;
+    Organism *clone() const override;
+    void action() override;
 
-  double getSpreadProbability() const override;
+    double getSpreadProbability() const override;
 
 private:
-  static constexpr double spreadProbability =
-      Constants::Plant::Dandelion::SpreadProbability;
+    static constexpr double spreadProbability =
+            Constants::Plant::Dandelion::SpreadProbability;
 };
 
-#endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_DANDELION_H
+#endif// PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_DANDELION_H

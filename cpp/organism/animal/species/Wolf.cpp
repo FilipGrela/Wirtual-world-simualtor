@@ -17,3 +17,7 @@ void Wolf::reproduce() {
 
   world.queueOrganismAddition(new Wolf(newPosition, world));
 }
+
+Organism* Wolf::clone() const {
+    return new Wolf(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

@@ -16,3 +16,7 @@ void Grass::reproduce() {
 double Grass::getSpreadProbability() const {
   return spreadProbability;
 }
+
+Organism* Grass::clone() const {
+    return new Grass(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

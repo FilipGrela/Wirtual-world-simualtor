@@ -13,6 +13,7 @@ public:
   Antelope(Point point, World &world);
   void reproduce() override;
   Point getNewPosition() override;
+  Organism* clone() const override;
 
   bool collision(Organism &other) override;
 };

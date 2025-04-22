@@ -14,6 +14,7 @@ public:
   Point getNewPosition() override;
   bool isHuman() const override;
   void action() override;
+  Organism* clone() const override;
 
   void die() override;
 

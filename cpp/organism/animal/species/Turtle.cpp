@@ -40,3 +40,7 @@ bool Turtle::collision(Organism &attacker) {
   }
   return true;
 }
+
+Organism* Turtle::clone() const {
+    return new Turtle(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

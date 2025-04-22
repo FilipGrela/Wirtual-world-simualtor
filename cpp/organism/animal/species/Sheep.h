@@ -9,6 +9,7 @@
 class Sheep : public Animal {
   public:
     Sheep(Point point, World &world);
+    Organism* clone() const override;
 
     void reproduce() override;
 };

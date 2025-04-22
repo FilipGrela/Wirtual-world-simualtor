@@ -50,3 +50,7 @@ bool Antelope::collision(Organism &attacker) {
   }
   return true;
 }
+
+Organism* Antelope::clone() const {
+    return new Antelope(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

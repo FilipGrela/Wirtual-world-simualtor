@@ -13,6 +13,7 @@ public:
     Wolf(Point point, World &world);
 
     void reproduce() override;
+    Organism* clone() const override;
 };
 
 

@@ -23,3 +23,7 @@ bool Belladonna::collision(Organism &other) {
   other.die();
   return false;
 }
+
+Organism* Belladonna::clone() const {
+    return new Belladonna(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

@@ -57,6 +57,7 @@ public:
 
   std::vector<Point> getNeighboringPositions(Point position);
 
+  World &operator=(const World &other);
 private:
   const int width, height;
   int turnCounter = 0; // Licznik tur

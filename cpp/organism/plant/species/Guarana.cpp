@@ -24,3 +24,7 @@ bool Guarana::collision(Organism &other) {
   die();
   return false;
 }
+
+Organism* Guarana::clone() const {
+    return new Guarana(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

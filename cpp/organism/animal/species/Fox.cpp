@@ -42,3 +42,6 @@ Point Fox::getNewPosition() {
 bool Fox::isStrongerOrganismPresent(Point position) const {
   return world.isStrongerOrganismAt(position, this->getStrength());
 }
+Organism* Fox::clone() const {
+    return new Fox(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

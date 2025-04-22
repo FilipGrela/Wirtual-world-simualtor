@@ -18,3 +18,7 @@ void Sheep::reproduce() {
   world.queueOrganismAddition(new Sheep(newPosition, world));
 }
 
+Organism* Sheep::clone() const {
+    return new Sheep(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}
+

@@ -12,6 +12,38 @@
 
 #include "../organism/plant/Plant.h"
 
+World &World::operator=(const World &other) {
+    if (this == &other) {
+        return *this; // Obsługa przypisania do samego siebie
+    }
+
+    // Wyczyść obecne dane
+    organisms.clear();
+    organismsToAdd.clear();
+
+    // Skopiuj dane z innego obiektu
+    const_cast<int&>(width) = other.width;
+    const_cast<int&>(height) = other.height;
+    turnCounter = other.turnCounter;
+    humanDirection = other.humanDirection;
+    humanAlive = other.humanAlive;
+    humanAbilityActive = other.humanAbilityActive;
+
+    // Skopiuj organizmy
+    for (const auto &organism : other.organisms) {
+        organisms.emplace_back(organism->clone());
+    }
+
+    for (const auto &organism : other.organismsToAdd) {
+        organismsToAdd.emplace_back(organism->clone());
+    }
+
+    // Skopiuj logger
+    eventLogger = other.eventLogger;
+
+    return *this;
+}
+
 World::World(int width, int height) : width(width), height(height) {}
 
 void World::draw() const {

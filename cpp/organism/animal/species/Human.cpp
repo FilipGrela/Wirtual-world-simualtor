@@ -105,3 +105,7 @@ void Human::escapeToRandomPosition() {
       world.getLogger().logEvent("Człowiek nie ma gdzie uciec, pozostaje na miejscu!");
   }
 }
+
+Organism* Human::clone() const {
+    return new Human(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

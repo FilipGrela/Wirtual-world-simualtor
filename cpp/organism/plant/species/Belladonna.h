@@ -15,6 +15,7 @@ public:
                   Constants::Plant::Initiative, world) {}
 
   void reproduce() override;
+  Organism* clone() const override;
   double getSpreadProbability() const override;
   bool collision(Organism &other) override;
 

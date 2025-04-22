@@ -26,3 +26,7 @@ void Dandelion::action() {
 double Dandelion::getSpreadProbability() const {
   return spreadProbability;
 }
+
+Organism* Dandelion::clone() const {
+    return new Dandelion(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}

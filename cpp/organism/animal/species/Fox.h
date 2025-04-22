@@ -14,6 +14,7 @@ public:
 
   void reproduce() override;
   Point getNewPosition() override;
+  Organism* clone() const override;
 
 private:
   bool isStrongerOrganismPresent(Point position) const;

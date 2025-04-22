@@ -40,12 +40,14 @@ public:
   virtual void die();
   int getStrength() const;
   void setStrength(int strength);
+  void setInitiative(int initiative);
   int getInitiative() const;
   Point getPreviousPosition() const;
 
   void changeSymbol(const std::string &newSymbol);
 
   virtual bool isPlant() const { return false; }
+  virtual Organism* clone() const = 0; // Wirtualna metoda czysto abstrakcyjna
 
 protected:
   Organism(Point point, std::string symbol, int strength, int initiative,
@@ -57,7 +59,7 @@ protected:
 
   std::string symbol;
   int strength;
-  const int initiative;
+  int initiative;
   int age;
 
   World &world; // Referencja do świata, w którym znajduje się organizm

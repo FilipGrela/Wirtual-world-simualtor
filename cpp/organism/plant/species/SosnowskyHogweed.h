@@ -13,6 +13,7 @@ public:
           : Plant(point, Constants::Plant::SosnowskyHogweed::Symbol,
                   Constants::Plant::SosnowskyHogweed::Strength,
                   Constants::Plant::Initiative, world) {}
+  Organism* clone() const override;
 
   void reproduce() override;
   double getSpreadProbability() const override;

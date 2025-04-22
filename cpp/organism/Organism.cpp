@@ -26,6 +26,7 @@ Point Organism::setPosition(Point newPosition) {
 int Organism::getStrength() const { return strength; }
 
 void Organism::setStrength(int strength) { this->strength = strength; }
+void Organism::setInitiative(int initiative) { this->initiative = initiative; }
 
 int Organism::getInitiative() const { return initiative; }
 

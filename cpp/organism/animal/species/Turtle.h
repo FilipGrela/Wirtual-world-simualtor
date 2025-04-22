@@ -12,6 +12,7 @@ public:
 
   void reproduce() override;
   bool collision(Organism &other) override;
+  Organism* clone() const override;
 
   void action() override;
 };
