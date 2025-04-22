@@ -22,7 +22,7 @@ public:
    * Handles the collision between this organism and another organism.
    *
    * @param other A reference to the other organism involved in the collision.
-   * @return true if no organism is deleted as a result of the collision.
+   * @return true if this organism was deleted in result of collision.
    */
   virtual bool collision(Organism &other) = 0;
 

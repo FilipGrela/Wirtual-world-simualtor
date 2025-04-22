@@ -38,7 +38,7 @@ bool Turtle::collision(Organism &attacker) {
   } else {
     return  Animal::collision(attacker); // Domyślna logika kolizji
   }
-  return true;
+  return false;
 }
 
 Organism* Turtle::clone() const {

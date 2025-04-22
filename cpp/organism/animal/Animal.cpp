@@ -19,7 +19,7 @@ bool Animal::collision(Organism &other) {
     // Logika walki, jeśli organizmy są różnych gatunków
     return !fight(other);
   }
-  return true;
+  return false;
 }
 
 bool Animal::fight(Organism &other) {
@@ -29,12 +29,12 @@ bool Animal::fight(Organism &other) {
         "Organizm " + this->getSymbol() + " został pokonany przez " +
         other.getSymbol());
     die();
-    return false;
+    return true;
   }
 
   world.getLogger().logEvent(
       "Organizm " + this->getSymbol() + " pokonał " + other.getSymbol());
   other.die();
-  return true;
+  return false;
 
 }

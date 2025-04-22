@@ -106,12 +106,11 @@ void World::executeTurn() {
 
   for (auto &organism : organisms) {
     if (organism != nullptr) {
-      if (organism->isSosnowskyHogweed()) {
-        auto *sosnowskyHogweed =
-            dynamic_cast<SosnowskyHogweed *>(organism.get());
-        sosnowskyHogweed->killNearbyAnimals();
-      }
-      organism->action();
+        if (auto *sosnowskyHogweed = dynamic_cast<SosnowskyHogweed *>(organism.get())) {
+            sosnowskyHogweed->killNearbyAnimals();
+        }
+      if (organism)
+        organism->action();
     }
   }
 
@@ -259,11 +258,9 @@ std::vector<Point> World::getNeighboringPositions(Point position) {
   return neighbors;
 }
 
-bool World::containsOrganism(const Organism* organism) const {
-    for (const auto& org : organisms) {
-        if (org.get() == organism) {
-            return true;
-        }
-    }
-    return false;
+
+std::mt19937 &World::getRandomEngine() {
+    std::random_device rd;
+    randomEngine.seed(rd());
+    return randomEngine;
 }

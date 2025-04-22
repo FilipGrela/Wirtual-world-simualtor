@@ -6,12 +6,15 @@
 #define PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_POINT_H
 
 #include <iostream>
+#include <random>
 
 class Point {
 
 public:
     Point();
     Point(int x, int y);
+
+    static Point generateRandomPoint(int width, int height, std::mt19937 randomEngine);
 
     int x;
     int y;

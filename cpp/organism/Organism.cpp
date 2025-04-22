@@ -53,7 +53,9 @@ Point Organism::getNewPosition() {
   int attempts = 0;
 
   while (!directions.empty() && attempts < maxAttempts) {
-    int index = rand() % directions.size();
+
+      std::uniform_int_distribution<> dist(0, directions.size() - 1);
+      int index = dist(world.getRandomEngine());
     newPosition = position + directions[index];
     directions.erase(directions.begin() + index); // Usuń sprawdzony kierunek
     attempts++;
@@ -75,7 +77,7 @@ void Organism::action() {
 }
 
 void Organism::move(Point newPosition) {
-
+    bool isThisOrganismDeleted;
   // Sprawdź, czy nowa pozycja jest zajęta
   bool positionOccupied = false;
   for (auto &other : world.getOrganisms()) {
@@ -83,15 +85,15 @@ void Organism::move(Point newPosition) {
         other->getPosition() == newPosition) {
       positionOccupied = true;
 
-      bool noOrganismsDeleted = other->collision(*this);
-      if (!noOrganismsDeleted) {
+      isThisOrganismDeleted = other->collision(*this);
+      if (!isThisOrganismDeleted) {
         break;
       }
     }
   }
 
   // Jeśli pozycja nie jest zajęta, wykonaj ruch
-  if (world.containsOrganism(this) && !world.isOccupied(newPosition)) {
+  if (!isThisOrganismDeleted && !world.isOccupied(newPosition)) {
     position = newPosition;
   }
 }

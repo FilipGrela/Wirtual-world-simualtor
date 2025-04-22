@@ -78,6 +78,7 @@ void displayHelpScreen() {
     std::cout << "  - S: Zapis stanu gry\n";
     std::cout << "  - L: Wczytanie stanu gry\n";
     std::cout << "  - Q: Wyjscie z gry\n";
+    std::cout << "  - Spacja: Aktywacja specjalnej umiejetnosci czlowieka\n";
     std::cout << "=========================================\n";
     std::cout << "Nacisnij dowolny klawisz, aby wrocic do gry...\n";
     _getch();
@@ -120,15 +121,15 @@ int main() {
 
     // Dodaj inne organizmy...
     for (int i = 0; i < 2; ++i) {
-        world.addOrganism(new SosnowskyHogweed(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Fox(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Sheep(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Turtle(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Wolf(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Dandelion(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Grass(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Guarana(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
-        world.addOrganism(new Belladonna(Point(rand() % world.getWidth(), rand() % world.getHeight()), world));
+        world.addOrganism(new SosnowskyHogweed(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Fox(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Sheep(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Turtle(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Wolf(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Dandelion(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Grass(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Guarana(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
+        world.addOrganism(new Belladonna(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
     }
 
     bool running = true;

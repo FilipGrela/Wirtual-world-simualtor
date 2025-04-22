@@ -48,7 +48,7 @@ bool Antelope::collision(Organism &attacker) {
   } else {
     return  Animal::collision(attacker); // Domyślna logika kolizji
   }
-  return true;
+  return false;
 }
 
 Organism* Antelope::clone() const {
