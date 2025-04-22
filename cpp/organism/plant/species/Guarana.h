@@ -9,19 +9,19 @@
 
 class Guarana : public Plant {
 public:
-  Guarana(Point point, World &world)
-      : Plant(point, Constants::Plant::Guarana::Symbol,
-              Constants::Plant::Guarana::Strength, Constants::Plant::Initiative,
-              world) {}
+    Guarana(Point point, World &world)
+        : Plant(point, Constants::Plant::Guarana::Symbol,
+                Constants::Plant::Guarana::Strength, Constants::Plant::Initiative,
+                world) {}
 
-  Organism *clone() const override;
-  void reproduce() override;
-  double getSpreadProbability() const override;
-  bool collision(Organism &other) override;
+    Organism *clone() const override;
+    void reproduce() override;
+    double getSpreadProbability() const override;
+    bool collision(Organism &other) override;
 
 private:
-  static constexpr double spreadProbability =
-      Constants::Plant::Guarana::SpreadProbability;
+    static constexpr double spreadProbability =
+            Constants::Plant::Guarana::SpreadProbability;
 };
 
-#endif // GUARANA_H
+#endif// GUARANA_H

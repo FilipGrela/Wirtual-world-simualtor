@@ -10,14 +10,14 @@ Wolf::Wolf(Point point, World &world)
              Constants::Animal::Wolf::Initiative, world) {}
 
 void Wolf::reproduce() {
-  Point newPosition = world.getFreeSpace(position);
-  if (newPosition == Point(-1, -1)) {
-    return;
-  }
+    Point newPosition = world.getFreeSpace(position);
+    if (newPosition == Point(-1, -1)) {
+        return;
+    }
 
-  world.queueOrganismAddition(new Wolf(newPosition, world));
+    world.queueOrganismAddition(new Wolf(newPosition, world));
 }
 
-Organism* Wolf::clone() const {
-    return new Wolf(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+Organism *Wolf::clone() const {
+    return new Wolf(*this);// Tworzy kopię obiektu za pomocą konstruktora kopiującego
 }

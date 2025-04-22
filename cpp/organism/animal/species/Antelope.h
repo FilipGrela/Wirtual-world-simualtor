@@ -10,13 +10,13 @@
 
 class Antelope : public Animal {
 public:
-  Antelope(Point point, World &world);
-  void reproduce() override;
-  Point getNewPosition() override;
-  Organism* clone() const override;
+    Antelope(Point point, World &world);
+    void reproduce() override;
+    Point getNewPosition() override;
+    Organism *clone() const override;
 
-  bool collision(Organism &other) override;
+    bool collision(Organism &other) override;
 };
 
 
-#endif //PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_ANTELOPE_H
+#endif//PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_ANTELOPE_H

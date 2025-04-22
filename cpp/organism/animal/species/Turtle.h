@@ -8,13 +8,13 @@
 #include "../Animal.h"
 class Turtle : public Animal {
 public:
-  Turtle(Point point, World &world);
+    Turtle(Point point, World &world);
 
-  void reproduce() override;
-  bool collision(Organism &other) override;
-  Organism* clone() const override;
+    void reproduce() override;
+    bool collision(Organism &other) override;
+    Organism *clone() const override;
 
-  void action() override;
+    void action() override;
 };
 
-#endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_TURTLE_H
+#endif// PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_TURTLE_H

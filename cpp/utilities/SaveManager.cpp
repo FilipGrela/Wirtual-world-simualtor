@@ -20,7 +20,7 @@ void SaveManager::saveWorldToFile(const World &world, const std::string &filenam
     j["turnCounter"] = world.getTurnCounter();
 
     // Zapisz organizmy
-    for (const auto &organism : world.getOrganisms()) {
+    for (const auto &organism: world.getOrganisms()) {
         json organismJson;
         organismJson["symbol"] = organism->getSymbol();
         organismJson["x"] = organism->getPosition().x;
@@ -36,7 +36,7 @@ void SaveManager::saveWorldToFile(const World &world, const std::string &filenam
     if (!file.is_open()) {
         throw std::runtime_error("Nie można otworzyć pliku do zapisu.");
     }
-    file << j.dump(4); // Formatowanie JSON z wcięciami
+    file << j.dump(4);// Formatowanie JSON z wcięciami
     file.close();
 }
 
@@ -63,7 +63,7 @@ void SaveManager::initializeWorld(World &world, const json &j) {
 }
 
 void SaveManager::loadOrganisms(World &world, const json &organismsJson) {
-    for (const auto &organismJson : organismsJson) {
+    for (const auto &organismJson: organismsJson) {
         Organism *organism = createOrganismFromJson(organismJson, world);
         if (organism) {
             organism->setStrength(organismJson["strength"]);
@@ -74,7 +74,7 @@ void SaveManager::loadOrganisms(World &world, const json &organismsJson) {
     }
 }
 
-Organism* SaveManager::createOrganismFromJson(const json &organismJson, World &world) {
+Organism *SaveManager::createOrganismFromJson(const json &organismJson, World &world) {
     Point position(organismJson["x"], organismJson["y"]);
     std::string symbol = organismJson["symbol"];
 

@@ -9,21 +9,20 @@
 
 class Belladonna : public Plant {
 public:
-  Belladonna(Point point, World &world)
-          : Plant(point, Constants::Plant::Belladonna::Symbol,
-                  Constants::Plant::Belladonna::Strength,
-                  Constants::Plant::Initiative, world) {}
+    Belladonna(Point point, World &world)
+        : Plant(point, Constants::Plant::Belladonna::Symbol,
+                Constants::Plant::Belladonna::Strength,
+                Constants::Plant::Initiative, world) {}
 
-  void reproduce() override;
-  Organism* clone() const override;
-  double getSpreadProbability() const override;
-  bool collision(Organism &other) override;
+    void reproduce() override;
+    Organism *clone() const override;
+    double getSpreadProbability() const override;
+    bool collision(Organism &other) override;
 
 private:
-  static constexpr double spreadProbability =
-      Constants::Plant::Belladonna::SpreadProbability;
+    static constexpr double spreadProbability =
+            Constants::Plant::Belladonna::SpreadProbability;
 };
 
 
-
-#endif //Belladonna_H
+#endif//Belladonna_H

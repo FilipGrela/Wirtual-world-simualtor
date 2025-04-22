@@ -9,39 +9,39 @@ Fox::Fox(Point point, World &world)
              Constants::Animal::Fox::Strength,
              Constants::Animal::Fox::Initiative, world) {}
 void Fox::reproduce() {
-  Point newPosition = world.getFreeSpace(position);
-  if (newPosition == Point(-1, -1)) {
-    return;
-  }
+    Point newPosition = world.getFreeSpace(position);
+    if (newPosition == Point(-1, -1)) {
+        return;
+    }
 
-  world.queueOrganismAddition(new Fox(newPosition, world));
+    world.queueOrganismAddition(new Fox(newPosition, world));
 }
 
 Point Fox::getNewPosition() {
-  std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1), Point(-1, 0)};
-  Point newPosition;
+    std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1), Point(-1, 0)};
+    Point newPosition;
 
-  int maxAttempts = directions.size(); // Maksymalna liczba prób
-  int attempts = 0;
+    int maxAttempts = directions.size();// Maksymalna liczba prób
+    int attempts = 0;
 
-  while (!directions.empty() && attempts < maxAttempts) {
-    int index = rand() % directions.size();
-    newPosition = position + directions[index];
-    directions.erase(directions.begin() + index); // Usuń sprawdzony kierunek
-    attempts++;
+    while (!directions.empty() && attempts < maxAttempts) {
+        int index = rand() % directions.size();
+        newPosition = position + directions[index];
+        directions.erase(directions.begin() + index);// Usuń sprawdzony kierunek
+        attempts++;
 
-    if (world.isInBounds(newPosition) && !isStrongerOrganismPresent(newPosition)) {
-      return newPosition;
+        if (world.isInBounds(newPosition) && !isStrongerOrganismPresent(newPosition)) {
+            return newPosition;
+        }
     }
-  }
 
-  // Jeśli nie znaleziono odpowiedniego pola, zwróć aktualną pozycję
-  return position;
+    // Jeśli nie znaleziono odpowiedniego pola, zwróć aktualną pozycję
+    return position;
 }
 // Fox.cpp
 bool Fox::isStrongerOrganismPresent(Point position) const {
-  return world.isStrongerOrganismAt(position, this->getStrength());
+    return world.isStrongerOrganismAt(position, this->getStrength());
 }
-Organism* Fox::clone() const {
-    return new Fox(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+Organism *Fox::clone() const {
+    return new Fox(*this);// Tworzy kopię obiektu za pomocą konstruktora kopiującego
 }

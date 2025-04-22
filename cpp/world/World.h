@@ -8,9 +8,9 @@
 #include "../utilities/Point.h"
 #include "../utilities/eventLogger/EventLogger.h"
 #include <memory>
+#include <random>
 #include <unordered_map>
 #include <vector>
-#include <random>
 
 class Organism;// Deklaracja wstępna
 
@@ -61,6 +61,7 @@ public:
     World &operator=(const World &other);
     bool containsOrganism(const Organism *organism) const;
     std::mt19937 &getRandomEngine();
+
 private:
     const int width, height;
     int turnCounter = 0;// Licznik tur

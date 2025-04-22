@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include <vector>
-#include <string>
 #include <iostream>
+#include <string>
+#include <vector>
 
 class EventLogger {
 public:
@@ -17,9 +17,7 @@ public:
     void displayAndClear(int numberOfEvents);
 
 private:
-        std::vector<std::string> events;
-        std::string popEvent();
-        void clearEvents();
+    std::vector<std::string> events;
+    std::string popEvent();
+    void clearEvents();
 };
-
-

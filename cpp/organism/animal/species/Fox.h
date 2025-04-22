@@ -10,14 +10,14 @@
 
 class Fox : public Animal {
 public:
-  Fox(Point point, World &world);
+    Fox(Point point, World &world);
 
-  void reproduce() override;
-  Point getNewPosition() override;
-  Organism* clone() const override;
+    void reproduce() override;
+    Point getNewPosition() override;
+    Organism *clone() const override;
 
 private:
-  bool isStrongerOrganismPresent(Point position) const;
+    bool isStrongerOrganismPresent(Point position) const;
 };
 
-#endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_FOX_H
+#endif// PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_FOX_H

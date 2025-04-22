@@ -27,4 +27,4 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Point &point);
 };
 
-#endif //PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_POINT_H
+#endif//PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_POINT_H

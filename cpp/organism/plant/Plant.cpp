@@ -9,30 +9,30 @@ Plant::Plant(Point point, std::string symbol, int strength, int initiative,
     : Organism(point, symbol, strength, initiative, world) {}
 
 void Plant::action() {
-  increaseAge();
-  int chance = rand() % 100;
-  if (chance > getSpreadProbability() * 100)
-    return;
+    increaseAge();
+    int chance = rand() % 100;
+    if (chance > getSpreadProbability() * 100)
+        return;
 
-  reproduce();
+    reproduce();
 }
 Point Plant::getNewPosition() {
-  std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1),
-                                   Point(-1, 0)};
+    std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1),
+                                     Point(-1, 0)};
 
-  while (!directions.empty()) {
-    int randomIndex = rand() % directions.size();
-    Point newPosition = position + directions[randomIndex];
+    while (!directions.empty()) {
+        int randomIndex = rand() % directions.size();
+        Point newPosition = position + directions[randomIndex];
 
-    if (world.isInBounds(newPosition) && !isOccupiedBySameType(newPosition)) {
-      return newPosition;
+        if (world.isInBounds(newPosition) && !isOccupiedBySameType(newPosition)) {
+            return newPosition;
+        }
+
+        directions.erase(directions.begin() +
+                         randomIndex);// Usuń nieodpowiedni kierunek
     }
 
-    directions.erase(directions.begin() +
-                     randomIndex); // Usuń nieodpowiedni kierunek
-  }
-
-  return position; // Jeśli nie znaleziono odpowiedniej pozycji
+    return position;// Jeśli nie znaleziono odpowiedniej pozycji
 }
 
 /**
@@ -44,26 +44,26 @@ Point Plant::getNewPosition() {
  *         lub została zajęta w tej turze, w przeciwnym razie false.
  */
 bool Plant::isOccupiedBySameType(const Point &newPosition) const {
-  const auto &allOrganisms = world.getOrganisms();
-  const auto &organismsToAdd = world.getOrganismsToAdd();
+    const auto &allOrganisms = world.getOrganisms();
+    const auto &organismsToAdd = world.getOrganismsToAdd();
 
-  for (const auto &organism : allOrganisms) {
-    if (organism != nullptr && organism->getPosition() == newPosition &&
-        organism->getSymbol() == this->getSymbol()) {
-      return true;
+    for (const auto &organism: allOrganisms) {
+        if (organism != nullptr && organism->getPosition() == newPosition &&
+            organism->getSymbol() == this->getSymbol()) {
+            return true;
+        }
     }
-  }
 
-  for (const auto &organism : organismsToAdd) {
-    if (organism != nullptr && organism->getPosition() == newPosition) {
-      return true;
+    for (const auto &organism: organismsToAdd) {
+        if (organism != nullptr && organism->getPosition() == newPosition) {
+            return true;
+        }
     }
-  }
 
-  return false;
+    return false;
 }
 
 bool Plant::collision(Organism &other) {
-  die();
-  return false;
+    die();
+    return false;
 }

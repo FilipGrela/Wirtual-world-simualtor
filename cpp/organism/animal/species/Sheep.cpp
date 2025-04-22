@@ -10,15 +10,14 @@ Sheep::Sheep(Point point, World &world)
              Constants::Animal::Sheep::Initiative, world) {}
 
 void Sheep::reproduce() {
-  Point newPosition = world.getFreeSpace(position);
-  if (newPosition == Point(-1, -1)) {
-    return;
-  }
+    Point newPosition = world.getFreeSpace(position);
+    if (newPosition == Point(-1, -1)) {
+        return;
+    }
 
-  world.queueOrganismAddition(new Sheep(newPosition, world));
+    world.queueOrganismAddition(new Sheep(newPosition, world));
 }
 
-Organism* Sheep::clone() const {
-    return new Sheep(*this); // Tworzy kopię obiektu za pomocą konstruktora kopiującego
+Organism *Sheep::clone() const {
+    return new Sheep(*this);// Tworzy kopię obiektu za pomocą konstruktora kopiującego
 }
-

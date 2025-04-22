@@ -7,11 +7,11 @@
 
 #include "../Animal.h"
 class Sheep : public Animal {
-  public:
+public:
     Sheep(Point point, World &world);
-    Organism* clone() const override;
+    Organism *clone() const override;
 
     void reproduce() override;
 };
 
-#endif // PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_SHEEP_H
+#endif// PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_SHEEP_H
