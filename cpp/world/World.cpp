@@ -46,7 +46,7 @@ World &World::operator=(const World &other) {
 
 World::World(int width, int height) : width(width), height(height) {}
 
-void World::draw() const {
+void World::draw() {
   std::ostringstream buffer; // Bufor do przechowywania całego wyniku
 
   for (int y = 0; y <= height - 1; y++) {
@@ -65,10 +65,12 @@ void World::draw() const {
         buffer << Constants::World::EmptySymbol; // Dodaj pusty symbol do bufora
       }
     }
+//    buffer << "   |   " << eventLogger.popEvent();
     buffer << '\n'; // Dodaj nową linię do bufora
   }
 
   std::cout << buffer.str(); // Wypisz cały bufor na konsolę
+//  eventLogger.clearEvents();
 }
 bool World::isOccupied(Point position) const {
   for (const auto &organism : organisms) {
@@ -212,7 +214,7 @@ Constants::Direction World::getHumanDirection() const {
 
 int World::getWidth() const { return width; }
 int World::getHeight() const { return height; }
-bool World::getHumanAlive() const { return humanAlive; }
+bool World::isHumanAlive() const { return humanAlive; }
 void World::setHumanAlive(bool alive) { humanAlive = alive; }
 
 void World::activateHumanAbility() {
@@ -255,4 +257,13 @@ std::vector<Point> World::getNeighboringPositions(Point position) {
     }
   }
   return neighbors;
+}
+
+bool World::containsOrganism(const Organism* organism) const {
+    for (const auto& org : organisms) {
+        if (org.get() == organism) {
+            return true;
+        }
+    }
+    return false;
 }

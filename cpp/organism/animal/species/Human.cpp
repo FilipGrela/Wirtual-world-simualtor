@@ -48,9 +48,9 @@ void Human::activateAbility() {
   if (abilityCooldown == 0 && !isAbilityActive) {
     changeSymbol(Constants::Animal::Human::SymbolActiveAbility);
     isAbilityActive = true;  // Aktywuj umiejętność
-    abilityDuration = 5;     // Ustaw czas trwania na 5 tur
+    abilityDuration = Constants::Animal::Human::AbilityDuration;     // Ustaw czas trwania na 5 tur
     world.getLogger().logEvent("Specjalna umiejętność została aktywowana!");
-  } else if (abilityCooldown > 0) {
+  } else if (abilityCooldown >= 0) {
 
     world.getLogger().logEvent("Umiejętność jest na cooldownie przez " + std::to_string(abilityCooldown) + " tur.");
   } else {
@@ -62,10 +62,10 @@ void Human::action() {
   if (isAbilityActive) {
     // Umiejętność aktywna
     abilityDuration--;
-    if (abilityDuration == 0) {
+    if (abilityDuration < 0) {
       changeSymbol(Constants::Animal::Human::Symbol);
       isAbilityActive = false; // Dezaktywuj umiejętność
-      abilityCooldown = 5;     // Ustaw cooldown na 5 tur
+      abilityCooldown = Constants::Animal::Human::AbilityCooldown ;     // Ustaw cooldown na 5 tur
       world.getLogger().logEvent("Specjalna umiejętność została dezaktywowana!");
     }
   } else if (abilityCooldown > 0) {

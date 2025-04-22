@@ -63,4 +63,5 @@ protected:
   int age;
 
   World &world; // Referencja do świata, w którym znajduje się organizm
+
 };

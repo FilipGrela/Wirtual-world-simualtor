@@ -41,6 +41,7 @@ struct Animal {
     static constexpr int Strength = 5;
     static constexpr int Initiative = 4;
     static constexpr int AbilityCooldown = 5;
+    static constexpr int AbilityDuration = 5;
     static constexpr const char *Symbol = "👨‍🦱";
     static constexpr const char *SymbolActiveAbility = "👨🏿‍🦰";
   };

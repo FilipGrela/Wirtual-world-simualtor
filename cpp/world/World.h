@@ -23,7 +23,7 @@ public:
       {Constants::Direction::NONE, Point(0, 0)}};
 
   World(int width, int height);
-  void draw() const;
+  void draw();
 
   bool isOccupied(Point position) const;
   bool isInBounds(Point position) const;
@@ -50,7 +50,7 @@ public:
 
   int getWidth() const;
   int getHeight() const;
-  bool getHumanAlive() const;
+  bool isHumanAlive() const;
   void setHumanAlive(bool alive);
   void activateHumanAbility();
   void killPlantsOnPosition(Point position);
@@ -58,7 +58,9 @@ public:
   std::vector<Point> getNeighboringPositions(Point position);
 
   World &operator=(const World &other);
-private:
+  bool containsOrganism(const Organism *organism) const;
+
+  private:
   const int width, height;
   int turnCounter = 0; // Licznik tur
   enum Constants::Direction humanDirection = Constants::Direction::NONE;

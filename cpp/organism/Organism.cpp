@@ -75,21 +75,26 @@ void Organism::action() {
 }
 
 void Organism::move(Point newPosition) {
-  Point tempOldPosition = position;
-  position = newPosition;
 
-  // Sprawdź, czy nowa pozycja jest zajęta i wywołaj kolizję
+  // Sprawdź, czy nowa pozycja jest zajęta
+  bool positionOccupied = false;
   for (auto &other : world.getOrganisms()) {
     if (other != nullptr && other.get() != this &&
-    other->getPosition() == newPosition) {
-      if (!other->collision(*this)) {
-        previousPosition = tempOldPosition;
+        other->getPosition() == newPosition) {
+      positionOccupied = true;
+
+      bool noOrganismsDeleted = other->collision(*this);
+      if (!noOrganismsDeleted) {
         break;
       }
     }
   }
-}
 
+  // Jeśli pozycja nie jest zajęta, wykonaj ruch
+  if (world.containsOrganism(this) && !world.isOccupied(newPosition)) {
+    position = newPosition;
+  }
+}
 void Organism::die() {
   // Pusta definicja metody
   world.removeOrganism(this);
