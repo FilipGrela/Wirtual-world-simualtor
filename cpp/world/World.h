@@ -26,6 +26,8 @@ public:
     World(int width, int height);
     void draw();
 
+    void addDefaultOrganisms();
+
     bool isOccupied(Point position) const;
     bool isInBounds(Point position) const;
 

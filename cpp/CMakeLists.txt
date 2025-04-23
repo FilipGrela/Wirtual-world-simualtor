@@ -42,5 +42,7 @@ add_executable(Projekt_1_programowanie_obiektowe main.cpp
         utilities/SaveManager.cpp
         utilities/SaveManager.h
         organism/OrganismIncludes.h
+        utilities/Utilities.cpp
+        utilities/Utilities.h
 
 )

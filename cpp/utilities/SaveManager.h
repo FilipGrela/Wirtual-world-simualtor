@@ -11,14 +11,14 @@
 
 class SaveManager {
 public:
-    static void saveWorldToFile(const World &world, const std::string &filename);
-    static void loadWorldFromFile(World &world, const std::string &filename);
+    void saveWorldToFile(const World &world, const std::string &filename);
+    void loadWorldFromFile(World &world, const std::string &filename);
 
 private:
-    static nlohmann::json readJsonFromFile(const std::string &filename);
-    static void initializeWorld(World &world, const nlohmann::json &j);
-    static void loadOrganisms(World &world, const nlohmann::json &organismsJson);
-    static Organism *createOrganismFromJson(const nlohmann::json &organismJson, World &world);
+    nlohmann::json readJsonFromFile(const std::string &filename);
+    void initializeWorld(World &world, const nlohmann::json &j);
+    void loadOrganisms(World &world, const nlohmann::json &organismsJson);
+    Organism *createOrganismFromJson(const nlohmann::json &organismJson, World &world);
 };
 
 #endif// PROJEKT_1_PROGRAMOWANIE_OBIEKTOWE_SAVEMANAGER_H

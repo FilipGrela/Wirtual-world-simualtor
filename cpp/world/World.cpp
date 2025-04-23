@@ -4,11 +4,11 @@
 
 #include "World.h"
 #include "../Constants.h"
-#include "../organism/animal/species/Human.h"
-#include "../organism/plant/species/SosnowskyHogweed.h"
+#include "../organism/OrganismIncludes.h"
 #include <algorithm>
 #include <sstream>
 #include <thread>
+#include <functional> // Dodano ten nagłówek
 
 #include "../organism/plant/Plant.h"
 
@@ -263,4 +263,25 @@ std::mt19937 &World::getRandomEngine() {
     std::random_device rd;
     randomEngine.seed(rd());
     return randomEngine;
+}
+
+void World::addDefaultOrganisms() {
+    std::vector<std::function<Organism *(Point, World &)>> organismFactories = {
+        [](Point p, World &w) { return new SosnowskyHogweed(p, w); },
+        [](Point p, World &w) { return new Fox(p, w); },
+        [](Point p, World &w) { return new Sheep(p, w); },
+        [](Point p, World &w) { return new Turtle(p, w); },
+        [](Point p, World &w) { return new Wolf(p, w); },
+        [](Point p, World &w) { return new Dandelion(p, w); },
+        [](Point p, World &w) { return new Grass(p, w); },
+        [](Point p, World &w) { return new Guarana(p, w); },
+        [](Point p, World &w) { return new Belladonna(p, w); }
+    };
+
+    for (int i = 0; i < 2; ++i) {
+        for (const auto &factory : organismFactories) {
+            Point randomPoint = Point::generateRandomPoint(getWidth(), getHeight(), getRandomEngine());
+            addOrganism(factory(randomPoint, *this));
+        }
+    }
 }
