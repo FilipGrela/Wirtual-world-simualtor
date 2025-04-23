@@ -46,7 +46,8 @@ std::string Organism::getSymbol() const { return symbol; }
 
 Point Organism::getNewPosition() {
     std::vector<Point> directions = {Point(0, 1), Point(1, 0), Point(0, -1),
-                                     Point(-1, 0)};
+                                     Point(-1, 0), Point(1, 1), Point(1, -1),
+                                     Point(-1, 1), Point(-1, -1)};
     Point newPosition;
 
     int maxAttempts = directions.size();// Maksymalna liczba prób

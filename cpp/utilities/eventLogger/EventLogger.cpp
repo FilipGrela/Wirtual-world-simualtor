@@ -19,16 +19,7 @@ void EventLogger::logEvent(const std::string &event) {
     events.push_back(log);
 }
 void EventLogger::displayAndClear() {
-    bool alternateColor = false;
-    for (const auto &event: events) {
-        if (alternateColor) {
-            std::cout << "\033[1;31m" << event << "\033[0m" << std::endl;// Czerwony kolor
-        } else {
-            std::cout << event << std::endl;// Domyślny kolor
-        }
-        alternateColor = !alternateColor;
-    }
-    clearEvents();
+    displayAndClear(events.size());
 }
 
 void EventLogger::displayAndClear(int numberOfEvents) {

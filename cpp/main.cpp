@@ -42,7 +42,7 @@ void endGame(World &world) {
     cout << "Liczba organizmów: " << world.getOrganisms().size() << endl;
     cout << "Dziękujemy za grę!" << endl;
     cout << "==============================" << endl;
-    system("pause");
+    _getch();
 }
 
 void displayWelcomeScreen() {
@@ -112,14 +112,7 @@ void handleSpecialKeys(char key, bool &running, World &world) {
     }
 }
 
-int main() {
-    initializeConsole();
-    displayWelcomeScreen();
-
-    World world(41, 41);
-    world.addOrganism(new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
-
-    // Dodaj inne organizmy...
+void addOrganisms(World &world){
     for (int i = 0; i < 2; ++i) {
         world.addOrganism(new SosnowskyHogweed(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
         world.addOrganism(new Fox(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
@@ -131,14 +124,25 @@ int main() {
         world.addOrganism(new Guarana(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
         world.addOrganism(new Belladonna(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
     }
+}
+int main() {
+    initializeConsole();
+    displayWelcomeScreen();
+
+    World world(41, 41);
+    world.addOrganism(new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
+
+    // Dodaj inne organizmy...
+    addOrganisms(world);
 
     bool running = true;
-    while (world.isHumanAlive()) {
+    while (running) {
         world.setHumanDirection(Constants::Direction::NONE);
 
         if (_kbhit()) {
             char key = _getch();
             if (key == 'q' || key == 's' || key == 'l' || key == 'h' || key == ' ') {
+
                 handleSpecialKeys(key, running, world);
                 continue;// Nie licz jako tura
             }
@@ -162,11 +166,10 @@ int main() {
             }
             world.executeTurn();
             system("cls");
-            cout << "Autor: Filip Grela, 203850\n" << "Turn counter: " << world.getTurnCounter() << "\n";
+            cout << "Autor: Filip Grela, 203850\n" << "Turn number: " << world.getTurnCounter() << "\n";
             world.draw();
-            world.getLogger().displayAndClear(5);
+            world.getLogger().displayAndClear();
         }
     }
-
     endGame(world);
 }
