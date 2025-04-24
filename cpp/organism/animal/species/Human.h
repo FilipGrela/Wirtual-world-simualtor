@@ -19,9 +19,16 @@ public:
     void die() override;
 
     void activateAbility();
+    void setAbilityCooldown(int cooldown);
+    int getAbilityyCooldown() const;
+    void setAbilityDuration(int duration);
+    int getAbilityDuration() const;
+    void setAbilityActive(bool active);
+    int getAbilityCooldown() const;
+    bool isAbilityActive() const;
 
 private:
-    bool isAbilityActive = false;
+    bool abilityActive = false;
     int abilityCooldown = 0;
     int abilityDuration = 0;
 

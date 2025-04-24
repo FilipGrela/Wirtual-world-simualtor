@@ -33,7 +33,7 @@ Point Human::getNewPosition() {
 bool Human::isHuman() const { return true; }
 
 void Human::die() {
-    if (isAbilityActive) {
+    if (abilityActive) {
         escapeToRandomPosition();
         world.getLogger().logEvent("Człowiek unika śmierci dzięki specjalnej umiejętności!");
         return;// Uniknięcie śmierci
@@ -45,9 +45,9 @@ void Human::die() {
 }
 
 void Human::activateAbility() {
-    if (abilityCooldown == 0 && !isAbilityActive) {
+    if (abilityCooldown == 0 && !abilityActive) {
         changeSymbol(Constants::Animal::Human::SymbolActiveAbility);
-        isAbilityActive = true;                                     // Aktywuj umiejętność
+        abilityActive = true;                                     // Aktywuj umiejętność
         abilityDuration = Constants::Animal::Human::AbilityDuration;// Ustaw czas trwania na 5 tur
         world.getLogger().logEvent("Specjalna umiejętność została aktywowana!");
     } else if (abilityCooldown >= 0) {
@@ -59,12 +59,12 @@ void Human::activateAbility() {
 }
 
 void Human::action() {
-    if (isAbilityActive) {
+    if (abilityActive) {
         // Umiejętność aktywna
         abilityDuration--;
         if (abilityDuration < 0) {
             changeSymbol(Constants::Animal::Human::Symbol);
-            isAbilityActive = false;                                    // Dezaktywuj umiejętność
+            abilityActive = false;                                    // Dezaktywuj umiejętność
             abilityCooldown = Constants::Animal::Human::AbilityCooldown;// Ustaw cooldown na 5 tur
             world.getLogger().logEvent("Specjalna umiejętność została dezaktywowana!");
         }
@@ -108,4 +108,29 @@ void Human::escapeToRandomPosition() {
 
 Organism *Human::clone() const {
     return new Human(*this);// Tworzy kopię obiektu za pomocą konstruktora kopiującego
+}
+void Human::setAbilityCooldown(int cooldown) {
+    this->abilityCooldown = cooldown;
+}
+
+void Human::setAbilityDuration(int duration) {
+    this->abilityDuration = duration;
+}
+
+int Human::getAbilityCooldown() const {
+    return abilityCooldown;
+}
+
+void Human::setAbilityActive(bool active) {
+    this->abilityActive = active;
+}
+
+int Human::getAbilityDuration() const {
+    return abilityDuration;
+}
+int Human::getAbilityyCooldown() const {
+    return abilityCooldown;
+}
+bool Human::isAbilityActive() const {
+    return abilityActive;
 }

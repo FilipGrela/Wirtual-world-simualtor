@@ -7,12 +7,14 @@
 #include "../organism/Organism.h"
 #include "../utilities/Point.h"
 #include "../utilities/eventLogger/EventLogger.h"
+//#include "../organism/animal/species/Human.h"
 #include <memory>
 #include <random>
 #include <unordered_map>
 #include <vector>
 
 class Organism;// Deklaracja wstępna
+class Human;// Deklaracja wstępna
 
 class World {
 public:
@@ -56,7 +58,12 @@ public:
     bool isHumanAlive() const;
     void setHumanAlive(bool alive);
     void activateHumanAbility();
+    bool isHumanAbilityActive() const;
+    void setHumanAbilityStatus(bool active, int cooldown, int duration);
+    void setTurnCounter(int turnCounter);
     void killPlantsOnPosition(Point position);
+
+    Human *getHuman() const;
 
     std::vector<Point> getNeighboringPositions(Point position);
 

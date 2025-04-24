@@ -207,6 +207,15 @@ void World::setHumanDirection(enum Constants::Direction direction) {
     this->humanDirection = direction;
 }
 
+Human *World::getHuman() const {
+    for (const auto &organism: organisms) {
+        if (organism->isHuman()) {
+            return dynamic_cast<Human *>(organism.get());
+        }
+    }
+    return nullptr;
+}
+
 Constants::Direction World::getHumanDirection() const {
     return this->humanDirection;
 };
@@ -284,4 +293,30 @@ void World::addDefaultOrganisms() {
             addOrganism(factory(randomPoint, *this));
         }
     }
+}
+bool World::isHumanAbilityActive() const{
+    return humanAbilityActive;
+}
+void World::setHumanAbilityStatus(bool active, int cooldown, int duration) {
+    this->humanAbilityActive = active;
+    for (const auto &organism: organisms) {
+        if (organism->isHuman()) {
+            Human *human = dynamic_cast<Human *>(organism.get());
+            if (human) {
+                human->setAbilityActive(active);
+                human->setAbilityCooldown(cooldown);
+                human->setAbilityDuration(duration);
+
+                if (active) {
+                    eventLogger.logEvent("Specjalna umiejętność została aktywowana!");
+                } else {
+                    eventLogger.logEvent("Specjalna umiejętność została dezaktywowana!");
+                }
+            }
+            break;
+        }
+    }
+}
+void World::setTurnCounter(int turnCounter) {
+    this->turnCounter = turnCounter;
 }

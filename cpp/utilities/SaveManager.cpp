@@ -16,6 +16,16 @@ void SaveManager::saveWorldToFile(const World &world, const std::string &filenam
     j["width"] = world.getWidth();
     j["height"] = world.getHeight();
     j["turnCounter"] = world.getTurnCounter();
+    j["humanAlive"] = world.isHumanAlive();
+    j["humanAbilityActive"] = world.getHuman()->isAbilityActive();
+
+    if (world.getHuman() != nullptr) {
+        j["humanAbilityCooldown"] = world.getHuman()->getAbilityCooldown();
+        j["humanAbilityDuration"] = world.getHuman()->getAbilityDuration();
+    } else {
+        j["humanAbilityCooldown"] = Constants::Animal::Human::AbilityCooldown;
+        j["humanAbilityDuration"] = -1;
+    }
 
     // Zapisz organizmy
     for (const auto &organism: world.getOrganisms()) {
@@ -42,6 +52,18 @@ void SaveManager::loadWorldFromFile(World &world, const std::string &filename) {
     json j = readJsonFromFile(filename);
     initializeWorld(world, j);
     loadOrganisms(world, j["organisms"]);
+
+
+    world.setTurnCounter(j["turnCounter"]);
+    world.setHumanAlive(j["humanAlive"]);
+
+    if (j["humanAlive"]){
+        bool isHumanAbilityActive = j["humanAbilityActive"];
+        world.setHumanAbilityStatus(isHumanAbilityActive,
+                                    j["humanAbilityCooldown"],
+                                    j["humanAbilityDuration"]);
+    }
+
 }
 
 json SaveManager::readJsonFromFile(const std::string &filename) {
@@ -76,8 +98,10 @@ Organism *SaveManager::createOrganismFromJson(const json &organismJson, World &w
     Point position(organismJson["x"], organismJson["y"]);
     std::string symbol = organismJson["symbol"];
 
-    if (symbol == Constants::Animal::Human::Symbol) {
-        return new Human(position, world);
+    if (symbol == Constants::Animal::Human::Symbol || symbol == Constants::Animal::Human::SymbolActiveAbility) {
+        Human *human = new Human(position, world);
+        human->changeSymbol(symbol);
+        return human;
     } else if (symbol == Constants::Animal::Wolf::Symbol) {
         return new Wolf(position, world);
     } else if (symbol == Constants::Animal::Fox::Symbol) {

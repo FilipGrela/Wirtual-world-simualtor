@@ -7,31 +7,16 @@
 
 using namespace std;
 
-
-void addOrganisms(World &world) {
-    for (int i = 0; i < 2; ++i) {
-        world.addOrganism(new SosnowskyHogweed(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Fox(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Sheep(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Turtle(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Wolf(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Dandelion(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Grass(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Guarana(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-        world.addOrganism(new Belladonna(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
-    }
-}
-
 int main() {
     Utilities utilities;
 
     utilities.initializeConsole();
     utilities.displayWelcomeScreen();
 
-    World world(41, 41);
+    World world(32, 18);
     world.addOrganism(new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
-    addOrganisms(world);
+    utilities.addOrganisms(world);
 
     bool running = true;
     while (running) {
