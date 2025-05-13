@@ -43,7 +43,7 @@ struct Animal {
     static constexpr int AbilityCooldown = 5;
     static constexpr int AbilityDuration = 5;
     static constexpr const char *Symbol = "👨‍🦱";
-    static constexpr const char *SymbolActiveAbility = "👨🏿‍🦰";
+    static constexpr const char *SymbolActiveAbility = "👨🏻‍🦰";
   };
 };
 struct Plant {

@@ -17,7 +17,7 @@ public:
     void displayWelcomeScreen();
     void displayHelpScreen();
     void handleSpecialKeys(char key, bool &running, World &world);
-    void addOrganisms(World &world);
+    void addDefoultOrganisms(World &world);
     void endGame(World &world);
     std::string colored(const std::string &text, int color);
 };

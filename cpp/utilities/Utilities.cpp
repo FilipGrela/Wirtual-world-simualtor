@@ -105,7 +105,7 @@ void Utilities::handleSpecialKeys(char key, bool &running, World &world) {
     }
 }
 
-void Utilities::addOrganisms(World &world) {
+void Utilities::addDefoultOrganisms(World &world) {
     for (int i = 0; i < 2; ++i) {
         world.addOrganism(new SosnowskyHogweed(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));
         world.addOrganism(new Fox(Point::generateRandomPoint(world.getWidth(), world.getHeight(), world.getRandomEngine()), world));

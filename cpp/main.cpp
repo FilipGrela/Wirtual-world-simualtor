@@ -13,10 +13,19 @@ int main() {
     utilities.initializeConsole();
     utilities.displayWelcomeScreen();
 
-    World world(32, 18);
+    int width, height;
+
+    system("cls");
+    cout << "Podaj wysokość:\n";
+    cin >> height;
+
+    cout << "Podaj szerokość:\n";
+    cin >> width;
+
+    World world(width, height);
     world.addOrganism(new Human(Point(world.getWidth() / 2, world.getHeight() / 2), world));
 
-    utilities.addOrganisms(world);
+    utilities.addDefoultOrganisms(world);
 
     bool running = true;
     while (running) {
