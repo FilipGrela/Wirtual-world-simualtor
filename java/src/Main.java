@@ -1,15 +1,25 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import ui.MapSelectionWindow;
+import ui.GameWindow;
+import world.World;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            MapSelectionWindow window = new MapSelectionWindow();
+            window.setVisible(true);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+            // Czekaj aż użytkownik wybierze mapę i wymiary
+            window.setOnMapSelected((mapType, width, height) -> {
+                GameWindow gameWindow = new GameWindow(mapType, width, height);
+                gameWindow.setVisible(true);
+                window.setVisible(false);
+
+                World world = gameWindow.getWorld();
+                world.fillWorld();
+
+                // Odśwież widok planszy
+                gameWindow.refresh();
+            });
+        });
     }
 }
