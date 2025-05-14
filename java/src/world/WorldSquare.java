@@ -1,5 +1,6 @@
 package world;
 
+import logger.EventLogger;
 import organism.Organism;
 import organism.animal.species.Wolf;
 
@@ -14,6 +15,7 @@ public class WorldSquare extends World {
 
     @Override
     public void executeTurn() {
+        EventLogger.getInstance().log("====== Turn " + turns + " ======");
         // Przykładowa implementacja kolejności wykonywania ruchów i akcji organizmów
         // sortowanie organizmów po inicjatywie i wieku (starszeństwie)
         organisms.sort((o1, o2) -> {
@@ -29,6 +31,7 @@ public class WorldSquare extends World {
         }
 
         // Tutaj można obsłużyć kolizje, rozprzestrzenianie się, itp.
+        turns++;
     }
 
     @Override

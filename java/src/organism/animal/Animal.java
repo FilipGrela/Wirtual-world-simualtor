@@ -1,5 +1,6 @@
 package organism.animal;
 
+import logger.EventLogger;
 import organism.Organism;
 import organism.animal.species.Wolf;
 import world.World;
@@ -12,6 +13,9 @@ public abstract class Animal extends Organism {
 
     @Override
     public boolean collision(Organism other) {
+        if (other.getAge() <= 0) {
+            return false; // No collision
+        }
         if (this.getSymbol() == other.getSymbol()) {
             // Reproduction if same species
             reproduce();
@@ -23,6 +27,7 @@ public abstract class Animal extends Organism {
     }
 
     protected boolean fight(Organism other) {
+        EventLogger.getInstance().log("Fight between " + this.getSymbol() + " and " + other.getSymbol());
         if (this.getStrength() < other.getStrength()) {
             // Log defeat
             // world.getLogger().logEvent("Organism " + this.getSymbol() + " was defeated by " + other.getSymbol());

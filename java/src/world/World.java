@@ -9,7 +9,6 @@ public abstract class World {
     protected int width;
     protected int height;
 
-    // Typ świata (np. kwadratowy, prostokątny, itp.)
     protected int type;
     protected  int turns; // liczba tur w grze
 

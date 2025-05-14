@@ -5,6 +5,8 @@ public class Constants {
         NONE, UP, DOWN, LEFT, RIGHT
     }
 
+    public static final int logNotifyInterval = 100; // ms
+
     public static class World {
         public static final String EmptySymbol = "⚫";
     }

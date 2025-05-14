@@ -1,8 +1,8 @@
+import logger.EventLogger;
 import ui.GameWindow;
 import ui.MapSelectionWindow;
 import world.World;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Main {
@@ -34,7 +34,7 @@ public class Main {
         gameWindow.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                gameWindow.log(String.valueOf(e.getKeyCode()));
+                EventLogger.getInstance().log(String.valueOf(e.getKeyCode()));
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     gameWindow.dispose();
                     createAndShowMapSelectionWindow();
