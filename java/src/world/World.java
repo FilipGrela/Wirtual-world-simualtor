@@ -2,8 +2,8 @@ package world;
 
 import organism.Organism;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class World {
     protected int width;
@@ -72,6 +72,8 @@ public abstract class World {
         return null;
     }
 
+
+    public abstract int[] findNearestFree(int x, int y);
     public abstract void fillWorld(); // Metoda do wypełnienia świata organizmami na początku gry
 }
 

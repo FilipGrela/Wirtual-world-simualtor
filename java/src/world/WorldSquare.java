@@ -62,4 +62,28 @@ public class WorldSquare extends World {
              addOrganism(new Wolf(i, i, this));
         }
     }
+
+    // Zwraca najbliższe wolne miejsce w okolicy punktu (lub null jeśli brak)
+    public int[] findNearestFree(int x, int y) {
+        List<int[]> queue = new ArrayList<>();
+        boolean[][] visited = new boolean[width][height];
+        queue.add(new int[]{x, y});
+        visited[x][y] = true;
+
+        while (!queue.isEmpty()) {
+            int[] pos = queue.remove(0);
+            int px = pos[0], py = pos[1];
+            if (getOrganismAt(px, py) == null) {
+                return new int[]{px, py};
+            }
+            for (int[] n : getNeighbors(px, py)) {
+                int nx = n[0], ny = n[1];
+                if (!visited[nx][ny]) {
+                    queue.add(new int[]{nx, ny});
+                    visited[nx][ny] = true;
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -2,16 +2,20 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+
 import world.World;
 import world.WorldSquare;
 import organism.Organism;
 
 public class GameWindow extends JFrame {
-    private String mapType;
-    private int width, height;
-    private JPanel boardPanel;
+    private final String mapType;
+    private final int width;
+    private final int height;
+    private final JPanel boardPanel;
     private JButton[][] boardButtons;
     private World world;
+    JTextArea logTextArea;
 
     public GameWindow(String mapType, int width, int height) {
         this.mapType = mapType;
@@ -53,7 +57,7 @@ public class GameWindow extends JFrame {
         logPanel.setPreferredSize(new Dimension(380, 600));
         logPanel.setLayout(new BorderLayout());
 
-        JTextArea logTextArea = new JTextArea();
+        logTextArea = new JTextArea();
         logTextArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(logTextArea);
         logPanel.add(scrollPane, BorderLayout.CENTER);
@@ -89,5 +93,13 @@ public class GameWindow extends JFrame {
 
     public World getWorld() {
         return world;
+    }
+
+    public void log(String text) {
+        logTextArea.append(text + "\n");
+    }
+
+    public void clearLog() {
+        logTextArea.setText("");
     }
 }

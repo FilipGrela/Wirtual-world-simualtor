@@ -13,8 +13,12 @@ public class Wolf extends Animal {
 
     @Override
     protected void reproduce() {
-        // Find a free neighboring cell
-
+        int[] newPosition = world.findNearestFree(this.getX(), this.getY());
+        if (newPosition != null) {
+            // Create a new organism of the same type
+            Animal offspring = new Wolf(newPosition[0], newPosition[1], world);
+            world.addOrganism(offspring);
+        }
     }
 
     @Override

@@ -89,14 +89,14 @@ public abstract class Organism {
     // Returns a random valid neighbor position (4 or 8 directions)
     protected int[] getNewPosition() {
         List<int[]> directions = new ArrayList<>();
-        directions.add(new int[]{0, 1});
-        directions.add(new int[]{1, 0});
-        directions.add(new int[]{0, -1});
-        directions.add(new int[]{-1, 0});
-        directions.add(new int[]{1, 1});
-        directions.add(new int[]{1, -1});
-        directions.add(new int[]{-1, 1});
-        directions.add(new int[]{-1, -1});
+        directions.add(new int[]{0, 1});    // Up
+        directions.add(new int[]{1, 0});    // Right
+        directions.add(new int[]{0, -1});   // Down
+        directions.add(new int[]{-1, 0});   // Left
+        directions.add(new int[]{1, 1});    // Up-Right
+        directions.add(new int[]{1, -1});   // Down-Right
+        directions.add(new int[]{-1, 1});   // Up-Left
+        directions.add(new int[]{-1, -1});  // Down-Left
 
         Random rand = new Random();
         while (!directions.isEmpty()) {

@@ -1,6 +1,7 @@
 package organism.animal;
 
 import organism.Organism;
+import organism.animal.species.Wolf;
 import world.World;
 
 public abstract class Animal extends Organism {
@@ -33,8 +34,5 @@ public abstract class Animal extends Organism {
         return false; // This organism survived
     }
 
-    protected void reproduce() {
-        // Implement reproduction logic in subclasses or here if generic
-        // Example: spawn a new organism of the same type in a neighboring cell
-    }
+    protected abstract void reproduce();
 }
