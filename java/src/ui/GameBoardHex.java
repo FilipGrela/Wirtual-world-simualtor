@@ -7,33 +7,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class GameBoardSquare extends JPanel implements GameBoard {
+public class GameBoardHex extends JPanel implements GameBoard {
     private final int width;
     private final int height;
     private final JButton[][] boardButtons;
     private final World world;
 
-    public GameBoardSquare(int width, int height, World world) {
+    public GameBoardHex(int width, int height, World world) {
         this.width = width;
         this.height = height;
         this.world = world;
 
-        setLayout(null); // Manual layout for square buttons
+        setLayout(null); // Manual layout for hexagonal buttons
         boardButtons = new JButton[height][width];
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                JButton btn = new JButton();
+                HexButton btn = new HexButton();
+                btn.setPreferredSize(getPreferredSize());
                 btn.setFocusable(false);
                 btn.setMargin(new Insets(0, 0, 0, 0));
                 btn.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 12));
                 btn.setBackground(new Color(250, 250, 250));
                 btn.setForeground(new Color(40, 40, 40));
-                btn.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(new Color(220, 220, 220), 2, true),
-                        BorderFactory.createEmptyBorder(8, 8, 8, 8)
-                ));
-                btn.setOpaque(true);
+                btn.setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 2));
+                btn.setOpaque(false);
                 btn.setFocusPainted(false);
 
                 boardButtons[y][x] = btn;
@@ -58,39 +56,59 @@ public class GameBoardSquare extends JPanel implements GameBoard {
 
     @Override
     public Dimension getPreferredSize() {
-        int buttonSize = Math.min(getWidth() / width, getHeight() / height);
-        return new Dimension(buttonSize * width, buttonSize * height);
+        double hexRatio = Math.sqrt(3) / 2;
+        int panelW = getWidth() > 0 ? getWidth() : 1;
+        int panelH = getHeight() > 0 ? getHeight() : 1;
+        int buttonSizeW = (int) (panelW / (width));
+        int buttonSizeH = (int) (panelH / (height));
+        int buttonSize = Math.min(buttonSizeW, buttonSizeH);
+
+        int hexWidth = buttonSize;
+        int hexHeight = (int) (buttonSize * hexRatio * 2);
+        int totalWidth = (int) (width * hexWidth + hexWidth / 2.0);
+//        int totalHeight = (int) ((height - 1) * (hexHeight * 0.5) + hexHeight);
+        int totalHeight = (int) (height * hexHeight + hexHeight / 2.0);
+        return new Dimension(totalWidth, totalHeight);
     }
 
     @Override
     public void doLayout() {
-        int buttonSize = Math.min(getWidth() / width, getHeight() / height);
+        double hexRatio = Math.sqrt(3) / 2;
+        int panelW = getWidth() > 0 ? getWidth() : 1;
+        int panelH = getHeight() > 0 ? getHeight() : 1;
+        int buttonSizeW = (int) (panelW / (width*0.6 + 0.5));
+        int buttonSizeH = (int) (panelH / (height * 0.5 + 0.5));
+        int buttonSize = Math.min(buttonSizeW, buttonSizeH);
+
+        int hexWidth = (int) (buttonSize * 0.6);
+        int hexHeight = (int) (buttonSize * hexRatio * 1.2);
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 JButton btn = boardButtons[y][x];
-                final int dimX = x * buttonSize;
-                final int dimY = y * buttonSize;
+                int offsetX = (y % 2 == 0) ? 0 : hexWidth / 2;
+                int dimX = x * hexWidth + offsetX;
+                int dimY = (int) (y * (hexHeight * 0.5));
 
-                btn.setBounds(dimX, dimY, buttonSize, buttonSize);
-                // Remove all previous action listeners to avoid stacking
+                btn.setBounds(dimX, dimY, hexWidth, hexHeight);
+
                 for (ActionListener al : btn.getActionListeners()) {
                     btn.removeActionListener(al);
                 }
-                btn.addActionListener(e -> showOrganismSelection(dimX, dimY));
+                int finalX = x, finalY = y;
+                btn.addActionListener(e -> showOrganismSelection(finalX, finalY));
             }
         }
     }
 
     @Override
     public void drawWorld() {
-        // Clear all buttons
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 boardButtons[y][x].setIcon(null);
                 boardButtons[y][x].setText("");
             }
         }
-        // Set icons for organisms
         for (Organism org : world.getOrganisms()) {
             int ox = org.getX();
             int oy = org.getY();
@@ -100,7 +118,8 @@ public class GameBoardSquare extends JPanel implements GameBoard {
                 if (imgUrl != null) {
                     ImageIcon icon = new ImageIcon(imgUrl);
                     int buttonSize = Math.min(boardButtons[oy][ox].getWidth(), boardButtons[oy][ox].getHeight());
-                    Image scaledImg = icon.getImage().getScaledInstance(buttonSize, buttonSize, Image.SCALE_SMOOTH);
+                    double scaleFactor = 0.6;
+                    Image scaledImg = icon.getImage().getScaledInstance((int) (buttonSize * scaleFactor), (int) (buttonSize * scaleFactor), Image.SCALE_SMOOTH);
                     boardButtons[oy][ox].setIcon(new ImageIcon(scaledImg));
                 }
             }

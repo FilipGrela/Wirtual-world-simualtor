@@ -11,8 +11,6 @@ import java.util.List;
 public abstract class World {
     protected int width;
     protected int height;
-
-    protected int type;
     protected  int turns; // liczba tur w grze
 
 

@@ -16,7 +16,7 @@ public class GameWindow extends JFrame implements EventLoggerListener {
     private final int height;
     private World world;
     private JTextArea logTextArea;
-    private GameBoardSquare gameBoard; // Replaces boardPanel
+    private GameBoard gameBoard; // Changed to GameBoard interface
 
     public GameWindow(String mapType, int width, int height) {
         this.mapType = mapType;
@@ -24,7 +24,7 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         this.height = height;
 
         setTitle("Gra: " + (mapType.equals("hex") ? "Hex" : "Szachownica") + " Filip Grela 203850");
-        setSize(600, 700);
+        setSize(600, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -62,11 +62,13 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         });
 
         // Initialize world
-        world = new WorldSquare(width, height);
+        world = mapType.equals("hex") ? new WorldSquare(width, height) : new WorldSquare(width, height);
 
         // Game board
-        gameBoard = new GameBoardSquare(width, height, world);
-        add(gameBoard, BorderLayout.CENTER);
+        gameBoard = mapType.equals("hex")
+            ? new GameBoardHex(width, height, world)
+            : new GameBoardSquare(width, height, world);
+        add((JPanel) gameBoard, BorderLayout.CENTER);
 
         // Log panel
         JPanel logPanel = new JPanel();
