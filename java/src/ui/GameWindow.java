@@ -4,6 +4,7 @@ import logger.EventLogger;
 import logger.EventLoggerListener;
 import logger.LogEntry;
 import world.World;
+import world.WorldHex;
 import world.WorldSquare;
 
 import javax.swing.*;
@@ -62,7 +63,7 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         });
 
         // Initialize world
-        world = mapType.equals("hex") ? new WorldSquare(width, height) : new WorldSquare(width, height);
+        world = mapType.equals("hex") ? new WorldHex(width, height) : new WorldSquare(width, height);
 
         // Game board
         gameBoard = mapType.equals("hex")
