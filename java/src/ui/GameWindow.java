@@ -134,7 +134,11 @@ public class GameWindow extends JFrame implements EventLoggerListener {
                     ImageIcon icon = new ImageIcon(imgUrl);
                     int buttonSize = Math.min(boardButtons[oy][ox].getWidth(), boardButtons[oy][ox].getHeight());
                     Image scaledImg = icon.getImage().getScaledInstance(buttonSize, buttonSize, Image.SCALE_SMOOTH);
-                    boardButtons[oy][ox].setIcon(new ImageIcon(scaledImg));
+                    Icon currentIcon = boardButtons[oy][ox].getIcon();
+                    Image currentImg = currentIcon instanceof ImageIcon ? ((ImageIcon) currentIcon).getImage() : null;
+                    if (currentImg == null || !currentImg.equals(scaledImg)) {
+                        boardButtons[oy][ox].setIcon(new ImageIcon(scaledImg));
+                    }
                 }
             }
         }

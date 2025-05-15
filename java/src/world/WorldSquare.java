@@ -63,9 +63,8 @@ public class WorldSquare extends World {
         // Przykładowe dodanie organizmów do świata
         // Można to zrobić w inny sposób, np. z pliku konfiguracyjnego
         for (int i = 0; i < 5; i++) {
-            Organism o = new Fox(i, i, this);
-            EventLogger.getInstance().log("Added " +o.getClass().getName() + " at (" + i + ", " + i + ")");
-            addOrganism(o);
+            addOrganism(new Fox(i, i, this));
+            addOrganism(new Wolf(i+1, i+1, this));
         }
     }
 
