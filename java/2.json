@@ -1,0 +1,1787 @@
+{
+    "turnCounter": 58,
+    "humanAbilityActive": false,
+    "humanAlive": false,
+    "humanAbilityCooldown": 0,
+    "width": 20,
+    "organisms": [
+        {
+            "initiative": 7,
+            "strength": 3,
+            "x": 189,
+            "y": 84,
+            "className": "Fox",
+            "age": 52
+        },
+        {
+            "initiative": 7,
+            "strength": 6,
+            "x": 13,
+            "y": 15,
+            "className": "Fox",
+            "age": 58
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 11,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 11,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 14,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 12,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 15,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 4,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 9,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 7,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 12,
+            "className": "Sheep",
+            "age": 1
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 8,
+            "className": "Sheep",
+            "age": 2
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 14,
+            "y": 9,
+            "className": "Sheep",
+            "age": 2
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 13,
+            "className": "Sheep",
+            "age": 2
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 1,
+            "className": "Sheep",
+            "age": 2
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 0,
+            "className": "Sheep",
+            "age": 2
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 14,
+            "y": 11,
+            "className": "Sheep",
+            "age": 3
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 10,
+            "className": "Sheep",
+            "age": 3
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 14,
+            "className": "Sheep",
+            "age": 3
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 13,
+            "className": "Sheep",
+            "age": 3
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 13,
+            "y": 9,
+            "className": "Sheep",
+            "age": 3
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 2,
+            "className": "Sheep",
+            "age": 3
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 10,
+            "className": "Sheep",
+            "age": 4
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 13,
+            "className": "Sheep",
+            "age": 4
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 13,
+            "y": 11,
+            "className": "Sheep",
+            "age": 4
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 13,
+            "className": "Sheep",
+            "age": 4
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 8,
+            "className": "Sheep",
+            "age": 4
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 15,
+            "className": "Sheep",
+            "age": 5
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 8,
+            "className": "Sheep",
+            "age": 5
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 8,
+            "className": "Sheep",
+            "age": 5
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 13,
+            "y": 8,
+            "className": "Sheep",
+            "age": 5
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 6,
+            "className": "Sheep",
+            "age": 5
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 6,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 10,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 9,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 14,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 10,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 9,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 11,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 9,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 5,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 9,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 13,
+            "className": "Sheep",
+            "age": 6
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 10,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 7,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 11,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 11,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 11,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 8,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 8,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 10,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 7,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 7,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 11,
+            "className": "Sheep",
+            "age": 7
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 6,
+            "className": "Sheep",
+            "age": 8
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 0,
+            "className": "Sheep",
+            "age": 8
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 8,
+            "className": "Sheep",
+            "age": 8
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 10,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 9,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 6,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 5,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 0,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 0,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 8,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 9,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 1,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 9,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 12,
+            "className": "Sheep",
+            "age": 9
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 5,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 3,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 6,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 9,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 1,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 2,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 3,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 1,
+            "className": "Sheep",
+            "age": 10
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 8,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 7,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 0,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 5,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 8,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 4,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 1,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 4,
+            "className": "Sheep",
+            "age": 11
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 2,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 0,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 0,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 1,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 0,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 1,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 4,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 0,
+            "className": "Sheep",
+            "age": 12
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 2,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 2,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 7,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 6,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 7,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 0,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 1,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 3,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 7,
+            "className": "Sheep",
+            "age": 13
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 9,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 1,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 5,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 6,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 2,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 3,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 4,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 3,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 8,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 2,
+            "className": "Sheep",
+            "age": 14
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 5,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 2,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 4,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 3,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 6,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 4,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 1,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 1,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 3,
+            "y": 5,
+            "className": "Sheep",
+            "age": 15
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 7,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 5,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 0,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 2,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 7,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 4,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 4,
+            "className": "Sheep",
+            "age": 16
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 5,
+            "className": "Sheep",
+            "age": 17
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 5,
+            "className": "Sheep",
+            "age": 17
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 6,
+            "className": "Sheep",
+            "age": 18
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 4,
+            "className": "Sheep",
+            "age": 18
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 3,
+            "className": "Sheep",
+            "age": 18
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 2,
+            "className": "Sheep",
+            "age": 18
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 3,
+            "className": "Sheep",
+            "age": 18
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 3,
+            "className": "Sheep",
+            "age": 19
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 5,
+            "className": "Sheep",
+            "age": 20
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 6,
+            "className": "Sheep",
+            "age": 20
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 6,
+            "className": "Sheep",
+            "age": 20
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 6,
+            "className": "Sheep",
+            "age": 20
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 4,
+            "className": "Sheep",
+            "age": 22
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 6,
+            "y": 5,
+            "className": "Sheep",
+            "age": 28
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 3,
+            "className": "Sheep",
+            "age": 34
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 10,
+            "className": "Sheep",
+            "age": 34
+        },
+        {
+            "initiative": 4,
+            "strength": 7,
+            "x": 5,
+            "y": 4,
+            "className": "Sheep",
+            "age": 58
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 2,
+            "className": "Sheep",
+            "age": 58
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 9,
+            "y": 15,
+            "className": "Turtle",
+            "age": 58
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 15,
+            "y": 0,
+            "className": "Turtle",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 18,
+            "y": 13,
+            "className": "Dandelion",
+            "age": 1
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 7,
+            "className": "Dandelion",
+            "age": 2
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 10,
+            "className": "Grass",
+            "age": 4
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 11,
+            "y": 16,
+            "className": "Guarana",
+            "age": 5
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 14,
+            "y": 16,
+            "className": "Guarana",
+            "age": 6
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 6,
+            "y": 18,
+            "className": "Guarana",
+            "age": 6
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 18,
+            "y": 18,
+            "className": "Belladonna",
+            "age": 7
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 10,
+            "y": 11,
+            "className": "Belladonna",
+            "age": 8
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 12,
+            "y": 17,
+            "className": "Guarana",
+            "age": 8
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 4,
+            "y": 16,
+            "className": "SosnowskyHogweed",
+            "age": 8
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 11,
+            "className": "Grass",
+            "age": 10
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 8,
+            "y": 10,
+            "className": "Belladonna",
+            "age": 11
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 13,
+            "className": "Grass",
+            "age": 11
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 8,
+            "y": 18,
+            "className": "Guarana",
+            "age": 13
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 18,
+            "y": 10,
+            "className": "Grass",
+            "age": 13
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 13,
+            "y": 6,
+            "className": "SosnowskyHogweed",
+            "age": 13
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 14,
+            "y": 17,
+            "className": "Guarana",
+            "age": 14
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 9,
+            "y": 9,
+            "className": "Belladonna",
+            "age": 15
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 13,
+            "className": "Grass",
+            "age": 15
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 5,
+            "y": 12,
+            "className": "Belladonna",
+            "age": 15
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 5,
+            "y": 18,
+            "className": "SosnowskyHogweed",
+            "age": 16
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 17,
+            "className": "Guarana",
+            "age": 18
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 5,
+            "y": 10,
+            "className": "Belladonna",
+            "age": 19
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 8,
+            "className": "Dandelion",
+            "age": 20
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 9,
+            "y": 10,
+            "className": "Belladonna",
+            "age": 21
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 7,
+            "y": 18,
+            "className": "Guarana",
+            "age": 21
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 12,
+            "y": 18,
+            "className": "Guarana",
+            "age": 23
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 16,
+            "className": "Guarana",
+            "age": 27
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 13,
+            "y": 17,
+            "className": "Guarana",
+            "age": 28
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 3,
+            "y": 13,
+            "className": "Belladonna",
+            "age": 30
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 8,
+            "y": 9,
+            "className": "Belladonna",
+            "age": 31
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 18,
+            "y": 12,
+            "className": "SosnowskyHogweed",
+            "age": 31
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 7,
+            "y": 17,
+            "className": "Guarana",
+            "age": 32
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 11,
+            "className": "Grass",
+            "age": 33
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 19,
+            "className": "Guarana",
+            "age": 35
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 6,
+            "y": 17,
+            "className": "SosnowskyHogweed",
+            "age": 36
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 15,
+            "className": "Guarana",
+            "age": 37
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 13,
+            "y": 19,
+            "className": "Guarana",
+            "age": 39
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 12,
+            "className": "Grass",
+            "age": 43
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 17,
+            "className": "Guarana",
+            "age": 44
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 12,
+            "className": "Grass",
+            "age": 46
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 11,
+            "className": "Grass",
+            "age": 47
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 14,
+            "y": 18,
+            "className": "Guarana",
+            "age": 53
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 14,
+            "y": 19,
+            "className": "Guarana",
+            "age": 57
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 7,
+            "y": 19,
+            "className": "Guarana",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 3,
+            "y": 12,
+            "className": "Belladonna",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 12,
+            "y": 2,
+            "className": "SosnowskyHogweed",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 12,
+            "className": "Grass",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 6,
+            "y": 16,
+            "className": "Guarana",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 18,
+            "y": 17,
+            "className": "Belladonna",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 15,
+            "y": 7,
+            "className": "SosnowskyHogweed",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 12,
+            "className": "Dandelion",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 18,
+            "className": "Guarana",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 8,
+            "y": 8,
+            "className": "Belladonna",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 17,
+            "y": 11,
+            "className": "SosnowskyHogweed",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 6,
+            "y": 14,
+            "className": "Belladonna",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 5,
+            "y": 17,
+            "className": "SosnowskyHogweed",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 5,
+            "y": 11,
+            "className": "Belladonna",
+            "age": 58
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 13,
+            "y": 5,
+            "className": "SosnowskyHogweed",
+            "age": 58
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 0,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 1,
+            "y": 16,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 14,
+            "y": 12,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 12,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 15,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 8,
+            "y": 7,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 13,
+            "y": 10,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 11,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 8,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 11,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 0,
+            "y": 12,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 10,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 12,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 9,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 7,
+            "y": 7,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 3,
+            "className": "Sheep",
+            "age": 0
+        }
+    ],
+    "humanAbilityDuration": -1,
+    "height": 20
+}

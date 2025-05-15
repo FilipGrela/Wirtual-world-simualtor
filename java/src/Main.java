@@ -25,16 +25,12 @@ public class Main {
     private static void startGame(MapSelectionWindow window, String mapType, int width, int height) {
         GameWindow gameWindow = new GameWindow(mapType, width, height);
         gameWindow.setVisible(true);
-        gameWindow.setFocusableWindowState(true);
-        gameWindow.requestFocus();
         window.setVisible(false);
 
         World world = gameWindow.getWorld();
         world.fillWorld();
-
         gameWindow.refresh();
 
-        // Add a key listener to the game window to handle key events
         Map<Integer, int[]> directionMap = new HashMap<>();
         directionMap.put(KeyEvent.VK_UP, new int[]{0, -1});
         directionMap.put(KeyEvent.VK_DOWN, new int[]{0, 1});
@@ -49,30 +45,28 @@ public class Main {
         directionMap.put(KeyEvent.VK_NUMPAD8, new int[]{0, -1});
         directionMap.put(KeyEvent.VK_NUMPAD9, new int[]{1, -1});
 
-        gameWindow.addKeyListener(new java.awt.event.KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                EventLogger.getInstance().log(String.valueOf(e.getKeyCode()));
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    gameWindow.dispose();
-                    createAndShowMapSelectionWindow();
-                } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    world.setHumanDirection(new int[]{0, 0});
-                    world.executeTurn();
-                    gameWindow.refresh();
-                } else if (directionMap.containsKey(e.getKeyCode())) {
-                    world.setHumanDirection(directionMap.get(e.getKeyCode()));
-                    world.executeTurn();
-                    gameWindow.refresh();
-                } else if (e.getKeyCode() == KeyEvent.VK_A) { // Example: activate ability with 'A'
-                    // Find human and activate ability
-                    for (var org : world.getOrganisms()) {
-                        if (org instanceof Human) {
-                            ((Human) org).activateAbility();
-                        }
+        java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            if (e.getID() != KeyEvent.KEY_PRESSED) return false;
+            EventLogger.getInstance().log(String.valueOf(e.getKeyCode()));
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                gameWindow.dispose();
+                createAndShowMapSelectionWindow();
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                world.setHumanDirection(new int[]{0, 0});
+                world.executeTurn();
+                gameWindow.refresh();
+            } else if (directionMap.containsKey(e.getKeyCode())) {
+                world.setHumanDirection(directionMap.get(e.getKeyCode()));
+                world.executeTurn();
+                gameWindow.refresh();
+            } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                for (var org : world.getOrganisms()) {
+                    if (org instanceof Human) {
+                        ((Human) org).activateAbility();
                     }
                 }
             }
+            return false; // allow other listeners to process the event
         });
     }
 }
