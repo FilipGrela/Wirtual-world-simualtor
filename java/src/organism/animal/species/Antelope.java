@@ -19,8 +19,10 @@ public class Antelope extends Animal {
     protected int[] getNewPosition() {
         // Antelope moves 2 fields in one direction
         int[][] directions = {
-                {0, 2}, {2, 0}, {0, -2}, {-2, 0},
-                {0, 1}, {1, 0}, {0, -1}, {-1, 0}
+            {0, 2}, {2, 0}, {0, -2}, {-2, 0},
+            {0, 1}, {1, 0}, {0, -1}, {-1, 0},
+            {2, 2}, {2, -2}, {-2, 2}, {-2, -2}, // diagonal moves (2 fields)
+            {1, 1}, {1, -1}, {-1, 1}, {-1, -1}  // diagonal moves (1 field)
         };
         List<int[]> possibleMoves = new ArrayList<>();
         for (int[] dir : directions) {
@@ -41,7 +43,7 @@ public class Antelope extends Animal {
             int[] escapePos = getNewPosition();
             if (escapePos[0] != x || escapePos[1] != y) {
                 this.move(escapePos[0], escapePos[1]);
-                EventLogger.getInstance().log("Antelope escaped from " + other.getSymbol() + " at (" + x + ", " + y + ")");
+                EventLogger.getInstance().log("Antelope escaped from " + other.getClass().getName() + " at (" + x + ", " + y + ")");
                 return false;
             }
         }

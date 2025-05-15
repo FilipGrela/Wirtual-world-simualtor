@@ -42,8 +42,6 @@ public abstract class World {
     // Metoda wykonująca jedną turę gry (wywołuje akcje organizmów i obsługuje kolizje)
     public abstract void executeTurn();
 
-    // Metoda rysująca świat (np. do konsoli lub GUI)
-    public abstract void drawWorld();
 
     // Sprawdza czy współrzędne są na planszy
     public boolean isInside(int x, int y) {
@@ -76,5 +74,6 @@ public abstract class World {
 
     public abstract int[] findNearestFree(int x, int y);
     public abstract void fillWorld(); // Metoda do wypełnienia świata organizmami na początku gry
+    public abstract List<int[]> getNeighbors(int x, int y); // Metoda do pobierania sąsiadów danego pola
 }
 

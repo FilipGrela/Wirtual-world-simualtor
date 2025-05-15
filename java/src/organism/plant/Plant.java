@@ -21,7 +21,7 @@ public abstract class Plant extends Organism {
     }
 
     protected int[] getNewPosition() {
-        int[][] directions = { {0,1}, {1,0}, {0,-1}, {-1,0} };
+        int[][] directions = { {0,1}, {1,0}, {0,-1}, {-1,0}, {1,1}, {1,-1}, {-1,1}, {-1,-1} };
         List<int[]> possible = new ArrayList<>();
         for (int[] d : directions) {
             int nx = x + d[0], ny = y + d[1];

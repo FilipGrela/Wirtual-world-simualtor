@@ -3,7 +3,7 @@ package world;
 import logger.EventLogger;
 import organism.Organism;
 import organism.animal.species.*;
-import organism.plant.species.Grass;
+import organism.plant.species.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,6 @@ public class WorldSquare extends World {
     @Override
     public void executeTurn() {
         EventLogger.getInstance().log("====== Turn " + turns + " ======");
-        // Przykładowa implementacja kolejności wykonywania ruchów i akcji organizmów
         // sortowanie organizmów po inicjatywie i wieku (starszeństwie)
         organisms.sort((o1, o2) -> {
             if (o2.getInitiative() != o1.getInitiative())
@@ -31,21 +30,15 @@ public class WorldSquare extends World {
             org.action();
         }
 
-        // Tutaj można obsłużyć kolizje, rozprzestrzenianie się, itp.
+
         turns++;
     }
 
-    @Override
-    public void drawWorld() {
-        // Rysowanie obsługuje GameWindow (GUI) - metoda pusta
-    }
-
-    // drawWorld obsługuje teraz GameWindow
-
     // Dodatkowe metody specyficzne dla planszy kwadratowej (np. pobieranie sąsiadów)
+    @Override
     public List<int[]> getNeighbors(int x, int y) {
         List<int[]> neighbors = new ArrayList<>();
-        int[][] deltas = { {1,0}, {-1,0}, {0,1}, {0,-1} }; // 4 kierunki
+        int[][] deltas = { {1,0}, {-1,0}, {0,1}, {0,-1}, {1,1}, {1,-1}, {-1,1}, {-1,-1} }; // 8 directions (including diagonals)
 
         for (int[] d : deltas) {
             int nx = x + d[0];
@@ -60,7 +53,7 @@ public class WorldSquare extends World {
     // Metoda do dodawania organizmów do świata
     @Override
     public void fillWorld(){
-        int count = 3;
+        int count = 5;
         List<int[]> freePositions = new ArrayList<>();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
@@ -72,17 +65,23 @@ public class WorldSquare extends World {
         java.util.Collections.shuffle(freePositions);
 
         for (int i = 0; i < count && freePositions.size() >= 3; i++) {
-            addOrganism(new Fox(freePositions.remove(0)[0], freePositions.get(0)[1], this));
-            addOrganism(new Wolf(freePositions.remove(0)[0], freePositions.get(0)[1], this));
-            addOrganism(new Sheep(freePositions.remove(0)[0], freePositions.get(0)[1], this));
-            addOrganism(new Turtle(freePositions.remove(0)[0], freePositions.get(0)[1], this));
-            addOrganism(new Antelope(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+            addOrganism(new Fox(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Wolf(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Sheep(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Turtle(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Antelope(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
 
-            addOrganism(new Grass(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+            addOrganism(new Grass(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Dandelion(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Guarana(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new Belladonna(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
+            addOrganism(new SosnowskyHogweed(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
         }
+        
+        EventLogger.getInstance().log("World filled with organisms.");
     }
 
-    // Zwraca najbliższe wolne miejsce w okolicy punktu (lub null jeśli brak)
+    // Zwraca najbliższe wolne miejsce w okolicy punktu (lub null, jeśli brak)
     public int[] findNearestFree(int x, int y) {
         int[][] directions = {
             {0, 1},    // Up
@@ -103,4 +102,5 @@ public class WorldSquare extends World {
         }
         return null;
     }
+
 }

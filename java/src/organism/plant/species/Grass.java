@@ -2,7 +2,6 @@ package organism.plant.species;
 
 import constants.Constants;
 import logger.EventLogger;
-import organism.Organism;
 import organism.plant.Plant;
 import world.World;
 

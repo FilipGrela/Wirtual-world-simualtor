@@ -114,10 +114,9 @@ public abstract class Organism {
     }
 
     public void action() {
-        if (age > 0) {
             int[] newPos = getNewPosition();
             move(newPos[0], newPos[1]);
-        }
+
         increaseAge();
     }
 
