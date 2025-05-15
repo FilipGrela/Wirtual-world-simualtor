@@ -22,7 +22,8 @@ public class Main {
     private static void startGame(MapSelectionWindow window, String mapType, int width, int height) {
         GameWindow gameWindow = new GameWindow(mapType, width, height);
         gameWindow.setVisible(true);
-        gameWindow.requestFocusInWindow();
+        gameWindow.setFocusableWindowState(true);
+        gameWindow.requestFocus();
         window.setVisible(false);
 
         World world = gameWindow.getWorld();

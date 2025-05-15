@@ -1,5 +1,6 @@
 package world;
 
+import logger.EventLogger;
 import organism.Organism;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public abstract class World {
 
     // Dodaj organizm do świata
     public void addOrganism(Organism org) {
+        EventLogger.getInstance().log("Organism " + org.getSymbol() + " added at (" + org.getX() + ", " + org.getY() + ")");
         organisms.add(org);
     }
 

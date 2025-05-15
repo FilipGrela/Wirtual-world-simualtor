@@ -2,8 +2,9 @@ package organism.animal;
 
 import logger.EventLogger;
 import organism.Organism;
-import organism.animal.species.Wolf;
 import world.World;
+
+import java.net.URL;
 
 public abstract class Animal extends Organism {
 

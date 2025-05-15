@@ -1,9 +1,9 @@
 package organism;
 
-import jdk.jfr.Event;
 import logger.EventLogger;
 import world.World;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -114,9 +114,11 @@ public abstract class Organism {
     }
 
     public void action() {
+        if (age > 0) {
+            int[] newPos = getNewPosition();
+            move(newPos[0], newPos[1]);
+        }
         increaseAge();
-        int[] newPos = getNewPosition();
-        move(newPos[0], newPos[1]);
     }
 
     public void move(int newX, int newY) {
@@ -124,7 +126,7 @@ public abstract class Organism {
         Organism other = world.getOrganismAt(newX, newY);
         boolean isThisOrganismDeleted = false;
         if (other != null && other != this) {
-            EventLogger.getInstance().log("Collision between " + symbol + " and " + other.getSymbol() + " at (" + newX + ", " + newY + ")");
+            EventLogger.getInstance().log("Collision between " + getClass().getName() + " and " + other.getClass().getName() + " at (" + newX + ", " + newY + ")");
             isThisOrganismDeleted = other.collision(this);
         }
         if (!isThisOrganismDeleted && world.getOrganismAt(newX, newY) == null) {

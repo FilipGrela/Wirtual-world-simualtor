@@ -2,6 +2,7 @@ package world;
 
 import logger.EventLogger;
 import organism.Organism;
+import organism.animal.species.Fox;
 import organism.animal.species.Wolf;
 
 import java.util.ArrayList;
@@ -62,29 +63,29 @@ public class WorldSquare extends World {
         // Przykładowe dodanie organizmów do świata
         // Można to zrobić w inny sposób, np. z pliku konfiguracyjnego
         for (int i = 0; i < 5; i++) {
-             addOrganism(new Wolf(i, i, this));
+            Organism o = new Fox(i, i, this);
+            EventLogger.getInstance().log("Added " +o.getClass().getName() + " at (" + i + ", " + i + ")");
+            addOrganism(o);
         }
     }
 
     // Zwraca najbliższe wolne miejsce w okolicy punktu (lub null jeśli brak)
     public int[] findNearestFree(int x, int y) {
-        List<int[]> queue = new ArrayList<>();
-        boolean[][] visited = new boolean[width][height];
-        queue.add(new int[]{x, y});
-        visited[x][y] = true;
-
-        while (!queue.isEmpty()) {
-            int[] pos = queue.remove(0);
-            int px = pos[0], py = pos[1];
-            if (getOrganismAt(px, py) == null) {
-                return new int[]{px, py};
-            }
-            for (int[] n : getNeighbors(px, py)) {
-                int nx = n[0], ny = n[1];
-                if (!visited[nx][ny]) {
-                    queue.add(new int[]{nx, ny});
-                    visited[nx][ny] = true;
-                }
+        int[][] directions = {
+            {0, 1},    // Up
+            {1, 0},    // Right
+            {0, -1},   // Down
+            {-1, 0},   // Left
+            {1, 1},    // Up-Right
+            {1, -1},   // Down-Right
+            {-1, 1},   // Up-Left
+            {-1, -1}   // Down-Left
+        };
+        for (int[] dir : directions) {
+            int nx = x + dir[0];
+            int ny = y + dir[1];
+            if (isInside(nx, ny) && getOrganismAt(nx, ny) == null) {
+                return new int[]{nx, ny};
             }
         }
         return null;

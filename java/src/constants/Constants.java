@@ -1,5 +1,7 @@
 package constants;
 
+import java.net.URL;
+
 public class Constants {
     public enum Direction {
         NONE, UP, DOWN, LEFT, RIGHT
@@ -7,15 +9,19 @@ public class Constants {
 
     public static final int logNotifyInterval = 100; // ms
 
-    public static class World {
-        public static final String EmptySymbol = "⚫";
-    }
+    public static class Map {
+        public static class Chessboard{
+            public static final int DefaultWidth = 20;
+            public static final int DefaultHeight = 20;
+        }
+     }
+
 
     public static class Animal {
         public static class Wolf {
             public static final int Strength = 9;
             public static final int Initiative = 5;
-            public static final String Symbol = "🐺";
+            public static final String Symbol = "/icons/wolf.png";
         }
         public static class Sheep {
             public static final int Strength = 4;
@@ -25,7 +31,7 @@ public class Constants {
         public static class Fox {
             public static final int Strength = 3;
             public static final int Initiative = 7;
-            public static final String Symbol = "🦊";
+            public static final String Symbol = "/icons/fox.png";
         }
         public static class Turtle {
             public static final int Strength = 2;

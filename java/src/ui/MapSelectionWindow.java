@@ -1,5 +1,7 @@
 package ui;
 
+import constants.Constants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -39,8 +41,8 @@ public class MapSelectionWindow extends JFrame {
 
         chessButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JTextField widthField = new JTextField("10");
-                JTextField heightField = new JTextField("10");
+                JTextField widthField = new JTextField(String.valueOf(Constants.Map.Chessboard.DefaultWidth));
+                JTextField heightField = new JTextField(String.valueOf(Constants.Map.Chessboard.DefaultHeight));
                 JPanel inputPanel = new JPanel(new GridLayout(2,2));
                 inputPanel.add(new JLabel("Szerokość:"));
                 inputPanel.add(widthField);

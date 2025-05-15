@@ -56,18 +56,15 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         boardButtons = new JButton[height][width];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                ImageIcon foxIcon = new ImageIcon(); // ścieżka względna w JAR lub folderze resources
+
                 JButton btn = new JButton();
-                btn.setFocusable(false);
-                btn.setMargin(new Insets(0, 0, 0, 0));
-                btn.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+                btn.setContentAreaFilled(false);
+                btn.setContentAreaFilled(true);
+                btn.setBorderPainted(true);
                 btn.setBackground(new Color(250, 250, 250));
-                btn.setForeground(new Color(40, 40, 40));
-                btn.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(new Color(220, 220, 220), 2, true),
-                        BorderFactory.createEmptyBorder(8, 8, 8, 8)
-                ));
                 btn.setOpaque(true);
-                btn.setFocusPainted(false);
+
                 boardButtons[y][x] = btn;
                 boardPanel.add(btn);
             }
@@ -119,18 +116,26 @@ public class GameWindow extends JFrame implements EventLoggerListener {
 
     // Aktualizuje widok planszy na podstawie stanu świata
     public void drawWorld() {
-        // Najpierw wyczyść planszę
+        // Clear all buttons
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                boardButtons[y][x].setIcon(null);
                 boardButtons[y][x].setText("");
             }
         }
-        // Ustaw organizmy na planszy
+        // Set icons for organisms
         for (Organism org : world.getOrganisms()) {
             int ox = org.getX();
             int oy = org.getY();
             if (ox >= 0 && ox < width && oy >= 0 && oy < height) {
-                boardButtons[oy][ox].setText(String.valueOf(org.getSymbol()));
+                String imagePath = org.getSymbol(); // e.g. "/images/fox.png"
+                java.net.URL imgUrl = getClass().getResource(imagePath);
+                if (imgUrl != null) {
+                    ImageIcon icon = new ImageIcon(imgUrl);
+                    int buttonSize = Math.min(boardButtons[oy][ox].getWidth(), boardButtons[oy][ox].getHeight());
+                    Image scaledImg = icon.getImage().getScaledInstance(buttonSize, buttonSize, Image.SCALE_SMOOTH);
+                    boardButtons[oy][ox].setIcon(new ImageIcon(scaledImg));
+                }
             }
         }
     }
