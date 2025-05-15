@@ -42,11 +42,11 @@ public class GameBoardSquare extends JPanel implements GameBoard {
         }
     }
 
-    private void showOrganismSelection(int x, int y) {
+    private void showOrganismSelection(int x, int y, int buttonSize) {
         OrganismAddDialog.showOrganismSelection(
                 this,
                 world.getAvailableOrganisms(),
-                x, y,
+                x * buttonSize, y * buttonSize,
                 e -> {
                     String organism = ((JMenuItem) e.getSource()).getText();
                     world.removeOrganismAt(x, y);
@@ -68,15 +68,16 @@ public class GameBoardSquare extends JPanel implements GameBoard {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 JButton btn = boardButtons[y][x];
-                final int dimX = x * buttonSize;
-                final int dimY = y * buttonSize;
 
-                btn.setBounds(dimX, dimY, buttonSize, buttonSize);
+                btn.setBounds(x* buttonSize, y * buttonSize, buttonSize, buttonSize);
                 // Remove all previous action listeners to avoid stacking
                 for (ActionListener al : btn.getActionListeners()) {
                     btn.removeActionListener(al);
                 }
-                btn.addActionListener(e -> showOrganismSelection(dimX, dimY));
+
+                final int dimX = x;
+                final int dimY = y;
+                btn.addActionListener(e -> showOrganismSelection(dimX, dimY, buttonSize));
             }
         }
     }

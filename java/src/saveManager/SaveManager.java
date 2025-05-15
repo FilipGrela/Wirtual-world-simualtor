@@ -1,5 +1,6 @@
 package saveManager;
 
+import constants.Constants;
 import organism.Organism;
 import organism.animal.species.Human;
 import organism.animal.species.Fox;
@@ -92,6 +93,7 @@ public class SaveManager {
                         human.setAbilityActive(j.getBoolean("humanAbilityActive"));
                         human.setAbilityCooldown(j.getInt("humanAbilityCooldown"));
                         human.setAbilityDuration(j.getInt("humanAbilityDuration"));
+                        human.changeSymbol(Constants.Animal.Human.SymbolActiveAbility);
                     }
                 }
             }

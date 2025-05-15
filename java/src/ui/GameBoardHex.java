@@ -40,11 +40,11 @@ public class GameBoardHex extends JPanel implements GameBoard {
         }
     }
 
-    private void showOrganismSelection(int x, int y) {
+    private void showOrganismSelection(int x, int y, final int buttonSize) {
         OrganismAddDialog.showOrganismSelection(
                 this,
                 world.getAvailableOrganisms(),
-                x, y,
+                (int) (x * buttonSize * 0.6 + 0.5), (int) (y * buttonSize * 0.5 + 0.5),
                 e -> {
                     String organism = ((JMenuItem) e.getSource()).getText();
                     world.removeOrganismAt(x, y);
@@ -96,7 +96,8 @@ public class GameBoardHex extends JPanel implements GameBoard {
                     btn.removeActionListener(al);
                 }
                 int finalX = x, finalY = y;
-                btn.addActionListener(e -> showOrganismSelection(finalX, finalY));
+                int finalButtonSize = buttonSize;
+                btn.addActionListener(e -> showOrganismSelection(finalX, finalY, finalButtonSize));
             }
         }
     }
