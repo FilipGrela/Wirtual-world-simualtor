@@ -24,13 +24,45 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         this.mapType = mapType;
         this.width = width;
         this.height = height;
-        setTitle("Gra: " + (mapType.equals("hex") ? "Hex" : "Szachownica"));
+        setTitle("Gra: " + (mapType.equals("hex") ? "Hex" : "Szachownica") + " Filip Grela 203850" );
         setSize(600, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         setLayout(new BorderLayout());
 
+        // Add this at the start of your GameWindow constructor, after setTitle(...)
+        JMenuBar menuBar = new JMenuBar();
+        JMenu gameMenu = new JMenu("Game");
+        JMenuItem loadItem = new JMenuItem("Load Game");
+        JMenuItem saveItem = new JMenuItem("Save Game");
+
+        gameMenu.add(loadItem);
+        gameMenu.add(saveItem);
+        menuBar.add(gameMenu);
+        setJMenuBar(menuBar);
+
+        // Example: add action listeners for future implementation
+        loadItem.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser(".");
+            fileChooser.setDialogTitle("Select save file");
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JSON files", "json"));
+            int result = fileChooser.showOpenDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String filename = fileChooser.getSelectedFile().getAbsolutePath();
+                saveManager.SaveManager.loadWorldFromFile(world, filename);
+                refresh();
+                JOptionPane.showMessageDialog(this, "Game loaded from " + filename);
+            }
+        });
+        saveItem.addActionListener(e -> {
+            String filename = JOptionPane.showInputDialog(this, "Enter save file name:", "Save Game", JOptionPane.PLAIN_MESSAGE);
+            if (filename != null && !filename.trim().isEmpty()) {
+                if (!filename.endsWith(".json")) filename += ".json";
+                saveManager.SaveManager.saveWorldToFile(world, filename);
+                JOptionPane.showMessageDialog(this, "Game saved as " + filename);
+            }
+        });
         // Górna część (plansza)
         boardPanel = new JPanel() {
             @Override
@@ -81,6 +113,13 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         logPanel.setLayout(new BorderLayout());
         logPanel.setBackground(Color.WHITE);
 
+        // Panel wyszukiwania
+        JPanel searchPanel = new JPanel(new BorderLayout());
+        JLabel searchLabel = new JLabel("Szukaj w logach: ");
+        JTextField searchField = new JTextField();
+        searchPanel.add(searchLabel, BorderLayout.WEST);
+        searchPanel.add(searchField, BorderLayout.CENTER);
+
         logTextArea = new JTextArea();
         logTextArea.setEditable(false);
         logTextArea.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
@@ -95,9 +134,28 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         scrollPane.setBackground(Color.WHITE);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
+        logPanel.add(searchPanel, BorderLayout.NORTH);
         logPanel.add(scrollPane, BorderLayout.CENTER);
 
         add(logPanel, BorderLayout.SOUTH);
+
+        // Listener do wyszukiwania w logach
+        searchField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            private void filterLogs() {
+                String query = searchField.getText().toLowerCase();
+                String[] lines = logTextArea.getText().split("\n");
+                StringBuilder filtered = new StringBuilder();
+                for (String line : lines) {
+                    if (line.toLowerCase().contains(query)) {
+                        filtered.append(line).append("\n");
+                    }
+                }
+                logTextArea.setText(filtered.toString());
+            }
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { filterLogs(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { filterLogs(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { filterLogs(); }
+        });
 
         EventLogger.getInstance().addListener(this);
     }

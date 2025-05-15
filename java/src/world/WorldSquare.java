@@ -2,6 +2,7 @@ package world;
 
 import logger.EventLogger;
 import organism.Organism;
+import organism.animal.species.Human;
 import organism.animal.species.*;
 import organism.plant.species.*;
 
@@ -13,6 +14,9 @@ public class WorldSquare extends World {
     public WorldSquare(int width, int height) {
         super(width, height);
     }
+
+    private int[] humanDirection = new int[]{0, 0};
+    private boolean humanAlive = true;
 
     @Override
     public void executeTurn() {
@@ -58,11 +62,15 @@ public class WorldSquare extends World {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 if (getOrganismAt(x, y) == null) {
+                    if (x != width/2 || y != height/2) { // nie dodawaj na środku
                     freePositions.add(new int[]{x, y});
+                    }
                 }
             }
         }
         java.util.Collections.shuffle(freePositions);
+
+        addOrganism(new Human(width/2, height/2, this));
 
         for (int i = 0; i < count && freePositions.size() >= 3; i++) {
             addOrganism(new Fox(freePositions.removeFirst()[0], freePositions.getFirst()[1], this));
@@ -103,4 +111,18 @@ public class WorldSquare extends World {
         return null;
     }
 
+    @Override
+    public int[] getHumanDirection() {
+        return humanDirection;
+    }
+
+    @Override
+    public void setHumanDirection(int[] dir) {
+        this.humanDirection = dir;
+    }
+
+    @Override
+    public void setHumanAlive(boolean alive) {
+        this.humanAlive = alive;
+    }
 }

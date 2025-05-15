@@ -121,11 +121,11 @@ public abstract class Organism {
     }
 
     public void move(int newX, int newY) {
-        EventLogger.getInstance().log("Moved " + symbol + " form (" + x + ", " + y + ") to (" + newX + ", " + newY + ")");
+        EventLogger.getInstance().log("Moved " + getClass().getSimpleName() + " form (" + x + ", " + y + ") to (" + newX + ", " + newY + ")");
         Organism other = world.getOrganismAt(newX, newY);
         boolean isThisOrganismDeleted = false;
         if (other != null && other != this) {
-            EventLogger.getInstance().log("Collision between " + getClass().getName() + " and " + other.getClass().getName() + " at (" + newX + ", " + newY + ")");
+            EventLogger.getInstance().log("Collision between " + getClass().getSimpleName() + " and " + other.getClass().getSimpleName() + " at (" + newX + ", " + newY + ")");
             isThisOrganismDeleted = other.collision(this);
         }
         if (!isThisOrganismDeleted && world.getOrganismAt(newX, newY) == null) {
@@ -134,7 +134,7 @@ public abstract class Organism {
     }
 
     public void die() {
-        EventLogger.getInstance().log("Organism " + symbol + " died at (" + x + ", " + y + ")");
+        EventLogger.getInstance().log("Organism " + getClass().getSimpleName() + " died at (" + x + ", " + y + ")");
         world.removeOrganism(this);
     }
 

@@ -43,7 +43,7 @@ public class Antelope extends Animal {
             int[] escapePos = getNewPosition();
             if (escapePos[0] != x || escapePos[1] != y) {
                 this.move(escapePos[0], escapePos[1]);
-                EventLogger.getInstance().log("Antelope escaped from " + other.getClass().getName() + " at (" + x + ", " + y + ")");
+                EventLogger.getInstance().log("Antelope escaped from " + other.getClass().getSimpleName() + " at (" + x + ", " + y + ")");
                 return false;
             }
         }

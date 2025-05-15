@@ -28,7 +28,7 @@ public class Guarana extends Plant {
     @Override
     public boolean collision(Organism other) {
         other.setStrength(other.getStrength() + 3);
-        EventLogger.getInstance().log("Guarana increased the strength of " + other.getClass().getName() + " by 3 at (" + x + ", " + y + ")");
+        EventLogger.getInstance().log("Guarana increased the strength of " + other.getClass().getSimpleName() + " by 3 at (" + x + ", " + y + ")");
         die();
         return false;
     }

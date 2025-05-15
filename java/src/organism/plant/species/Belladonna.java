@@ -27,7 +27,7 @@ public class Belladonna extends Plant {
 
     @Override
     public boolean collision(Organism other) {
-        EventLogger.getInstance().log("Belladonna has killed " + other.getClass().getName() + " at (" + x + ", " + y + ")");
+        EventLogger.getInstance().log("Belladonna has killed " + other.getClass().getSimpleName() + " at (" + x + ", " + y + ")");
         other.die();
         return false;
     }

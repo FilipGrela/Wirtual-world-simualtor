@@ -28,14 +28,14 @@ public abstract class Animal extends Organism {
     }
 
     protected boolean fight(Organism other) {
-        EventLogger.getInstance().log("Fight between " + this.getSymbol() + " and " + other.getSymbol());
+        EventLogger.getInstance().log("Fight between " + this.getClass().getName() + " and " + other.getClass().getName());
         if (this.getStrength() < other.getStrength()) {
             // Log defeat
-            // world.getLogger().logEvent("Organism " + this.getSymbol() + " was defeated by " + other.getSymbol());
+            EventLogger.getInstance().log("Organism " + this.getSymbol() + " was defeated by " + other.getSymbol());
             this.die();
             return true; // This organism died
         }
-        // world.getLogger().logEvent("Organism " + this.getSymbol() + " defeated " + other.getSymbol());
+        EventLogger.getInstance().log("Organism " + other.getClass().getSimpleName() + " was defeated by " + other.getClass().getName() );
         other.die();
         return false; // This organism survived
     }

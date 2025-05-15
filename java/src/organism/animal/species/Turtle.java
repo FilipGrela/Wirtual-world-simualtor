@@ -39,7 +39,7 @@ public class Turtle extends Animal {
     public boolean collision(Organism other) {
         // Deflect attack if attacker is animal and has strength < 5
         if (other instanceof Animal && other.getStrength() < 5) {
-            EventLogger.getInstance().log("Turtle deflected attack from " + other.getClass().getName() + " at (" + x + ", " + y + ")");
+            EventLogger.getInstance().log("Turtle deflected attack from " + other.getClass().getSimpleName() + " at (" + x + ", " + y + ")");
             // Attacker should stay in its previous position (handled in world logic)
             return false;
         }

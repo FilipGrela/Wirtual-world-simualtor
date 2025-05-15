@@ -30,7 +30,7 @@ public abstract class World {
 
     // Dodaj organizm do świata
     public void addOrganism(Organism org) {
-        EventLogger.getInstance().log("Organism " + org.getSymbol() + " added at (" + org.getX() + ", " + org.getY() + ")");
+        EventLogger.getInstance().log("Organism " + org.getClass().getSimpleName() + " added at (" + org.getX() + ", " + org.getY() + ")");
         organisms.add(org);
     }
 
@@ -71,6 +71,37 @@ public abstract class World {
         return null;
     }
 
+    public int getTurnCounter() {
+        return turns;
+    }
+
+    public void setTurnCounter(int turns) {
+        this.turns = turns;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isHumanAlive() {
+        for (Organism org : organisms) {
+            if (org.getClass().getSimpleName().equals("Human")) return true;
+        }
+        return false;
+    }
+
+    public void clearOrganisms() {
+        organisms.clear();
+    }
+
+
+    public abstract int[] getHumanDirection();
+    public abstract void setHumanDirection(int[] dir);
+    public abstract void setHumanAlive(boolean alive);
 
     public abstract int[] findNearestFree(int x, int y);
     public abstract void fillWorld(); // Metoda do wypełnienia świata organizmami na początku gry

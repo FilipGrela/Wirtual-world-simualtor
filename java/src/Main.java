@@ -1,9 +1,12 @@
 import logger.EventLogger;
+import organism.animal.species.Human;
 import ui.GameWindow;
 import ui.MapSelectionWindow;
 import world.World;
 
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +37,20 @@ public class Main {
         gameWindow.refresh();
 
         // Add a key listener to the game window to handle key events
+        Map<Integer, int[]> directionMap = new HashMap<>();
+        directionMap.put(KeyEvent.VK_UP, new int[]{0, -1});
+        directionMap.put(KeyEvent.VK_DOWN, new int[]{0, 1});
+        directionMap.put(KeyEvent.VK_LEFT, new int[]{-1, 0});
+        directionMap.put(KeyEvent.VK_RIGHT, new int[]{1, 0});
+        directionMap.put(KeyEvent.VK_NUMPAD1, new int[]{-1, 1});
+        directionMap.put(KeyEvent.VK_NUMPAD2, new int[]{0, 1});
+        directionMap.put(KeyEvent.VK_NUMPAD3, new int[]{1, 1});
+        directionMap.put(KeyEvent.VK_NUMPAD4, new int[]{-1, 0});
+        directionMap.put(KeyEvent.VK_NUMPAD6, new int[]{1, 0});
+        directionMap.put(KeyEvent.VK_NUMPAD7, new int[]{-1, -1});
+        directionMap.put(KeyEvent.VK_NUMPAD8, new int[]{0, -1});
+        directionMap.put(KeyEvent.VK_NUMPAD9, new int[]{1, -1});
+
         gameWindow.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -42,8 +59,20 @@ public class Main {
                     gameWindow.dispose();
                     createAndShowMapSelectionWindow();
                 } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    world.setHumanDirection(new int[]{0, 0});
                     world.executeTurn();
                     gameWindow.refresh();
+                } else if (directionMap.containsKey(e.getKeyCode())) {
+                    world.setHumanDirection(directionMap.get(e.getKeyCode()));
+                    world.executeTurn();
+                    gameWindow.refresh();
+                } else if (e.getKeyCode() == KeyEvent.VK_A) { // Example: activate ability with 'A'
+                    // Find human and activate ability
+                    for (var org : world.getOrganisms()) {
+                        if (org instanceof Human) {
+                            ((Human) org).activateAbility();
+                        }
+                    }
                 }
             }
         });

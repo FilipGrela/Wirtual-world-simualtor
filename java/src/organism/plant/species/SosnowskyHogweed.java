@@ -39,7 +39,7 @@ public class SosnowskyHogweed extends Plant {
 
     @Override
     public boolean collision(Organism other) {
-        EventLogger.getInstance().log("Sosnowsky Hogweed has killed " + other.getClass().getName() + " at (" + x + ", " + y + ")");
+        EventLogger.getInstance().log("Sosnowsky Hogweed has killed " + other.getClass().getSimpleName() + " at (" + x + ", " + y + ")");
         other.die();
         return false;
     }
@@ -49,7 +49,7 @@ public class SosnowskyHogweed extends Plant {
         for (int[] pos : neighbors) {
             Organism org = world.getOrganismAt(pos[0], pos[1]);
             if (org instanceof Animal) {
-                EventLogger.getInstance().log("Sosnowsky Hogweed killed " + org.getClass().getName() + " at (" + pos[0] + ", " + pos[1] + ")");
+                EventLogger.getInstance().log("Sosnowsky Hogweed killed " + org.getClass().getSimpleName() + " at (" + pos[0] + ", " + pos[1] + ")");
                 org.die();
             }
         }

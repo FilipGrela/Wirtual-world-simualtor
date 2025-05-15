@@ -1,0 +1,419 @@
+{
+    "turnCounter": 0,
+    "humanAbilityActive": false,
+    "humanAlive": true,
+    "humanAbilityCooldown": 0,
+    "width": 20,
+    "organisms": [
+        {
+            "initiative": 4,
+            "strength": 5,
+            "x": 10,
+            "y": 10,
+            "className": "Human",
+            "age": 0
+        },
+        {
+            "initiative": 7,
+            "strength": 3,
+            "x": 19,
+            "y": 3,
+            "className": "Fox",
+            "age": 0
+        },
+        {
+            "initiative": 5,
+            "strength": 9,
+            "x": 2,
+            "y": 5,
+            "className": "Wolf",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 2,
+            "y": 9,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 12,
+            "y": 3,
+            "className": "Turtle",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 11,
+            "y": 15,
+            "className": "Antelope",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 11,
+            "y": 18,
+            "className": "Grass",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 12,
+            "y": 2,
+            "className": "Dandelion",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 11,
+            "y": 16,
+            "className": "Guarana",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 18,
+            "y": 5,
+            "className": "Belladonna",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 18,
+            "y": 13,
+            "className": "SosnowskyHogweed",
+            "age": 0
+        },
+        {
+            "initiative": 7,
+            "strength": 3,
+            "x": 9,
+            "y": 3,
+            "className": "Fox",
+            "age": 0
+        },
+        {
+            "initiative": 5,
+            "strength": 9,
+            "x": 16,
+            "y": 3,
+            "className": "Wolf",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 17,
+            "y": 0,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 12,
+            "y": 5,
+            "className": "Turtle",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 10,
+            "y": 11,
+            "className": "Antelope",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 7,
+            "y": 0,
+            "className": "Grass",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 3,
+            "className": "Dandelion",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 8,
+            "y": 0,
+            "className": "Guarana",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 13,
+            "y": 13,
+            "className": "Belladonna",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 14,
+            "y": 10,
+            "className": "SosnowskyHogweed",
+            "age": 0
+        },
+        {
+            "initiative": 7,
+            "strength": 3,
+            "x": 1,
+            "y": 13,
+            "className": "Fox",
+            "age": 0
+        },
+        {
+            "initiative": 5,
+            "strength": 9,
+            "x": 4,
+            "y": 10,
+            "className": "Wolf",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 10,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 15,
+            "y": 8,
+            "className": "Turtle",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 4,
+            "y": 9,
+            "className": "Antelope",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 17,
+            "className": "Grass",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 16,
+            "y": 11,
+            "className": "Dandelion",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 14,
+            "y": 0,
+            "className": "Guarana",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 15,
+            "y": 0,
+            "className": "Belladonna",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 16,
+            "y": 9,
+            "className": "SosnowskyHogweed",
+            "age": 0
+        },
+        {
+            "initiative": 7,
+            "strength": 3,
+            "x": 6,
+            "y": 0,
+            "className": "Fox",
+            "age": 0
+        },
+        {
+            "initiative": 5,
+            "strength": 9,
+            "x": 10,
+            "y": 1,
+            "className": "Wolf",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 15,
+            "y": 17,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 0,
+            "y": 6,
+            "className": "Turtle",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 9,
+            "y": 17,
+            "className": "Antelope",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 15,
+            "y": 9,
+            "className": "Grass",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 6,
+            "className": "Dandelion",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 3,
+            "y": 17,
+            "className": "Guarana",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 12,
+            "y": 19,
+            "className": "Belladonna",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 5,
+            "y": 7,
+            "className": "SosnowskyHogweed",
+            "age": 0
+        },
+        {
+            "initiative": 7,
+            "strength": 3,
+            "x": 10,
+            "y": 18,
+            "className": "Fox",
+            "age": 0
+        },
+        {
+            "initiative": 5,
+            "strength": 9,
+            "x": 11,
+            "y": 13,
+            "className": "Wolf",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 12,
+            "y": 0,
+            "className": "Sheep",
+            "age": 0
+        },
+        {
+            "initiative": 1,
+            "strength": 2,
+            "x": 11,
+            "y": 8,
+            "className": "Turtle",
+            "age": 0
+        },
+        {
+            "initiative": 4,
+            "strength": 4,
+            "x": 5,
+            "y": 7,
+            "className": "Antelope",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 17,
+            "y": 7,
+            "className": "Grass",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 0,
+            "y": 15,
+            "className": "Dandelion",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 0,
+            "x": 6,
+            "y": 5,
+            "className": "Guarana",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 99,
+            "x": 11,
+            "y": 13,
+            "className": "Belladonna",
+            "age": 0
+        },
+        {
+            "initiative": 0,
+            "strength": 10,
+            "x": 5,
+            "y": 3,
+            "className": "SosnowskyHogweed",
+            "age": 0
+        }
+    ],
+    "humanAbilityDuration": 0,
+    "height": 20
+}
