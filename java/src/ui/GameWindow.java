@@ -3,7 +3,6 @@ package ui;
 import logger.EventLogger;
 import logger.EventLoggerListener;
 import logger.LogEntry;
-import organism.Organism;
 import world.World;
 import world.WorldSquare;
 
@@ -15,34 +14,32 @@ public class GameWindow extends JFrame implements EventLoggerListener {
     private final String mapType;
     private final int width;
     private final int height;
-    private final JPanel boardPanel;
-    private JButton[][] boardButtons;
     private World world;
-    JTextArea logTextArea;
+    private JTextArea logTextArea;
+    private GameBoardSquare gameBoard; // Replaces boardPanel
 
     public GameWindow(String mapType, int width, int height) {
         this.mapType = mapType;
         this.width = width;
         this.height = height;
-        setTitle("Gra: " + (mapType.equals("hex") ? "Hex" : "Szachownica") + " Filip Grela 203850" );
+
+        setTitle("Gra: " + (mapType.equals("hex") ? "Hex" : "Szachownica") + " Filip Grela 203850");
         setSize(600, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
         setLayout(new BorderLayout());
 
-        // Add this at the start of your GameWindow constructor, after setTitle(...)
+        // Menu bar
         JMenuBar menuBar = new JMenuBar();
         JMenu gameMenu = new JMenu("Game");
         JMenuItem loadItem = new JMenuItem("Load Game");
         JMenuItem saveItem = new JMenuItem("Save Game");
-
         gameMenu.add(loadItem);
         gameMenu.add(saveItem);
         menuBar.add(gameMenu);
         setJMenuBar(menuBar);
 
-        // Example: add action listeners for future implementation
+        // Add action listeners for menu items
         loadItem.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser(".");
             fileChooser.setDialogTitle("Select save file");
@@ -63,57 +60,21 @@ public class GameWindow extends JFrame implements EventLoggerListener {
                 JOptionPane.showMessageDialog(this, "Game saved as " + filename);
             }
         });
-        // Górna część (plansza)
-        boardPanel = new JPanel() {
-            @Override
-            public Dimension getPreferredSize() {
-                // Oblicz kwadratowe przyciski
-                int buttonSize = Math.min(getWidth() / width, getHeight() / height);
-                return new Dimension(buttonSize * width, buttonSize * height);
-            }
 
-            @Override
-            public void doLayout() {
-                super.doLayout();
-                int buttonSize = Math.min(getWidth() / width, getHeight() / height);
-                for (int y = 0; y < height; y++) {
-                    for (int x = 0; x < width; x++) {
-                        JButton btn = boardButtons[y][x];
-                        btn.setBounds(x * buttonSize, y * buttonSize, buttonSize, buttonSize);
-                    }
-                }
-            }
-        };
-        boardPanel.setLayout(null); // Ustaw layout na null, aby ręcznie zarządzać rozmiarem i pozycją przycisków
-        boardButtons = new JButton[height][width];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                ImageIcon foxIcon = new ImageIcon(); // ścieżka względna w JAR lub folderze resources
-
-                JButton btn = new JButton();
-                btn.setContentAreaFilled(false);
-                btn.setContentAreaFilled(true);
-                btn.setBorderPainted(true);
-                btn.setBackground(new Color(250, 250, 250));
-                btn.setOpaque(true);
-
-                boardButtons[y][x] = btn;
-                boardPanel.add(btn);
-            }
-        }
-        boardPanel.setBackground(new Color(235, 235, 235));
+        // Initialize world
         world = new WorldSquare(width, height);
-        drawWorld();
 
-        add(boardPanel, BorderLayout.CENTER);
+        // Game board
+        gameBoard = new GameBoardSquare(width, height, world);
+        add(gameBoard, BorderLayout.CENTER);
 
-        // Dolna część (logi)
+        // Log panel
         JPanel logPanel = new JPanel();
-        logPanel.setPreferredSize(new Dimension(800, 200)); // 1/3 wysokości okna
+        logPanel.setPreferredSize(new Dimension(800, 200)); // 1/3 of the window height
         logPanel.setLayout(new BorderLayout());
         logPanel.setBackground(Color.WHITE);
 
-        // Panel wyszukiwania
+        // Search panel
         JPanel searchPanel = new JPanel(new BorderLayout());
         JLabel searchLabel = new JLabel("Szukaj w logach: ");
         JTextField searchField = new JTextField();
@@ -139,7 +100,7 @@ public class GameWindow extends JFrame implements EventLoggerListener {
 
         add(logPanel, BorderLayout.SOUTH);
 
-        // Listener do wyszukiwania w logach
+        // Search field listener
         searchField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             private void filterLogs() {
                 String query = searchField.getText().toLowerCase();
@@ -152,15 +113,16 @@ public class GameWindow extends JFrame implements EventLoggerListener {
                 }
                 logTextArea.setText(filtered.toString());
             }
+
             public void insertUpdate(javax.swing.event.DocumentEvent e) { filterLogs(); }
             public void removeUpdate(javax.swing.event.DocumentEvent e) { filterLogs(); }
             public void changedUpdate(javax.swing.event.DocumentEvent e) { filterLogs(); }
         });
 
         EventLogger.getInstance().addListener(this);
+        drawWorld();
     }
 
-    // Update log area when logs change
     @Override
     public void onLogChanged(List<LogEntry> logs) {
         StringBuilder sb = new StringBuilder(logTextArea.getText());
@@ -172,39 +134,12 @@ public class GameWindow extends JFrame implements EventLoggerListener {
         EventLogger.getInstance().clear();
     }
 
-    // Aktualizuje widok planszy na podstawie stanu świata
     public void drawWorld() {
-        // Clear all buttons
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                boardButtons[y][x].setIcon(null);
-                boardButtons[y][x].setText("");
-            }
-        }
-        // Set icons for organisms
-        for (Organism org : world.getOrganisms()) {
-            int ox = org.getX();
-            int oy = org.getY();
-            if (ox >= 0 && ox < width && oy >= 0 && oy < height) {
-                String imagePath = org.getSymbol(); // e.g. "/images/fox.png"
-                java.net.URL imgUrl = getClass().getResource(imagePath);
-                if (imgUrl != null) {
-                    ImageIcon icon = new ImageIcon(imgUrl);
-                    int buttonSize = Math.min(boardButtons[oy][ox].getWidth(), boardButtons[oy][ox].getHeight());
-                    Image scaledImg = icon.getImage().getScaledInstance(buttonSize, buttonSize, Image.SCALE_SMOOTH);
-                    Icon currentIcon = boardButtons[oy][ox].getIcon();
-                    Image currentImg = currentIcon instanceof ImageIcon ? ((ImageIcon) currentIcon).getImage() : null;
-                    if (currentImg == null || !currentImg.equals(scaledImg)) {
-                        boardButtons[oy][ox].setIcon(new ImageIcon(scaledImg));
-                    }
-                }
-            }
-        }
+        gameBoard.drawWorld();
     }
 
     public void refresh() {
         drawWorld();
-        // Możesz dodać inne odświeżanie widoku w przyszłości
     }
 
     public World getWorld() {
