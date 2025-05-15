@@ -5,6 +5,8 @@ import world.World;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameBoardSquare extends JPanel {
     private final int width;
@@ -34,10 +36,25 @@ public class GameBoardSquare extends JPanel {
                 ));
                 btn.setOpaque(true);
                 btn.setFocusPainted(false);
+
                 boardButtons[y][x] = btn;
                 add(btn);
             }
         }
+    }
+
+    private void showOrganismSelection(int x, int y) {
+        OrganismAddDialog.showOrganismSelection(
+                this,
+                world.getAvailableOrganisms(),
+                x, y,
+                e -> {
+                    String organism = ((JMenuItem) e.getSource()).getText();
+                    world.removeOrganismAt(x, y);
+                    world.addOrganism(organism, x, y);
+                    drawWorld();
+                }
+        );
     }
 
     @Override
@@ -52,7 +69,15 @@ public class GameBoardSquare extends JPanel {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 JButton btn = boardButtons[y][x];
-                btn.setBounds(x * buttonSize, y * buttonSize, buttonSize, buttonSize);
+                final int dimX = x * buttonSize;
+                final int dimY = y * buttonSize;
+
+                btn.setBounds(dimX, dimY, buttonSize, buttonSize);
+                // Remove all previous action listeners to avoid stacking
+                for (ActionListener al : btn.getActionListeners()) {
+                    btn.removeActionListener(al);
+                }
+                btn.addActionListener(e -> showOrganismSelection(dimX, dimY));
             }
         }
     }

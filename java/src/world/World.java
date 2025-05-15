@@ -1,7 +1,9 @@
 package world;
 
+import constants.Constants;
 import logger.EventLogger;
 import organism.Organism;
+import organism.OrganismFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,6 +100,25 @@ public abstract class World {
         organisms.clear();
     }
 
+    public void addOrganism(String type, int x, int y) {
+        Organism org = OrganismFactory.createOrganism(type, x, y, this);
+        if (org != null) {
+            addOrganism(org);
+        } else {
+            EventLogger.getInstance().log("Failed to create organism of type: " + type);
+        }
+    }
+
+    public void removeOrganismAt(int x, int y) {
+        Organism org = getOrganismAt(x, y);
+        if (org != null) {
+            removeOrganism(org);
+        }
+    }
+
+    public String[] getAvailableOrganisms(){
+        return Constants.Dialog.OrganismToAdd;
+    }
 
     public abstract int[] getHumanDirection();
     public abstract void setHumanDirection(int[] dir);

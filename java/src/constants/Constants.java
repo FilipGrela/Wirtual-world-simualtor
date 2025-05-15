@@ -1,7 +1,5 @@
 package constants;
 
-import java.net.URL;
-
 public class Constants {
     public enum Direction {
         NONE, UP, DOWN, LEFT, RIGHT
@@ -15,6 +13,13 @@ public class Constants {
             public static final int DefaultHeight = 20;
         }
      }
+
+    public static class Dialog {
+        public static String[] OrganismToAdd = {
+                "Wolf", "Sheep", "Fox", "Turtle",
+                "Antelope", "Grass", "Dandelion", "Guarana",
+                "Belladonna", "SosnowskyHogweed"};
+    }
 
 
     public static class Animal {
