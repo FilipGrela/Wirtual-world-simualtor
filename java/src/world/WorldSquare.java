@@ -3,6 +3,7 @@ package world;
 import logger.EventLogger;
 import organism.Organism;
 import organism.animal.species.Fox;
+import organism.animal.species.Sheep;
 import organism.animal.species.Wolf;
 
 import java.util.ArrayList;
@@ -60,11 +61,21 @@ public class WorldSquare extends World {
     // Metoda do dodawania organizmów do świata
     @Override
     public void fillWorld(){
-        // Przykładowe dodanie organizmów do świata
-        // Można to zrobić w inny sposób, np. z pliku konfiguracyjnego
-        for (int i = 0; i < 5; i++) {
-            addOrganism(new Fox(i, i, this));
-            addOrganism(new Wolf(i+1, i+1, this));
+        int count = 3;
+        List<int[]> freePositions = new ArrayList<>();
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                if (getOrganismAt(x, y) == null) {
+                    freePositions.add(new int[]{x, y});
+                }
+            }
+        }
+        java.util.Collections.shuffle(freePositions);
+
+        for (int i = 0; i < count && freePositions.size() >= 3; i++) {
+            addOrganism(new Fox(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+            addOrganism(new Wolf(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+            addOrganism(new Sheep(freePositions.remove(0)[0], freePositions.get(0)[1], this));
         }
     }
 
