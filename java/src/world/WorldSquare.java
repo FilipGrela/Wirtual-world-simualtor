@@ -2,9 +2,8 @@ package world;
 
 import logger.EventLogger;
 import organism.Organism;
-import organism.animal.species.Fox;
-import organism.animal.species.Sheep;
-import organism.animal.species.Wolf;
+import organism.animal.species.*;
+import organism.plant.species.Grass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +75,10 @@ public class WorldSquare extends World {
             addOrganism(new Fox(freePositions.remove(0)[0], freePositions.get(0)[1], this));
             addOrganism(new Wolf(freePositions.remove(0)[0], freePositions.get(0)[1], this));
             addOrganism(new Sheep(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+            addOrganism(new Turtle(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+            addOrganism(new Antelope(freePositions.remove(0)[0], freePositions.get(0)[1], this));
+
+            addOrganism(new Grass(freePositions.remove(0)[0], freePositions.get(0)[1], this));
         }
     }
 

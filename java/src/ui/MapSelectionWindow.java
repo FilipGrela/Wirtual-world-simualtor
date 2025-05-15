@@ -4,7 +4,8 @@ import constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MapSelectionWindow extends JFrame {
     // --- DODANE: callback do obsługi wyboru mapy ---
@@ -32,7 +33,7 @@ public class MapSelectionWindow extends JFrame {
 
         hexButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Wywołaj callback jeśli ustawiony
+                // Wywołaj callback, jeśli ustawiony
                 if (onMapSelectedListener != null) {
                     onMapSelectedListener.onMapSelected("hex", 20, 20);
                 }
@@ -60,7 +61,7 @@ public class MapSelectionWindow extends JFrame {
                         int width = Integer.parseInt(widthField.getText());
                         int height = Integer.parseInt(heightField.getText());
                         if (width > 0 && height > 0) {
-                            // Wywołaj callback jeśli ustawiony
+                            // Wywołaj callback, jeśli ustawiony
                             if (onMapSelectedListener != null) {
                                 onMapSelectedListener.onMapSelected("chess", width, height);
                             }
@@ -74,11 +75,9 @@ public class MapSelectionWindow extends JFrame {
             }
         });
 
-        panel.add(hexButton);
+//        panel.add(hexButton);
         panel.add(chessButton);
 
         add(panel);
     }
-
-    // startGame nie jest już używane
 }

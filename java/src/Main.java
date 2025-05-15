@@ -17,6 +17,8 @@ public class Main {
         window.setOnMapSelected((mapType, width, height) -> {
             startGame(window, mapType, width, height);
         });
+
+//        startGame(window, "chess", 8, 8);
     }
 
     private static void startGame(MapSelectionWindow window, String mapType, int width, int height) {
