@@ -6,12 +6,16 @@ import world.World;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameBoardSquare extends JPanel implements GameBoard {
     private final int width;
     private final int height;
     private final JButton[][] boardButtons;
     private final World world;
+
+    private final Map<String, ImageIcon> imageCache = new HashMap<>();
 
     public GameBoardSquare(int width, int height, World world) {
         this.width = width;
@@ -56,6 +60,19 @@ public class GameBoardSquare extends JPanel implements GameBoard {
         );
     }
 
+    private ImageIcon getCachedIcon(String path, int size) {
+        String key = path + "#" + size;
+        return imageCache.computeIfAbsent(key, k -> {
+            java.net.URL url = getClass().getResource(path);
+            if (url != null) {
+                ImageIcon icon = new ImageIcon(url);
+                Image scaledImg = icon.getImage().getScaledInstance(size, size, Image.SCALE_SMOOTH);
+                return new ImageIcon(scaledImg);
+            }
+            return null;
+        });
+    }
+
     @Override
     public Dimension getPreferredSize() {
         int buttonSize = Math.min(getWidth() / width, getHeight() / height);
@@ -91,18 +108,16 @@ public class GameBoardSquare extends JPanel implements GameBoard {
                 boardButtons[y][x].setText("");
             }
         }
-        // Set icons for organisms
+        // Set icons for organisms using cache
         for (Organism org : world.getOrganisms()) {
             int ox = org.getX();
             int oy = org.getY();
             if (ox >= 0 && ox < width && oy >= 0 && oy < height) {
                 String imagePath = org.getSymbol();
-                java.net.URL imgUrl = getClass().getResource(imagePath);
-                if (imgUrl != null) {
-                    ImageIcon icon = new ImageIcon(imgUrl);
-                    int buttonSize = Math.min(boardButtons[oy][ox].getWidth(), boardButtons[oy][ox].getHeight());
-                    Image scaledImg = icon.getImage().getScaledInstance(buttonSize, buttonSize, Image.SCALE_SMOOTH);
-                    boardButtons[oy][ox].setIcon(new ImageIcon(scaledImg));
+                int buttonSize = Math.min(boardButtons[oy][ox].getWidth(), boardButtons[oy][ox].getHeight());
+                ImageIcon cachedIcon = getCachedIcon(imagePath, buttonSize);
+                if (cachedIcon != null) {
+                    boardButtons[oy][ox].setIcon(cachedIcon);
                 }
             }
         }

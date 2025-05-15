@@ -1,11 +1,5 @@
 package world;
 
-import logger.EventLogger;
-import organism.Organism;
-import organism.animal.species.Human;
-import organism.animal.species.*;
-import organism.plant.species.*;
-
 import java.util.ArrayList;
 import java.util.List;
 

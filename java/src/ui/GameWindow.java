@@ -57,7 +57,8 @@ public class GameWindow extends JFrame implements EventLoggerListener {
             String filename = JOptionPane.showInputDialog(this, "Enter save file name:", "Save Game", JOptionPane.PLAIN_MESSAGE);
             if (filename != null && !filename.trim().isEmpty()) {
                 if (!filename.endsWith(".json")) filename += ".json";
-                saveManager.SaveManager.saveWorldToFile(world, filename);
+                if (!filename.endsWith(".json")) filename += ".json";
+                saveManager.SaveManager.saveWorldToFile(world, "saves/" + filename);
                 JOptionPane.showMessageDialog(this, "Game saved as " + filename);
             }
         });
