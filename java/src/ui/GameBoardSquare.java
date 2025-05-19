@@ -86,7 +86,7 @@ public class GameBoardSquare extends JPanel implements GameBoard {
             for (int x = 0; x < width; x++) {
                 JButton btn = boardButtons[y][x];
 
-                btn.setBounds(x* buttonSize, y * buttonSize, buttonSize, buttonSize);
+                btn.setBounds(x * buttonSize, y * buttonSize, buttonSize, buttonSize);
                 // Remove all previous action listeners to avoid stacking
                 for (ActionListener al : btn.getActionListeners()) {
                     btn.removeActionListener(al);

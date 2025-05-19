@@ -100,28 +100,28 @@ public class Human extends Animal {
         }
     }
 
+    public int getAbilityCooldown() {
+        return abilityCooldown;
+    }
+
     // Getters and setters for ability state
     public void setAbilityCooldown(int cooldown) {
         this.abilityCooldown = cooldown;
-    }
-
-    public void setAbilityDuration(int duration) {
-        this.abilityDuration = duration;
-    }
-
-    public int getAbilityCooldown() {
-        return abilityCooldown;
     }
 
     public int getAbilityDuration() {
         return abilityDuration;
     }
 
-    public void setAbilityActive(boolean active) {
-        this.abilityActive = active;
+    public void setAbilityDuration(int duration) {
+        this.abilityDuration = duration;
     }
 
     public boolean isAbilityActive() {
         return abilityActive;
+    }
+
+    public void setAbilityActive(boolean active) {
+        this.abilityActive = active;
     }
 }

@@ -2,9 +2,9 @@ package organism.animal.species;
 
 import constants.Constants;
 import logger.EventLogger;
+import organism.Organism;
 import organism.animal.Animal;
 import world.World;
-import organism.Organism;
 
 public class Wolf extends Animal {
 
@@ -19,7 +19,7 @@ public class Wolf extends Animal {
             // Create a new organism of the same type
             Animal offspring = new Wolf(newPosition[0], newPosition[1], world);
             world.addOrganism(offspring);
-            EventLogger.getInstance().log("Organism " + this.getClass().getSimpleName()  + " reproduced at (" + newPosition[0] + ", " + newPosition[1] + ")");
+            EventLogger.getInstance().log("Organism " + this.getClass().getSimpleName() + " reproduced at (" + newPosition[0] + ", " + newPosition[1] + ")");
         }
     }
 

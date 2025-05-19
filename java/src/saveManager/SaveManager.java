@@ -1,18 +1,17 @@
 package saveManager;
 
 import constants.Constants;
-import organism.Organism;
-import organism.animal.species.Human;
-import organism.animal.species.Fox;
-import organism.animal.species.Sheep;
-import organism.animal.species.Turtle;
-import organism.animal.species.Wolf;
-import organism.plant.species.*;
-import world.World;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import organism.Organism;
+import organism.animal.species.*;
+import organism.plant.species.*;
+import world.World;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class SaveManager {
 
@@ -88,8 +87,7 @@ public class SaveManager {
             // Restore human ability state if human exists
             if (j.getBoolean("humanAlive")) {
                 for (Organism org : world.getOrganisms()) {
-                    if (org instanceof Human) {
-                        Human human = (Human) org;
+                    if (org instanceof Human human) {
                         human.setAbilityActive(j.getBoolean("humanAbilityActive"));
                         human.setAbilityCooldown(j.getInt("humanAbilityCooldown"));
                         human.setAbilityDuration(j.getInt("humanAbilityDuration"));

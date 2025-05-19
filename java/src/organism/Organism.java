@@ -3,7 +3,6 @@ package organism;
 import logger.EventLogger;
 import world.World;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -114,8 +113,8 @@ public abstract class Organism {
     }
 
     public void action() {
-            int[] newPos = getNewPosition();
-            move(newPos[0], newPos[1]);
+        int[] newPos = getNewPosition();
+        move(newPos[0], newPos[1]);
 
         increaseAge();
     }

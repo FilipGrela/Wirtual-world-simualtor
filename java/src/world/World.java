@@ -59,8 +59,6 @@ public abstract class World {
         for (Organism org : new ArrayList<>(organisms)) {
             org.action();
         }
-
-
         turns++;
     }
 

@@ -4,8 +4,6 @@ import logger.EventLogger;
 import organism.Organism;
 import world.World;
 
-import java.net.URL;
-
 public abstract class Animal extends Organism {
 
     public Animal(int x, int y, String symbol, int strength, int initiative, World world) {
@@ -35,7 +33,7 @@ public abstract class Animal extends Organism {
             this.die();
             return true; // This organism died
         }
-        EventLogger.getInstance().log("Organism " + other.getClass().getSimpleName() + " was defeated by " + other.getClass().getName() );
+        EventLogger.getInstance().log("Organism " + other.getClass().getSimpleName() + " was defeated by " + other.getClass().getName());
         other.die();
         return false; // This organism survived
     }

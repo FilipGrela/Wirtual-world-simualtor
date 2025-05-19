@@ -16,8 +16,8 @@ public class GameWindow extends JFrame implements EventLoggerListener {
     private final int width;
     private final int height;
     private World world;
-    private JTextArea logTextArea;
-    private GameBoard gameBoard; // Changed to GameBoard interface
+    private final JTextArea logTextArea;
+    private final GameBoard gameBoard; // Changed to GameBoard interface
 
     public GameWindow(String mapType, int width, int height) {
         this.mapType = mapType;

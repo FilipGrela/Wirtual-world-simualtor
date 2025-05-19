@@ -1,8 +1,8 @@
 package organism;
 
-import world.World;
 import organism.animal.species.*;
 import organism.plant.species.*;
+import world.World;
 
 public class OrganismFactory {
     public static Organism createOrganism(String type, int x, int y, World world) {
@@ -27,6 +27,8 @@ public class OrganismFactory {
                 return new Belladonna(x, y, world);
             case "SosnowskyHogweed":
                 return new SosnowskyHogweed(x, y, world);
+            case "Human":
+                return new Human(x, y, world);
             default:
                 return null;
         }

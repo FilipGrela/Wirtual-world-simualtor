@@ -1,11 +1,5 @@
 package world;
 
-import logger.EventLogger;
-import organism.Organism;
-import organism.animal.species.Human;
-import organism.animal.species.*;
-import organism.plant.species.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +14,8 @@ public class WorldHex extends World {
     public List<int[]> getNeighbors(int x, int y) {
         List<int[]> neighbors = new ArrayList<>();
         // W układzie heksagonalnym offset zależy od parzystości wiersza (even-q vertical layout)
-        int[][] evenDeltas = { {+1, 0}, {0, -1}, {-1, -1}, {-1, 0}, {-1, +1}, {0, +1} };
-        int[][] oddDeltas  = { {+1, 0}, {+1, -1}, {0, -1}, {-1, 0}, {0, +1}, {+1, +1} };
+        int[][] evenDeltas = {{+1, 0}, {0, -1}, {-1, -1}, {-1, 0}, {-1, +1}, {0, +1}};
+        int[][] oddDeltas = {{+1, 0}, {+1, -1}, {0, -1}, {-1, 0}, {0, +1}, {+1, +1}};
         int[][] deltas = (y % 2 == 0) ? evenDeltas : oddDeltas;
 
         for (int[] d : deltas) {
@@ -35,12 +29,11 @@ public class WorldHex extends World {
     }
 
 
-
     // Zwraca najbliższe wolne miejsce w okolicy punktu (lub null, jeśli brak)
     public int[] findNearestFree(int x, int y) {
         // Kierunki sąsiadów w układzie heksagonalnym (even-q vertical layout)
-        int[][] evenDeltas = { {+1, 0}, {0, -1}, {-1, -1}, {-1, 0}, {-1, +1}, {0, +1} };
-        int[][] oddDeltas  = { {+1, 0}, {+1, -1}, {0, -1}, {-1, 0}, {0, +1}, {+1, +1} };
+        int[][] evenDeltas = {{+1, 0}, {0, -1}, {-1, -1}, {-1, 0}, {-1, +1}, {0, +1}};
+        int[][] oddDeltas = {{+1, 0}, {+1, -1}, {0, -1}, {-1, 0}, {0, +1}, {+1, +1}};
         int[][] deltas = (y % 2 == 0) ? evenDeltas : oddDeltas;
 
         for (int[] d : deltas) {

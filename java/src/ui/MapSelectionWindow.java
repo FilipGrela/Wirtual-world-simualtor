@@ -4,20 +4,10 @@ import constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MapSelectionWindow extends JFrame {
-    // --- DODANE: callback do obsługi wyboru mapy ---
-    public interface OnMapSelectedListener {
-        void onMapSelected(String mapType, int width, int height);
-    }
     private OnMapSelectedListener onMapSelectedListener;
-
-    public void setOnMapSelected(OnMapSelectedListener listener) {
-        this.onMapSelectedListener = listener;
-    }
-    // ------------------------------------------------
 
     public MapSelectionWindow() {
         setTitle("Wybór mapy");
@@ -46,17 +36,17 @@ public class MapSelectionWindow extends JFrame {
 
             JTextField widthField = new JTextField(String.valueOf(defaultWidth));
             JTextField heightField = new JTextField(String.valueOf(defaultHeight));
-            JPanel inputPanel = new JPanel(new GridLayout(2,2));
+            JPanel inputPanel = new JPanel(new GridLayout(2, 2));
             inputPanel.add(new JLabel("Szerokość:"));
             inputPanel.add(widthField);
             inputPanel.add(new JLabel("Wysokość:"));
             inputPanel.add(heightField);
 
             int result = JOptionPane.showConfirmDialog(
-                MapSelectionWindow.this,
-                inputPanel,
-                "Podaj wymiary planszy",
-                JOptionPane.OK_CANCEL_OPTION
+                    MapSelectionWindow.this,
+                    inputPanel,
+                    "Podaj wymiary planszy",
+                    JOptionPane.OK_CANCEL_OPTION
             );
             if (result == JOptionPane.OK_OPTION) {
                 try {
@@ -82,5 +72,13 @@ public class MapSelectionWindow extends JFrame {
         panel.add(chessButton);
 
         add(panel);
+    }
+
+    public void setOnMapSelected(OnMapSelectedListener listener) {
+        this.onMapSelectedListener = listener;
+    }
+
+    public interface OnMapSelectedListener {
+        void onMapSelected(String mapType, int width, int height);
     }
 }

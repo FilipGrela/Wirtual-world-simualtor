@@ -76,14 +76,13 @@ public class GameBoardHex extends JPanel implements GameBoard {
         double hexRatio = Math.sqrt(3) / 2;
         int panelW = getWidth() > 0 ? getWidth() : 1;
         int panelH = getHeight() > 0 ? getHeight() : 1;
-        int buttonSizeW = (int) (panelW / (width));
-        int buttonSizeH = (int) (panelH / (height));
+        int buttonSizeW = panelW / (width);
+        int buttonSizeH = panelH / (height);
         int buttonSize = Math.min(buttonSizeW, buttonSizeH);
 
         int hexWidth = buttonSize;
         int hexHeight = (int) (buttonSize * hexRatio * 2);
         int totalWidth = (int) (width * hexWidth + hexWidth / 2.0);
-//        int totalHeight = (int) ((height - 1) * (hexHeight * 0.5) + hexHeight);
         int totalHeight = (int) (height * hexHeight + hexHeight / 2.0);
         return new Dimension(totalWidth, totalHeight);
     }

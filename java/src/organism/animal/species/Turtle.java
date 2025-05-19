@@ -23,8 +23,8 @@ public class Turtle extends Animal {
         }
         // Otherwise, move like a normal animal (random neighbor)
         int[][] directions = {
-            {0, 1}, {1, 0}, {0, -1}, {-1, 0},
-            {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
+                {0, 1}, {1, 0}, {0, -1}, {-1, 0},
+                {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
         };
         int[] dir = directions[rand.nextInt(directions.length)];
         int nx = x + dir[0];

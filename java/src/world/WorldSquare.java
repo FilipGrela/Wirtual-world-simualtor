@@ -14,7 +14,7 @@ public class WorldSquare extends World {
     @Override
     public List<int[]> getNeighbors(int x, int y) {
         List<int[]> neighbors = new ArrayList<>();
-        int[][] deltas = { {1,0}, {-1,0}, {0,1}, {0,-1}, {1,1}, {1,-1}, {-1,1}, {-1,-1} }; // 8 directions (including diagonals)
+        int[][] deltas = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}}; // 8 directions (including diagonals)
 
         for (int[] d : deltas) {
             int nx = x + d[0];
@@ -30,14 +30,14 @@ public class WorldSquare extends World {
     // Zwraca najbliższe wolne miejsce w okolicy punktu (lub null, jeśli brak)
     public int[] findNearestFree(int x, int y) {
         int[][] directions = {
-            {0, 1},    // Up
-            {1, 0},    // Right
-            {0, -1},   // Down
-            {-1, 0},   // Left
-            {1, 1},    // Up-Right
-            {1, -1},   // Down-Right
-            {-1, 1},   // Up-Left
-            {-1, -1}   // Down-Left
+                {0, 1},    // Up
+                {1, 0},    // Right
+                {0, -1},   // Down
+                {-1, 0},   // Left
+                {1, 1},    // Up-Right
+                {1, -1},   // Down-Right
+                {-1, 1},   // Up-Left
+                {-1, -1}   // Down-Left
         };
         for (int[] dir : directions) {
             int nx = x + dir[0];
